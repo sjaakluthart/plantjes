@@ -4,3 +4,4 @@ node_modules
 stylesheets
 dist
 npm-debug.log
+bower_components
