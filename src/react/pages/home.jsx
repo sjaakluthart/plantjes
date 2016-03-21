@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var React = require('react');
 var Square = require('../elements/square.jsx').Square;
 
