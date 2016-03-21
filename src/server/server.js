@@ -1,5 +1,3 @@
-var log = require('winston').loggers.get('server');
-var path = require('path');
 var express = require('express');
 require('node-jsx').install();
 
@@ -23,5 +21,5 @@ app.use('/', router);
 
 // Start the server
 app.listen(config.port, function (err) {
-  log.info('Server started; listening on port ' + config.port);
+  console.log('Server started; listening on port ' + config.port);
 });
