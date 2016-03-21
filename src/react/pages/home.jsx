@@ -1,5 +1,4 @@
 var React = require('react');
-var Square = require('../elements/square.jsx').Square;
 
 // A very simple page with a square on it.
 var HomePage = React.createClass({
@@ -11,7 +10,7 @@ var HomePage = React.createClass({
 
   render: function () {
     return (
-      <Square size={this.props.size} />
+      <img src="assets/plant.svg" />
     );
   }
 });
