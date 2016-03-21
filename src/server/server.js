@@ -10,7 +10,7 @@ var config = {
 };
 
 // views
-app.set('views', __dirname);
+app.set('views', __dirname, 'layout.ejs');
 app.set('view engine', 'ejs');
 
 var router = require('./routes.js');
@@ -18,5 +18,5 @@ app.use('/', router);
 
 // start the server
 app.listen(config.port, function (err) {
-  log.info("Server started; listening on port " + config.port);
+  log.info('Server started; listening on port ' + config.port);
 });
