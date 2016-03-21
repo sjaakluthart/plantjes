@@ -11,6 +11,7 @@ Requirements:
 Clone the repo with git:
 ```
 git clone git@github.com:sjaakluthart/plantjes.git
+```
 
 ### Installation
 
