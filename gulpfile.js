@@ -7,6 +7,7 @@ var babelify = require('babelify'),
   browserify = require('browserify'),
   browserSync = require('browser-sync'),
   changed = require('gulp-changed'),
+  clean = require('gulp-clean'),
   concat = require('gulp-concat'),
   es2015 = require('babel-preset-es2015'),
   gulp = require('gulp'),
@@ -111,6 +112,11 @@ function developmentBuild(file) {
   return rebundle();
 }
 
+gulp.task('clean', function () {
+  return gulp.src('./dist/', {read: false})
+    .pipe(clean({force: true}));
+});
+
 // Check scss code styling
 gulp.task('scss', function() {
   return gulp.src([
@@ -154,11 +160,11 @@ gulp.task('watch', function() {
 });
 
 // Create production build
-gulp.task('production', ['bower', 'sass', 'assets'], function() {
+gulp.task('production', ['clean', 'bower', 'sass', 'assets'], function() {
   return productionBuild('app.jsx');
 });
 
 // Create development build, watch for changes
-gulp.task('dev', ['watch', 'bower', 'sass', 'assets'], function() {
+gulp.task('dev', ['clean', 'watch', 'bower', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
 });
