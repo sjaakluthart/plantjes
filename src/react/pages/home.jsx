@@ -10,7 +10,11 @@ var HomePage = React.createClass({
 
   render: function () {
     return (
-      <img src="assets/plant.svg" />
+      <section>
+        <h1>Plantjes</h1>
+        <h2>Graduation Project, Communication &amp; Multimedia Design, Amsterdam University of Applied Sciences</h2>
+        <img src="assets/plant.svg" />
+      </section>
     );
   }
 });
