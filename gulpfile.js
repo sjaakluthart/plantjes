@@ -29,7 +29,7 @@ var babelify = require('babelify'),
   watchify = require('watchify');
 
 path = {
-  ASSETS: './src/assets/',
+  ASSETS: './src/assets/**/*',
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
   ASSETS_DEST: 'dist/assets',
