@@ -28,13 +28,12 @@ var babelify = require('babelify'),
   watchify = require('watchify');
 
 path = {
-  HTML: 'src/client/index.html',
   ASSETS: '',
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
   ASSETS_DEST: 'dist/assets',
   DEST: 'dist',
-  ENTRY_POINT: './src/client/react/app.jsx'
+  ENTRY_POINT: './src/react/app.jsx'
 };
 
 // Header for app.min.js
@@ -69,7 +68,7 @@ function handleErrors() {
 
 function productionBuild(file) {
   var props = {
-    entries: ['./src/client/react/' + file],
+    entries: [path.ENTRY_POINT],
     debug : false,
     transform: [[babelify, {presets: [es2015, react]}]]
   };
@@ -88,7 +87,7 @@ function productionBuild(file) {
 
 function developmentBuild(file) {
   var props = {
-    entries: ['./src/client/react/' + file],
+    entries: [path.ENTRY_POINT],
     debug : true,
     transform: [[babelify, {presets: [es2015, react]}]]
   };
@@ -142,12 +141,6 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('copy', function(){
-  gulp.src(path.HTML)
-    .on('error', handleErrors)
-    .pipe(gulp.dest(path.DEST));
-});
-
 gulp.task('assets', function() {
   gulp.src(path.ASSETS)
     .pipe(changed(path.ASSETS_DEST))
@@ -155,38 +148,17 @@ gulp.task('assets', function() {
     .pipe(gulp.dest(path.ASSETS_DEST));
 });
 
-gulp.task('replaceHTML', function(){
-  gulp.src(path.HTML)
-    .on('error', handleErrors)
-    .pipe(htmlreplace({
-      'js': path.MINIFIED_OUT
-    }))
-    .pipe(gulp.dest(path.DEST));
-});
-
 gulp.task('watch', function() {
-  gulp.watch(path.HTML, ['copy']);
   gulp.watch('src/sass/*.scss', ['sass']);
   gulp.watch(path.ASSETS, ['assets']);
 });
 
 // Create production build
-gulp.task('production', ['replaceHTML', 'bower', 'sass', 'assets'], function() {
+gulp.task('production', ['bower', 'sass', 'assets'], function() {
   return productionBuild('app.jsx');
 });
 
 // Create development build, watch for changes
-gulp.task('dev', ['watch', 'copy', 'bower', 'sass', 'assets'], function() {
+gulp.task('dev', ['watch', 'bower', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
-});
-
-// View the project in the browser with live reloading from browserSync
-gulp.task('serve', function() {
-  browserSync({
-    server: {
-      baseDir: 'dist'
-    }
-  });
-
-  gulp.watch(['*.html', 'style.css', 'build.js', 'build.min.js', 'assets/**/*'], {cwd: 'dist'}, reload).on('error', handleErrors);
 });
