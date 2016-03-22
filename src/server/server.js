@@ -40,9 +40,19 @@ var insertDocuments = function(db, callback) {
 
 // Use connect method to connect to the Server
 MongoClient.connect(url, function(err, db) {
-  console.log("Connected correctly to server");
+  console.log('Connected to server.');
 
-  insertDocuments(db, function() {
+  db.collection('documents').find().toArray(function(err, result) {
+    if (err) {
+      throw err;
+    }
+    console.log(result.length);
+    if (result.length === 0) {
+      insertDocuments(db, function() {
+       db.close();
+      });
+    }
     db.close();
+    console.log('Disonnected from server.');
   });
 });
