@@ -26,6 +26,7 @@ router.get('/test', function(req, res) {
       }
       console.log(result);
       res.send(result);
+      db.close();
     });
   });
 });
