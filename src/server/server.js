@@ -37,3 +37,12 @@ var insertDocuments = function(db, callback) {
     callback(result);
   });
 }
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function(err, db) {
+  console.log("Connected correctly to server");
+
+  insertDocuments(db, function() {
+    db.close();
+  });
+});
