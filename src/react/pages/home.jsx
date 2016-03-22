@@ -1,4 +1,5 @@
 var React = require('react');
+var $ = require('jquery');
 
 // A very simple page with a square on it.
 var HomePage = React.createClass({
@@ -6,6 +7,15 @@ var HomePage = React.createClass({
     return {
       size: 100
     }
+  },
+
+  componentDidMount: function() {
+    console.log('mounted');
+    $.ajax({ url: '/test' })
+    .then(function(data) {
+      console.log(data);
+      this.setState(data);
+    }.bind(this));
   },
 
   render: function () {
