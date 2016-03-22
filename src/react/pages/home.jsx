@@ -1,6 +1,8 @@
 var React = require('react');
 var $ = require('jquery');
 
+var List = require('./list.jsx');
+
 // A very simple page with a square on it.
 var HomePage = React.createClass({
   getDefaultProps: function () {
@@ -9,12 +11,17 @@ var HomePage = React.createClass({
     }
   },
 
+  getInitialState: function() {
+    return {
+      data: []
+    }
+  },
+
   componentDidMount: function() {
-    console.log('mounted');
     $.ajax({ url: '/test' })
     .then(function(data) {
       console.log(data);
-      this.setState(data);
+      this.setState({data: data});
     }.bind(this));
   },
 
@@ -24,6 +31,7 @@ var HomePage = React.createClass({
         <h1>Plantjes</h1>
         <h2>Graduation Project, Communication &amp; Multimedia Design, Amsterdam University of Applied Sciences</h2>
         <img src="assets/plant.svg" />
+        <List data={this.state.data} />
       </section>
     );
   }
