@@ -5,12 +5,19 @@ Requirements:
 * [Node.js](https://nodejs.org/en/)
 * [Bower](http://bower.io/)
 * [Gulp](http://gulpjs.com/)
+* [MongoDB](https://www.mongodb.org/)
 
 ## Setup
 
 Clone the repo with git:
 ```
+cd ~/Sites
 git clone git@github.com:sjaakluthart/plantjes.git
+```
+
+Install MongoDB, I prefer [HomeBrew](http://brew.sh/).
+```
+brew install mongodb
 ```
 
 ### Installation
@@ -37,16 +44,14 @@ gulp production
 
 ### Running
 
-To start the website run:
+To start the MongoDB server on port 27017 open a new window and run:
 ```
-make dev
+cd ~/Sites/plantjes
+make mongo
 ```
 
-Your terminal should return something like:
+To start the website open a new window and run:
 ```
-[nodemon] 1.9.1
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching: *.*
-[nodemon] starting `node src/server/server.js`
-info: Server started; listening on port 3000
+cd ~/Sites/plantjes
+make dev
 ```
