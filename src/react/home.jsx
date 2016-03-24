@@ -2,6 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 
 import {Header} from './header.jsx'
+import {PlantInfo} from './plant-info.jsx'
 import {SensorData} from './sensor-data.jsx'
 
 const Home = React.createClass({
@@ -27,11 +28,11 @@ const Home = React.createClass({
   },
 
   showContent() {
-    let src = `assets/img/${this.state.data.species}.jpg`
+    let src = `assets/img/${this.state.data.species}.jpg`;
     return (
       <div>
         <Header name={this.state.data.name} species={this.state.data.species} />
-        <img className="plant-picture" src={src} />
+        <PlantInfo plant={this.state.data} />
         <SensorData sensorData={this.state.data.sensorReadings} />
       </div>
     );
