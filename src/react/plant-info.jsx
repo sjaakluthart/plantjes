@@ -9,7 +9,7 @@ const PlantInfo = React.createClass({
     return (
       <section className="plant-info">
         <img className="plant-picture" src={src} />
-        <p><strong>Geplant op:</strong> {moment(this.props.plant.plantedOn).format('DD-MM-YYYY, h:mm:ss')}</p>
+        <p><strong>Geplant op:</strong> {moment(this.props.plant.plantedOn).format('DD-MM-YYYY')}</p>
       </section>
     );
   }
