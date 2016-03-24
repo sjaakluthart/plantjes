@@ -29,6 +29,7 @@ var babelify = require('babelify'),
   watchify = require('watchify');
 
 path = {
+  HTML: 'src/index.html',
   ASSETS: './src/assets/**/*',
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
@@ -141,6 +142,21 @@ gulp.task('bower', function() {
     .pipe(gulp.dest('./dist/'))
 });
 
+gulp.task('copy', function(){
+  gulp.src(path.HTML)
+    .on('error', handleErrors)
+    .pipe(gulp.dest(path.DEST));
+});
+
+gulp.task('replaceHTML', function(){
+  gulp.src(path.HTML)
+    .on('error', handleErrors)
+    .pipe(htmlreplace({
+      'js': path.MINIFIED_OUT
+    }))
+    .pipe(gulp.dest(path.DEST));
+});
+
 gulp.task('sass', function() {
   return sass('src/sass/style.scss', {style: 'compressed'})
     .on('error', handleErrors)
@@ -160,11 +176,11 @@ gulp.task('watch', function() {
 });
 
 // Create production build
-gulp.task('production', ['clean', 'bower', 'sass', 'assets'], function() {
+gulp.task('production', ['clean', 'replaceHTML', 'bower', 'sass', 'assets'], function() {
   return productionBuild('app.jsx');
 });
 
 // Create development build, watch for changes
-gulp.task('dev', ['clean', 'watch', 'bower', 'sass', 'assets'], function() {
+gulp.task('dev', ['clean', 'watch', 'copy', 'bower', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
 });
