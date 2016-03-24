@@ -1,31 +1,45 @@
 import React from 'react'
 import $ from 'jquery'
 
-import {List} from './list.jsx'
+import {Header} from './header.jsx'
+import {SensorData} from './sensor-data.jsx'
 
 const Home = React.createClass({
   displayName: 'Home',
 
   getInitialState() {
     return {
-      data: []
+      data: [],
+      loading: true
     }
   },
 
   componentDidMount() {
-    $.ajax({url: '/test'})
+    $.ajax({url: '/plant'})
     .then((data) => {
-      this.setState({data});
+      console.log(data);
+      this.setState({data: data[0], loading: false});
     });
+  },
+
+  showLoading() {
+    return <p>Plant app is loading...</p>
+  },
+
+  showContent() {
+    return (
+      <div>
+        <Header name={this.state.data.name} species={this.state.data.species} />
+        <img src="assets/plant.svg" />
+        <SensorData sensorData={this.state.data.sensorReadings} />
+      </div>
+    );
   },
 
   render() {
     return (
       <section>
-        <h1>Plantjes</h1>
-        <h2>Graduation Project, Communication &amp; Multimedia Design, Amsterdam University of Applied Sciences</h2>
-        <img src="assets/plant.svg" />
-        <List data={this.state.data} />
+        {this.state.loading ? this.showLoading() : this.showContent()}
       </section>
     );
   }
