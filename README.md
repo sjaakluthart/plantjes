@@ -51,8 +51,10 @@ mkdir data
 make mongo
 ```
 
-To start the website open a new window and run:
+To start the express server open a new window and run:
 ```
 cd ~/Sites/plantjes
 make dev
 ```
+
+The project is now visible at `localhost:3000`.
