@@ -1,0 +1,21 @@
+header {
+  position: relative;
+
+  background-color: $green;
+
+  h1 {
+    padding: 2rem;
+
+    font-size: 2rem;
+    font-weight: $bold;
+    text-transform: capitalize;
+  }
+
+  img {
+    height: 4rem;
+
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+}

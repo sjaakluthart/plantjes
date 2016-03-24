@@ -1,0 +1,33 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: $white;
+
+  font-family: OpenSans, sans-serif;
+  font-weight: $normal;
+  font-size: 1.6rem;
+  color: $black;
+}
+
+.plant-picture {
+  display: block;
+
+  width: 90%;
+
+  margin: 5%;
+}
+
+.sensor-data {
+  padding: 0 5% 5%;
+
+  h1 {
+    margin-bottom: 2.5%;
+
+    border-bottom: 1px solid;
+
+    font-weight: $bold;
+    text-transform: capitalize;
+  }
+}
