@@ -36,21 +36,24 @@ var insertDocuments = function(db, callback) {
     sensorReadings: [
       {
         moisture: 8,
-        temparture: 5,
+        temperature: 5,
         humidity: 12,
-        light: 16
+        light: 16,
+        readingTakenOn: new Date()
       },
       {
         moisture: 9,
-        temparture: 3,
+        temperature: 3,
         humidity: 17,
-        light: 7
+        light: 7,
+        readingTakenOn: new Date()
       },
       {
         moisture: 3,
-        temparture: 10,
+        temperature: 10,
         humidity: 22,
-        light: 12
+        light: 12,
+        readingTakenOn: new Date()
       }
     ]
   }, function(err, result) {
