@@ -1,15 +1,15 @@
 var React = require('react');
 
-var Layout = React.createClass({
+const Layout = React.createClass({
   displayName: 'Layout',
 
-  render: function() {
+  render() {
     return (
       <main>
         {this.props.children}
       </main>
-    )
+    );
   }
 });
 
-module.exports = Layout;
+export {Layout}

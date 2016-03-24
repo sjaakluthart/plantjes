@@ -1,6 +1,7 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Layout = require('./layout.jsx')
-var Home = require('./pages/home.jsx');
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import {Layout} from './layout.jsx'
+import {Home} from './home.jsx'
 
 ReactDOM.render(<Layout><Home /></Layout>, document.getElementById('app'));
