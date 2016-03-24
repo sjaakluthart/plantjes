@@ -11,12 +11,18 @@ body {
   color: $black;
 }
 
-.plant-picture {
-  display: block;
+strong {
+  font-weight: $bold;
+}
 
-  width: 90%;
+.plant-info {
+  padding: 5%;
 
-  margin: 5%;
+  img {
+    width: 100%;
+
+    margin-bottom: 2.5%;
+  }
 }
 
 .sensor-data {
@@ -29,5 +35,11 @@ body {
 
     font-weight: $bold;
     text-transform: capitalize;
+  }
+
+  ul {
+    margin-bottom: 2.5%;
+    
+    border-bottom: 1px solid;
   }
 }
