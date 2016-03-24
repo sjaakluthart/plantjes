@@ -26,7 +26,7 @@ app.listen(config.port, function (err) {
 });
 
 var insertDocuments = function(db, callback) {
-  // Get the documents collection
+  // Get the plants collection
   var collection = db.collection('plants');
   // Insert some documents
   collection.insert({
@@ -62,7 +62,7 @@ var insertDocuments = function(db, callback) {
   });
 }
 
-// Use connect method to connect to the Server
+// Connect to Mongo and insert a plant if there are none.
 MongoClient.connect(url, function(err, db) {
   console.log('Connected to server.');
 
@@ -72,9 +72,7 @@ MongoClient.connect(url, function(err, db) {
     }
     console.log(result.length + ' plant');
     if (result.length === 0) {
-      insertDocuments(db, function() {
-       db.close();
-      });
+      insertDocuments(db);
     }
     db.close();
     console.log('Disonnected from server.');
