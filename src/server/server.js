@@ -1,6 +1,5 @@
 var express = require('express');
 var MongoClient = require('mongodb').MongoClient;
-require('node-jsx').install();
 
 var router = require('./routes.js');
 
