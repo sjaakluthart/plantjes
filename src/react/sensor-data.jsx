@@ -4,9 +4,9 @@ const SensorData = React.createClass({
   displayName: 'SensorData',
 
   render: function() {
-    console.log(this.props);
     return (
-      <div>
+      <section className="sensor-data">
+        <h1>sensor data</h1>
         {this.props.sensorData.map(function(reading, index){
           return (
             <ul key={index}>
@@ -17,7 +17,7 @@ const SensorData = React.createClass({
             </ul>
           );
         })}
-      </div>
+      </section>
     );
   }
 });

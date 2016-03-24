@@ -10,9 +10,11 @@ const Header = React.createClass({
 
   render() {
     console.log(this.props);
+    let src = `assets/img/${this.props.species}.svg`
     return (
       <header>
         <h1>{this.props.name} {this.props.species}</h1>
+        <img src={src} />
       </header>
     );
   }

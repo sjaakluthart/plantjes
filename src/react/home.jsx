@@ -27,10 +27,11 @@ const Home = React.createClass({
   },
 
   showContent() {
+    let src = `assets/img/${this.state.data.species}.jpg`
     return (
       <div>
         <Header name={this.state.data.name} species={this.state.data.species} />
-        <img src="assets/plant.svg" />
+        <img className="plant-picture" src={src} />
         <SensorData sensorData={this.state.data.sensorReadings} />
       </div>
     );
