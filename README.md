@@ -47,6 +47,7 @@ gulp production
 To start the MongoDB server on port 27017 open a new window and run:
 ```
 cd ~/Sites/plantjes
+mkdir data
 make mongo
 ```
 
