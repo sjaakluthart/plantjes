@@ -66,21 +66,67 @@ strong {
   }
 }
 
-.sensor-data {
-  padding: 0 5% 5%;
+.levels {
+  margin-top: 2rem;
 
-  h1 {
-    margin-bottom: 2.5%;
+  padding: 0 5% 10%;
 
-    border-bottom: 1px solid;
+  overflow: auto;
 
-    font-weight: $bold;
-    text-transform: capitalize;
+  figure {
+    @include calc(width, '100% / 3');
+    height: 10rem;
+
+    position: relative;
+
+    float: left;
+
+    &:nth-of-type(2) div div {
+      background: transparentize($red, .3);
+    }
+
+    &:nth-of-type(3) div div {
+      background: transparentize($yellow, .3);
+    }
+
+    > div {
+      width: 80%;
+      height: 100%;
+
+      position: absolute;
+      bottom: 1rem;
+
+      margin: 0 10%;
+
+      background: transparentize($gray, .3);
+    }
+
+    div div {
+      width: 100%;
+
+      position: absolute;
+      bottom: 0;
+
+      background: transparentize($blue, .3);
+    }
+
+    img {
+      width: 70%;
+
+      position: absolute;
+      bottom: 1.5rem;
+      left: 15%;
+    }
+
+    figcaption {
+      width: 100%;
+
+      position: absolute;
+      bottom: -1rem;
+
+      font-size: 1rem;
+      text-align: center;
+    }
   }
 
-  ul {
-    margin-bottom: 2.5%;
-
-    border-bottom: 1px solid;
-  }
 }
