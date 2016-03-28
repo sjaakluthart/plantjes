@@ -7,7 +7,6 @@ var babelify = require('babelify'),
   browserify = require('browserify'),
   browserSync = require('browser-sync'),
   changed = require('gulp-changed'),
-  clean = require('gulp-clean'),
   concat = require('gulp-concat'),
   es2015 = require('babel-preset-es2015'),
   gulp = require('gulp'),
@@ -30,7 +29,7 @@ var babelify = require('babelify'),
 
 path = {
   HTML: 'src/index.html',
-  ASSETS: './src/assets/**/*',
+  ASSETS: ['src/assets/img/**/*', 'src/assets/fonts/**/*'],
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
   ASSETS_DEST: 'dist/assets',
@@ -113,11 +112,6 @@ function developmentBuild(file) {
   return rebundle();
 }
 
-gulp.task('clean', function () {
-  return gulp.src(['./dist/', './dist/**/*'], {read: false})
-    .pipe(clean({force: true}));
-});
-
 // Check scss code styling
 gulp.task('scss', function() {
   return gulp.src([
@@ -171,16 +165,17 @@ gulp.task('assets', function() {
 });
 
 gulp.task('watch', function() {
+  gulp.watch(path.HTML, ['copy']);
   gulp.watch('src/sass/*.scss', ['sass']);
   gulp.watch(path.ASSETS, ['assets']);
 });
 
 // Create production build
-gulp.task('production', ['clean', 'replaceHTML', 'bower', 'sass', 'assets'], function() {
+gulp.task('production', ['replaceHTML', 'bower', 'sass', 'assets'], function() {
   return productionBuild('app.jsx');
 });
 
 // Create development build, watch for changes
-gulp.task('dev', ['clean', 'watch', 'copy', 'bower', 'sass', 'assets'], function() {
+gulp.task('dev', ['watch', 'copy', 'bower', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
 });

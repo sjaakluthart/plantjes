@@ -11,7 +11,7 @@ const SensorData = React.createClass({
         {this.props.sensorData.map(function(reading, index){
           return (
             <ul key={index}>
-              <li>Gemeten op: {moment(reading.readingTakenOn).format('DD-MM-YYYY, h:mm:ss')}</li>
+              <li>Gemeten op: {moment(reading.readingTakenOn).format('DD-MM-YYYY, h:mm')}</li>
               <li>Luchtvochtigheid: {reading.humidity}</li>
               <li>Licht: {reading.light}</li>
               <li>Grondvochtigheid: {reading.moisture}</li>

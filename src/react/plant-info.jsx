@@ -5,7 +5,7 @@ const PlantInfo = React.createClass({
   displayName: 'PlantInfo',
 
   render() {
-    let src = `assets/img/${this.props.plant.species}.jpg`;
+    let src = `assets/${this.props.plant.species}.jpg`;
     return (
       <section className="plant-info">
         <img className="plant-picture" src={src} />

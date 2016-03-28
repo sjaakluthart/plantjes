@@ -28,7 +28,7 @@ const Home = React.createClass({
   },
 
   showContent() {
-    let src = `assets/img/${this.state.data.species}.jpg`;
+    let src = `assets/${this.state.data.species}.jpg`;
     return (
       <div>
         <Header name={this.state.data.name} species={this.state.data.species} />
