@@ -66,6 +66,15 @@ strong {
   }
 }
 
+p {
+  padding: 5%;
+}
+
+.name {
+  font-weight: $bold;
+  text-transform: capitalize;
+}
+
 .levels {
   margin-top: 2rem;
 
@@ -102,6 +111,7 @@ strong {
     }
 
     div div {
+      @include transition(height .5s ease-in-out);
       width: 100%;
 
       position: absolute;
