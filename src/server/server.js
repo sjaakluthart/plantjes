@@ -33,29 +33,29 @@ var insertDocuments = function(db, callback) {
   collection.insert({
     species: 'sla',
     name: 'sjon',
-    plantedOn: moment().subtract(3, 'days').format('DD-MM-YYYY'),
-    harvestOn: moment().add(5, 'weeks').format('DD-MM-YYYY'),
+    plantedOn: moment().subtract(3, 'days').toDate(),
+    harvestOn: moment().add(5, 'weeks').toDate(),
     sensorReadings: [
       {
         moisture: 8,
         temperature: 5,
         humidity: 12,
         light: 16,
-        readingTakenOn: moment().subtract(10, 'hours').format('DD-MM-YYYY, h:mm:ss')
+        readingTakenOn: moment().subtract(10, 'hours').toDate()
       },
       {
         moisture: 9,
         temperature: 3,
         humidity: 17,
         light: 7,
-        readingTakenOn: moment().subtract(5, 'hours').format('DD-MM-YYYY, h:mm:ss')
+        readingTakenOn: moment().subtract(5, 'hours').toDate()
       },
       {
         moisture: 3,
         temperature: 10,
         humidity: 22,
         light: 12,
-        readingTakenOn: moment().subtract(1, 'hours').format('DD-MM-YYYY, h:mm:ss')
+        readingTakenOn: moment().subtract(1, 'hours').toDate()
       }
     ]
   });
