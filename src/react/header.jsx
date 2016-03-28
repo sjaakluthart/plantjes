@@ -9,7 +9,6 @@ const Header = React.createClass({
   },
 
   render() {
-    console.log(this.props);
     let src = `assets/${this.props.species}.svg`
     return (
       <header>
