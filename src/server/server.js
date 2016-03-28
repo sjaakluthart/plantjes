@@ -35,6 +35,20 @@ var insertDocuments = function(db, callback) {
     name: 'sjon',
     plantedOn: moment().subtract(3, 'days').toDate(),
     harvestOn: moment().add(5, 'weeks').toDate(),
+    referenceValues: {
+      temperature: {
+        min: 7,
+        max: 24
+      },
+      moisture: {
+        min: 7,
+        max: 24
+      },
+      light: {
+        min: 7,
+        max: 24
+      }
+    },
     sensorReadings: [
       {
         moisture: 8,
