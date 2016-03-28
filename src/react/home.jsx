@@ -3,7 +3,7 @@ import $ from 'jquery'
 
 import {Header} from './header.jsx'
 import {PlantInfo} from './plant-info.jsx'
-import {SensorData} from './sensor-data.jsx'
+import {Levels} from './levels.jsx'
 
 const Home = React.createClass({
   displayName: 'Home',
@@ -33,7 +33,7 @@ const Home = React.createClass({
       <div>
         <Header name={this.state.data.name} species={this.state.data.species} />
         <PlantInfo plant={this.state.data} />
-        <SensorData sensorData={this.state.data.sensorReadings} />
+        <Levels sensorData={this.state.data.sensorReadings} referenceValues={this.state.data.referenceValues} />
       </div>
     );
   },
