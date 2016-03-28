@@ -1,5 +1,6 @@
 var express = require('express');
 var MongoClient = require('mongodb').MongoClient;
+var moment = require('moment');
 
 var router = require('./routes.js');
 
@@ -32,34 +33,34 @@ var insertDocuments = function(db, callback) {
   collection.insert({
     species: 'sla',
     name: 'sjon',
-    plantedOn: new Date(),
+    plantedOn: moment().subtract(3, 'days').format('DD-MM-YYYY'),
+    harvestOn: moment().add(5, 'weeks').format('DD-MM-YYYY'),
     sensorReadings: [
       {
         moisture: 8,
         temperature: 5,
         humidity: 12,
         light: 16,
-        readingTakenOn: new Date()
+        readingTakenOn: moment().subtract(10, 'hours').format('DD-MM-YYYY, h:mm:ss')
       },
       {
         moisture: 9,
         temperature: 3,
         humidity: 17,
         light: 7,
-        readingTakenOn: new Date()
+        readingTakenOn: moment().subtract(5, 'hours').format('DD-MM-YYYY, h:mm:ss')
       },
       {
         moisture: 3,
         temperature: 10,
         humidity: 22,
         light: 12,
-        readingTakenOn: new Date()
+        readingTakenOn: moment().subtract(1, 'hours').format('DD-MM-YYYY, h:mm:ss')
       }
     ]
-  }, function(err, result) {
-    console.log('Inserted plant in the plants collection.');
-    callback(result);
   });
+
+  console.log('Inserted plant in the plants collection.');
 }
 
 // Connect to Mongo and insert a plant if there are none.
