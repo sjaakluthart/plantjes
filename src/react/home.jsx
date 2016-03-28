@@ -33,6 +33,7 @@ const Home = React.createClass({
       <div>
         <Header name={this.state.data.name} species={this.state.data.species} />
         <PlantInfo plant={this.state.data} />
+        <p><span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.</p>
         <Levels sensorData={this.state.data.sensorReadings} referenceValues={this.state.data.referenceValues} />
       </div>
     );
