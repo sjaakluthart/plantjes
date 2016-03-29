@@ -67,6 +67,7 @@ strong {
 }
 
 p {
+  width: 90%;
   padding: 5%;
 }
 
@@ -139,4 +140,33 @@ p {
     }
   }
 
+}
+
+.plant-picture {
+  position: relative;
+
+  form {
+    width: 4rem;
+    height: 4rem;
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    overflow: hidden;
+
+    img,
+    input {
+      width: 100%;
+      height: 100%;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    input {
+      opacity: 0;
+    }
+  }
 }
