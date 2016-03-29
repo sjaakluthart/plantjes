@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017/plantjes';
 
 // Test route for getting data in React component
-router.get('/plant', function(req, res) {
+router.get('/', function(req, res) {
   MongoClient.connect(url, function(err, db) {
     console.log('Connected to server.');
 
