@@ -29,7 +29,7 @@ var babelify = require('babelify'),
 
 path = {
   HTML: 'src/index.html',
-  ASSETS: ['src/assets/img/**/*', 'src/assets/fonts/**/*'],
+  ASSETS: ['src/assets/img/**/*', 'src/assets/fonts/**/*', 'src/assets/favicon/**/*'],
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
   ASSETS_DEST: 'dist/assets',
