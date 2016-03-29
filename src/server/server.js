@@ -2,7 +2,8 @@ var express = require('express');
 var MongoClient = require('mongodb').MongoClient;
 var moment = require('moment');
 
-var router = require('./routes.js');
+var plantData = require('./plant-data.js');
+var uploadImage = require('./upload-image.js');
 
 // Init
 var app = express();
@@ -19,7 +20,8 @@ app.set('view engine', 'ejs');
 app.use(express.static('dist'));
 
 // Router
-app.use('/', router);
+app.use('/plant', plantData);
+app.use('/upload', uploadImage);
 
 // Start the server
 app.listen(config.port, function (err) {
