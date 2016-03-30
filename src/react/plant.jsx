@@ -5,8 +5,8 @@ import {Header} from './header.jsx'
 import {PlantInfo} from './plant-info.jsx'
 import {Levels} from './levels.jsx'
 
-const Home = React.createClass({
-  displayName: 'Home',
+const Plant = React.createClass({
+  displayName: 'Plant',
 
   getInitialState() {
     return {
@@ -16,10 +16,13 @@ const Home = React.createClass({
   },
 
   componentDidMount() {
-    $.ajax({url: '/plant'})
+    $.ajax({
+      url: '/plant',
+      data: {plantId: this.props.plantId}
+    })
     .then((data) => {
       console.log(data);
-      this.setState({data: data[0], loading: false});
+      this.setState({data: data, loading: false});
     });
   },
 
@@ -30,7 +33,7 @@ const Home = React.createClass({
   showContent() {
     let src = `assets/${this.state.data.species}.jpg`;
     return (
-      <div>
+      <div className="plant">
         <Header name={this.state.data.name} species={this.state.data.species} />
         <PlantInfo plant={this.state.data} />
         <p><span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.</p>
@@ -48,4 +51,4 @@ const Home = React.createClass({
   }
 });
 
-export {Home}
+export {Plant}
