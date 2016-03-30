@@ -46,7 +46,7 @@ const PlantPicture = React.createClass({
       src = `uploads/${this.props.plantPicture}`;
       return <img src={src} />
     } else {
-      return <img src="assets/sla.jpg" />
+      return <img src="assets/placeholder.svg" />
     }
 
   },
