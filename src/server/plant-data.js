@@ -1,15 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var MongoClient = require('mongodb').MongoClient;
+var Mongo = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectID;
 
 var url = 'mongodb://localhost:27017/plantjes';
 
-// Test route for getting data in React component
+// Send the list of plants to the client
 router.get('/', function(req, res) {
-  MongoClient.connect(url, function(err, db) {
+  Mongo.connect(url, function(err, db) {
     console.log('Connected to server.');
 
-    db.collection('plants').find().toArray(function(err, result) {
+    db.collection('plants').findOne({_id: ObjectId(req.query.plantId)}, function(err, result) {
       if (err) {
         throw err;
       }
