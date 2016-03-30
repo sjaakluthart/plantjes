@@ -12,10 +12,19 @@ header {
   }
 
   img {
-    height: 4rem;
+    width: 4rem;
 
     position: absolute;
     right: 1rem;
     top: 1rem;
+
+    &.back {
+      right: auto;
+      left: 1rem;
+    }
   }
+}
+
+.plant header h1 {
+  padding-left: 6rem;
 }
