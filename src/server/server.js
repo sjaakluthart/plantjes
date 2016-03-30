@@ -1,86 +1,37 @@
+// Import Node Modules
 var express = require('express');
-var MongoClient = require('mongodb').MongoClient;
+var Mongo = require('mongodb').MongoClient;
 var moment = require('moment');
 
+// Import Routes
+var plantList = require('./plant-list.js');
 var plantData = require('./plant-data.js');
 var uploadImage = require('./upload-image.js');
 
-// Init
+// Import Functions
+var insertPlant = require('./insert-plant.js')
+
+// Express setup
 var app = express();
+
 var config = {
   port: 3000
 };
 var url = 'mongodb://localhost:27017/plantjes';
 
-// Views
-app.set('views', __dirname, 'layout.ejs');
-app.set('view engine', 'ejs');
-
-// Static files
-app.use(express.static('dist'));
-
-// Router
+app.use('/plant-list', plantList);
 app.use('/plant', plantData);
 app.use('/upload', uploadImage);
+
+app.use(express.static('dist'));
 
 // Start the server
 app.listen(config.port, function (err) {
   console.log('Server started; listening on port ' + config.port);
 });
 
-var insertDocuments = function(db, callback) {
-  // Get the plants collection
-  var collection = db.collection('plants');
-  // Insert some documents
-  collection.insert({
-    species: 'sla',
-    name: 'sjon',
-    plantedOn: moment().subtract(3, 'days').toDate(),
-    harvestOn: moment().add(5, 'weeks').toDate(),
-    referenceValues: {
-      temperature: {
-        min: 7,
-        max: 24
-      },
-      moisture: {
-        min: 7,
-        max: 24
-      },
-      light: {
-        min: 7,
-        max: 24
-      }
-    },
-    sensorReadings: [
-      {
-        moisture: 8,
-        temperature: 5,
-        humidity: 12,
-        light: 16,
-        readingTakenOn: moment().subtract(10, 'hours').toDate()
-      },
-      {
-        moisture: 9,
-        temperature: 3,
-        humidity: 17,
-        light: 7,
-        readingTakenOn: moment().subtract(5, 'hours').toDate()
-      },
-      {
-        moisture: 3,
-        temperature: 10,
-        humidity: 22,
-        light: 12,
-        readingTakenOn: moment().subtract(1, 'hours').toDate()
-      }
-    ]
-  });
-
-  console.log('Inserted plant in the plants collection.');
-}
-
 // Connect to Mongo and insert a plant if there are none.
-MongoClient.connect(url, function(err, db) {
+Mongo.connect(url, function(err, db) {
   console.log('Connected to server.');
 
   db.collection('plants').find().toArray(function(err, result) {
@@ -89,7 +40,7 @@ MongoClient.connect(url, function(err, db) {
     }
     console.log(result.length + ' plant');
     if (result.length === 0) {
-      insertDocuments(db);
+      insertPlant(db);
     }
     db.close();
     console.log('Disonnected from server.');
