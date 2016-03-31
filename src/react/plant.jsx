@@ -1,9 +1,9 @@
-import React from 'react'
-import $ from 'jquery'
+import React from 'react';
+import $ from 'jquery';
 
-import {Header} from './header.jsx'
-import {PlantInfo} from './plant-info.jsx'
-import {Levels} from './levels.jsx'
+import { Header } from './header.jsx';
+import { PlantInfo } from './plant-info.jsx';
+import { Levels } from './levels.jsx';
 
 const Plant = React.createClass({
   displayName: 'Plant',
@@ -12,22 +12,22 @@ const Plant = React.createClass({
     return {
       data: [],
       loading: true
-    }
+    };
   },
 
   componentDidMount() {
     $.ajax({
       url: '/plant',
-      data: {plantId: this.props.plantId}
+      data: { plantId: this.props.plantId }
     })
     .then((data) => {
       console.log(data);
-      this.setState({data: data, loading: false});
+      this.setState({ data: data, loading: false });
     });
   },
 
   showLoading() {
-    return <p>Plant app is loading...</p>
+    return <p>Plant app is loading...</p>;
   },
 
   showContent() {
@@ -51,4 +51,4 @@ const Plant = React.createClass({
   }
 });
 
-export {Plant}
+export { Plant };

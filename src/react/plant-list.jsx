@@ -1,6 +1,6 @@
-import React from 'react'
-import $ from 'jquery'
-import moment from 'moment'
+import React from 'react';
+import $ from 'jquery';
+import moment from 'moment';
 
 const PlantList = React.createClass({
   displayName: 'PlantList',
@@ -9,14 +9,14 @@ const PlantList = React.createClass({
     return {
       plants: [],
       loading: true
-    }
+    };
   },
 
   componentDidMount() {
-    $.ajax({url: '/plant-list'})
+    $.ajax({ url: '/plant-list' })
     .then((data) => {
       console.log(data);
-      this.setState({plants: data, loading: false});
+      this.setState({ plants: data, loading: false });
     });
   },
 
@@ -25,7 +25,7 @@ const PlantList = React.createClass({
   },
 
   showLoading() {
-    return <p>Plant app is loading...</p>
+    return <p>Plant app is loading...</p>;
   },
 
   showContent() {
@@ -57,4 +57,4 @@ const PlantList = React.createClass({
   }
 });
 
-export {PlantList}
+export { PlantList };

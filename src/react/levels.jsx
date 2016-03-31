@@ -1,5 +1,5 @@
-import React from 'react'
-import moment from 'moment'
+import React from 'react';
+import moment from 'moment';
 
 const Levels = React.createClass({
   displayName: 'SensorData',
@@ -11,7 +11,7 @@ const Levels = React.createClass({
   },
 
   displayLevels() {
-    let lastReading = this.props.sensorData[(this.props.sensorData.length -1)];
+    let lastReading = this.props.sensorData[(this.props.sensorData.length - 1)];
     let referenceValues = this.props.referenceValues;
 
     let moistureLevel = this.getLevel(lastReading.moisture, referenceValues.moisture);
@@ -22,22 +22,22 @@ const Levels = React.createClass({
       moistureLevel,
       temperatureLevel,
       lightLevel
-    }
+    };
   },
 
   getLevelStyles(level) {
     if (level >= 0) {
       return {
         height: `${level}%`
-      }
+      };
     } else {
       return {
         height: 0
-      }
+      };
     }
   },
 
-  render: function() {
+  render: function () {
     let levels = this.displayLevels();
     return (
       <section className="levels">
@@ -70,4 +70,4 @@ const Levels = React.createClass({
   }
 });
 
-export {Levels}
+export { Levels };

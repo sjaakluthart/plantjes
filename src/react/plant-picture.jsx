@@ -1,5 +1,5 @@
-import React from 'react'
-import $ from 'jquery'
+import React from 'react';
+import $ from 'jquery';
 
 const PlantPicture = React.createClass({
   displayName: 'PlantPicture',
@@ -13,7 +13,7 @@ const PlantPicture = React.createClass({
     return {
       file: '',
       uploadedFile: ''
-    }
+    };
   },
 
   uploadFile(event) {
@@ -41,12 +41,12 @@ const PlantPicture = React.createClass({
     // If the user has just uploaded an image, show that image.
     if (this.state.uploadedFile) {
       src = `uploads/${this.state.uploadedFile}`;
-      return <img src={src} />
+      return <img src={src} />;
     } else if (this.props.plantPicture) {
       src = `uploads/${this.props.plantPicture}`;
-      return <img src={src} />
+      return <img src={src} />;
     } else {
-      return <img src="assets/placeholder.svg" />
+      return <img src="assets/placeholder.svg" />;
     }
 
   },
@@ -60,8 +60,8 @@ const PlantPicture = React.createClass({
           <input onChange={this.uploadFile} type="file" name="file" />
       </form>
       </section>
-    )
+    );
   }
 });
 
-export {PlantPicture}
+export { PlantPicture };

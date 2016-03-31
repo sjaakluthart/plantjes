@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Header = React.createClass({
   displayName: 'Header',
@@ -13,7 +13,7 @@ const Header = React.createClass({
   },
 
   render() {
-    let src = `assets/${this.props.species}.svg`
+    let src = `assets/${this.props.species}.svg`;
     return (
       <header>
         <img onClick={this.showPlantlist} className="back" src="assets/arrow-back.svg" />
@@ -25,4 +25,4 @@ const Header = React.createClass({
 
 });
 
-export {Header}
+export { Header };

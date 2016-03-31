@@ -1,5 +1,5 @@
-import React from 'react'
-import moment from 'moment'
+import React from 'react';
+import moment from 'moment';
 
 const GrowthBar = React.createClass({
   displayName: 'GrowthBar',
@@ -31,12 +31,12 @@ const GrowthBar = React.createClass({
 
     return {
       width: `${percentage}%`
-    }
+    };
   },
 
   render() {
     return (
-      <div  className="growth-bar">
+      <div className="growth-bar">
         <h1>Groei:<span>{this.getPosition()}/{this.getDuration()} dagen</span></h1>
         <section>
           <div style={this.calculateGrowthPercentage()}></div>
@@ -48,4 +48,4 @@ const GrowthBar = React.createClass({
   }
 });
 
-export {GrowthBar}
+export { GrowthBar };

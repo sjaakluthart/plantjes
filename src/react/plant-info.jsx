@@ -1,8 +1,8 @@
-import React from 'react'
-import moment from 'moment'
+import React from 'react';
+import moment from 'moment';
 
-import {PlantPicture} from './plant-picture.jsx'
-import {GrowthBar} from './growth-bar.jsx'
+import { PlantPicture } from './plant-picture.jsx';
+import { GrowthBar } from './growth-bar.jsx';
 
 const PlantInfo = React.createClass({
   displayName: 'PlantInfo',
@@ -13,10 +13,10 @@ const PlantInfo = React.createClass({
     return (
       <section className="plant-info">
         <PlantPicture plantId={this.props.plant._id} plantPicture={this.props.plant.plantPicture} />
-        <GrowthBar plantedOn={this.props.plant.plantedOn} harvestOn={this.props.plant.harvestOn} plantIcon={plantIcon}/>
+        <GrowthBar plantedOn={this.props.plant.plantedOn} harvestOn={this.props.plant.harvestOn} plantIcon={plantIcon} />
       </section>
     );
   }
 });
 
-export {PlantInfo}
+export { PlantInfo };

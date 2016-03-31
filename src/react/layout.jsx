@@ -12,4 +12,4 @@ const Layout = React.createClass({
   }
 });
 
-export {Layout}
+export { Layout };
