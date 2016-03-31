@@ -11,23 +11,23 @@ const GrowthBar = React.createClass({
   },
 
   getDuration() {
-    let start = moment(this.props.plantedOn);
-    let end = moment(this.props.harvestOn);
+    const start = moment(this.props.plantedOn);
+    const end = moment(this.props.harvestOn);
 
     return end.diff(start, 'days');
   },
 
   getPosition() {
-    let start = moment(this.props.plantedOn);
-    let today = moment();
+    const start = moment(this.props.plantedOn);
+    const today = moment();
 
     return today.diff(start, 'days');
   },
 
   calculateGrowthPercentage() {
-    let duration = this.getDuration();
-    let position = this.getPosition();
-    let percentage = Math.ceil((position / duration) * 100);
+    const duration = this.getDuration();
+    const position = this.getPosition();
+    const percentage = Math.ceil((position / duration) * 100);
 
     return {
       width: `${percentage}%`
@@ -48,4 +48,4 @@ const GrowthBar = React.createClass({
   }
 });
 
-export { GrowthBar };
+export default GrowthBar;

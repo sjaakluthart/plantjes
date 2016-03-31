@@ -57,4 +57,4 @@ const PlantList = React.createClass({
   }
 });
 
-export { PlantList };
+export default PlantList;

@@ -1,22 +1,48 @@
 import React from 'react';
-import moment from 'moment';
 
 const Levels = React.createClass({
   displayName: 'SensorData',
 
+  propTypes: {
+    referenceValues: React.PropTypes.object.isRequired,
+    sensorData: React.PropTypes.array.isRequired
+  },
+
   getLevel(value, reference) {
-    let scale = reference.max - reference.min;
+    const scale = reference.max - reference.min;
 
     return Math.ceil(((value - reference.min) / scale) * 100);
   },
 
-  displayLevels() {
-    let lastReading = this.props.sensorData[(this.props.sensorData.length - 1)];
-    let referenceValues = this.props.referenceValues;
+  getLevelStyles(level) {
+    let height;
 
-    let moistureLevel = this.getLevel(lastReading.moisture, referenceValues.moisture);
-    let temperatureLevel = this.getLevel(lastReading.temperature, referenceValues.temperature);
-    let lightLevel = this.getLevel(lastReading.light, referenceValues.light);
+    if (level >= 0) {
+      height = `${level}%`;
+    } else {
+      height = 0;
+    }
+
+    return {
+      height
+    };
+  },
+
+  displayLevels() {
+    const lastReading = this.props.sensorData[
+      (this.props.sensorData.length - 1)
+    ];
+    const referenceValues = this.props.referenceValues;
+
+    const moistureLevel = this.getLevel(
+      lastReading.moisture, referenceValues.moisture
+    );
+    const temperatureLevel = this.getLevel(
+      lastReading.temperature, referenceValues.temperature
+    );
+    const lightLevel = this.getLevel(
+      lastReading.light, referenceValues.light
+    );
 
     return {
       moistureLevel,
@@ -25,20 +51,8 @@ const Levels = React.createClass({
     };
   },
 
-  getLevelStyles(level) {
-    if (level >= 0) {
-      return {
-        height: `${level}%`
-      };
-    } else {
-      return {
-        height: 0
-      };
-    }
-  },
-
-  render: function () {
-    let levels = this.displayLevels();
+  render() {
+    const levels = this.displayLevels();
     return (
       <section className="levels">
         <figure>
@@ -70,4 +84,4 @@ const Levels = React.createClass({
   }
 });
 
-export { Levels };
+export default Levels;

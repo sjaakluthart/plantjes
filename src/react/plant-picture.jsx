@@ -64,4 +64,4 @@ const PlantPicture = React.createClass({
   }
 });
 
-export { PlantPicture };
+export default PlantPicture;

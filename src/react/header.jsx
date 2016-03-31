@@ -25,4 +25,4 @@ const Header = React.createClass({
 
 });
 
-export { Header };
+export default Header;

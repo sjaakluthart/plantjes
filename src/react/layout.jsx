@@ -1,7 +1,11 @@
-var React = require('react');
+import React from 'react';
 
 const Layout = React.createClass({
   displayName: 'Layout',
+
+  propTypes: {
+    children: React.PropTypes.object.isRequired
+  },
 
   render() {
     return (
@@ -12,4 +16,4 @@ const Layout = React.createClass({
   }
 });
 
-export { Layout };
+export default Layout;

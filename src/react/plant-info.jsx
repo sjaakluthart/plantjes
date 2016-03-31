@@ -1,14 +1,16 @@
 import React from 'react';
-import moment from 'moment';
 
-import { PlantPicture } from './plant-picture.jsx';
-import { GrowthBar } from './growth-bar.jsx';
+import PlantPicture from './plant-picture.jsx';
+import GrowthBar from './growth-bar.jsx';
 
 const PlantInfo = React.createClass({
   displayName: 'PlantInfo',
 
+  propTypes: {
+    plant: React.PropTypes.object.isRequired
+  },
+
   render() {
-    let src = `assets/${this.props.plant.species}.jpg`;
     let plantIcon = `assets/${this.props.plant.species}.svg`;
     return (
       <section className="plant-info">
@@ -19,4 +21,4 @@ const PlantInfo = React.createClass({
   }
 });
 
-export { PlantInfo };
+export default PlantInfo;

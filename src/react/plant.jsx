@@ -1,9 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 
-import { Header } from './header.jsx';
-import { PlantInfo } from './plant-info.jsx';
-import { Levels } from './levels.jsx';
+import Header from './header.jsx';
+import PlantInfo from './plant-info.jsx';
+import Levels from './levels.jsx';
 
 const Plant = React.createClass({
   displayName: 'Plant',
@@ -51,4 +51,4 @@ const Plant = React.createClass({
   }
 });
 
-export { Plant };
+export default Plant;
