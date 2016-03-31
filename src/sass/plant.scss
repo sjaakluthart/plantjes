@@ -23,14 +23,14 @@
 
     position: relative;
 
-    background: $gray;
+    background: $light-grey;
   }
 
   div {
     @include transition(width .5s ease-in-out);
     height: 100%;
 
-    background: $green;
+    background: $light-green;
   }
 
   img {
@@ -75,11 +75,11 @@ p {
     float: left;
 
     &:nth-of-type(2) div div {
-      background: transparentize($red, .3);
+      background: $light-red;
     }
 
     &:nth-of-type(3) div div {
-      background: transparentize($yellow, .3);
+      background: $light-yellow;
     }
 
     > div {
@@ -91,7 +91,7 @@ p {
 
       margin: 0 10%;
 
-      background: transparentize($gray, .3);
+      background: $light-grey;
     }
 
     div div {
@@ -101,7 +101,7 @@ p {
       position: absolute;
       bottom: 0;
 
-      background: transparentize($blue, .3);
+      background: $light-blue;
     }
 
     img {
