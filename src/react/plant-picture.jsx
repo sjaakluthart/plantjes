@@ -17,7 +17,7 @@ const PlantPicture = React.createClass({
   },
 
   uploadFile(event) {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('file', event.currentTarget.files[0]);
     formData.append('plantId', this.props.plantId);
 
@@ -36,19 +36,18 @@ const PlantPicture = React.createClass({
   },
 
   renderPlantPicture() {
-    let src;
+    let image;
 
     // If the user has just uploaded an image, show that image.
     if (this.state.uploadedFile) {
-      src = `uploads/${this.state.uploadedFile}`;
-      return <img src={src} />;
+      image = <img src={`uploads/${this.state.uploadedFile}`} />;
     } else if (this.props.plantPicture) {
-      src = `uploads/${this.props.plantPicture}`;
-      return <img src={src} />;
+      image = <img src={`uploads/${this.props.plantPicture}`} />;
     } else {
-      return <img src="assets/placeholder.svg" />;
+      image = <img src="assets/placeholder.svg" />;
     }
 
+    return image;
   },
 
   render() {

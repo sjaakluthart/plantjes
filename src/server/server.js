@@ -1,7 +1,6 @@
 // Import Node Modules
-var express = require('express');
-var Mongo = require('mongodb').MongoClient;
-var moment = require('moment');
+const express = require('express');
+const Mongo = require('mongodb').MongoClient;
 
 // Import Routes
 var plantList = require('./plant-list.js');
@@ -9,7 +8,7 @@ var plantData = require('./plant-data.js');
 var uploadImage = require('./upload-image.js');
 
 // Import Functions
-var insertPlant = require('./insert-plant.js')
+var insertPlant = require('./insert-plant.js');
 
 // Express setup
 var app = express();
@@ -31,10 +30,10 @@ app.listen(config.port, function (err) {
 });
 
 // Connect to Mongo and insert a plant if there are none.
-Mongo.connect(url, function(err, db) {
+Mongo.connect(url, function (err, db) {
   console.log('Connected to server.');
 
-  db.collection('plants').find().toArray(function(err, result) {
+  db.collection('plants').find().toArray(function (err, result) {
     if (err) {
       throw err;
     }
