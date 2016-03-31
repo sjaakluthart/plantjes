@@ -14,8 +14,13 @@ const PlantInfo = React.createClass({
     let plantIcon = `assets/${this.props.plant.species}.svg`;
     return (
       <section className="plant-info">
-        <PlantPicture plantId={this.props.plant._id} plantPicture={this.props.plant.plantPicture} />
-        <GrowthBar plantedOn={this.props.plant.plantedOn} harvestOn={this.props.plant.harvestOn} plantIcon={plantIcon} />
+        <PlantPicture
+          plantId={this.props.plant._id} plantPicture={this.props.plant.plantPicture}
+        />
+        <GrowthBar
+          plantedOn={this.props.plant.plantedOn} harvestOn={this.props.plant.harvestOn}
+          plantIcon={plantIcon}
+        />
       </section>
     );
   }

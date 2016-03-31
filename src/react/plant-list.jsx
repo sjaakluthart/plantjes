@@ -36,7 +36,12 @@ const PlantList = React.createClass({
           return (
             <li onClick={boundClick} key={index}>
               <img src={`assets/${plant.species}.svg`} alt={plant.species} />
-              <span className="name">{plant.name} {plant.species} </span><span>Geplant op: {moment(plant.plantedOn).format('DD-MM-YY')}</span>
+              <span className="name">
+                {plant.name} {plant.species}
+              </span>
+              <span>
+                Geplant op: {moment(plant.plantedOn).format('DD-MM-YY')}
+              </span>
             </li>
           );
         })}
