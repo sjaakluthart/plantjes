@@ -8,4 +8,4 @@ mongo:
 	mongod --dbpath=./data --port 27017
 
 eslint:
-	$(ESLINT_CMD) src/**/*.jsx
+	$(ESLINT_CMD) src/**/*.jsx src/**/*.js
