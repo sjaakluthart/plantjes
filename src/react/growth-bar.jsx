@@ -1,28 +1,20 @@
 import React from 'react';
 import moment from 'moment';
 
-const GrowthBar = React.createClass({
-  displayName: 'GrowthBar',
-
-  propTypes: {
-    plantedOn: React.PropTypes.string.isRequired,
-    plantIcon: React.PropTypes.string.isRequired,
-    harvestOn: React.PropTypes.string.isRequired
-  },
-
+class GrowthBar extends React.Component {
   getDuration() {
     const start = moment(this.props.plantedOn);
     const end = moment(this.props.harvestOn);
 
     return end.diff(start, 'days');
-  },
+  }
 
   getPosition() {
     const start = moment(this.props.plantedOn);
     const today = moment();
 
     return today.diff(start, 'days');
-  },
+  }
 
   calculateGrowthPercentage() {
     const duration = this.getDuration();
@@ -32,7 +24,7 @@ const GrowthBar = React.createClass({
     return {
       width: `${percentage}%`
     };
-  },
+  }
 
   render() {
     return (
@@ -46,6 +38,12 @@ const GrowthBar = React.createClass({
       </div>
     );
   }
-});
+}
+
+GrowthBar.propTypes = {
+  plantedOn: React.PropTypes.string.isRequired,
+  plantIcon: React.PropTypes.string.isRequired,
+  harvestOn: React.PropTypes.string.isRequired
+};
 
 export default GrowthBar;

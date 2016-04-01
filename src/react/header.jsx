@@ -1,16 +1,9 @@
 import React from 'react';
 
-const Header = React.createClass({
-  displayName: 'Header',
-
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    species: React.PropTypes.string.isRequired
-  },
-
+class Header extends React.Component {
   showPlantlist() {
     routie('');
-  },
+  }
 
   render() {
     let src = `assets/${this.props.species}.svg`;
@@ -22,7 +15,11 @@ const Header = React.createClass({
       </header>
     );
   }
+}
 
-});
+Header.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  species: React.PropTypes.string.isRequired
+};
 
 export default Header;

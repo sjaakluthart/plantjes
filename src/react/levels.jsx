@@ -1,18 +1,11 @@
 import React from 'react';
 
-const Levels = React.createClass({
-  displayName: 'SensorData',
-
-  propTypes: {
-    referenceValues: React.PropTypes.object.isRequired,
-    sensorData: React.PropTypes.array.isRequired
-  },
-
+class Levels extends React.Component {
   getLevel(value, reference) {
     const scale = reference.max - reference.min;
 
     return Math.ceil(((value - reference.min) / scale) * 100);
-  },
+  }
 
   getLevelStyles(level) {
     let height;
@@ -26,7 +19,7 @@ const Levels = React.createClass({
     return {
       height
     };
-  },
+  }
 
   displayLevels() {
     const lastReading = this.props.sensorData[
@@ -49,7 +42,7 @@ const Levels = React.createClass({
       temperatureLevel,
       lightLevel
     };
-  },
+  }
 
   render() {
     const levels = this.displayLevels();
@@ -82,6 +75,11 @@ const Levels = React.createClass({
       </section>
     );
   }
-});
+}
+
+Levels.propTypes = {
+  referenceValues: React.PropTypes.object.isRequired,
+  sensorData: React.PropTypes.array.isRequired
+};
 
 export default Levels;

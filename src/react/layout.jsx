@@ -1,19 +1,15 @@
 import React from 'react';
 
-const Layout = React.createClass({
-  displayName: 'Layout',
+function Layout({ children }) {
+  return (
+    <main>
+      {children}
+    </main>
+  );
+}
 
-  propTypes: {
-    children: React.PropTypes.object.isRequired
-  },
-
-  render() {
-    return (
-      <main>
-        {this.props.children}
-      </main>
-    );
-  }
-});
+Layout.propTypes = {
+  children: React.PropTypes.object.isRequired
+};
 
 export default Layout;

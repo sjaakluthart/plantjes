@@ -2,15 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 
-const PlantList = React.createClass({
-  displayName: 'PlantList',
-
-  getInitialState() {
-    return {
+class PlantList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       plants: [],
       loading: true
     };
-  },
+  }
 
   componentDidMount() {
     $.ajax({ url: '/plant-list' })
@@ -18,15 +17,15 @@ const PlantList = React.createClass({
       console.log(data);
       this.setState({ plants: data, loading: false });
     });
-  },
+  }
 
   showPlant(plantId) {
     routie(`plant/${plantId}`);
-  },
+  }
 
   showLoading() {
     return <p>Plant app is loading...</p>;
-  },
+  }
 
   showContent() {
     return (
@@ -47,7 +46,7 @@ const PlantList = React.createClass({
         })}
       </ul>
     );
-  },
+  }
 
   render() {
     return (
@@ -60,6 +59,6 @@ const PlantList = React.createClass({
       </section>
     );
   }
-});
+}
 
 export default PlantList;

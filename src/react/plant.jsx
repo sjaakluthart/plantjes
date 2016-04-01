@@ -5,19 +5,14 @@ import Header from './header.jsx';
 import PlantInfo from './plant-info.jsx';
 import Levels from './levels.jsx';
 
-const Plant = React.createClass({
-  displayName: 'Plant',
-
-  propTypes: {
-    plantId: React.PropTypes.string.isRequired
-  },
-
-  getInitialState() {
-    return {
+class Plant extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       data: [],
       loading: true
     };
-  },
+  }
 
   componentDidMount() {
     $.ajax({
@@ -28,11 +23,11 @@ const Plant = React.createClass({
       console.log(data);
       this.setState({ data, loading: false });
     });
-  },
+  }
 
   showLoading() {
     return <p>Plant app is loading...</p>;
-  },
+  }
 
   showContent() {
     return (
@@ -48,7 +43,7 @@ const Plant = React.createClass({
         />
       </div>
     );
-  },
+  }
 
   render() {
     return (
@@ -57,6 +52,10 @@ const Plant = React.createClass({
       </section>
     );
   }
-});
+}
+
+Plant.propTypes = {
+  plantId: React.PropTypes.string.isRequired
+};
 
 export default Plant;

@@ -1,20 +1,15 @@
 import React from 'react';
 import $ from 'jquery';
 
-const PlantPicture = React.createClass({
-  displayName: 'PlantPicture',
-
-  propTypes: {
-    plantId: React.PropTypes.string.isRequired,
-    plantPicture: React.PropTypes.string
-  },
-
-  getInitialState() {
-    return {
+class PlantPicture extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       file: '',
       uploadedFile: ''
     };
-  },
+    this.uploadFile = this.uploadFile.bind(this);
+  }
 
   uploadFile(event) {
     const formData = new FormData();
@@ -33,7 +28,7 @@ const PlantPicture = React.createClass({
         uploadedFile: data
       });
     });
-  },
+  }
 
   renderPlantPicture() {
     let image;
@@ -48,7 +43,7 @@ const PlantPicture = React.createClass({
     }
 
     return image;
-  },
+  }
 
   render() {
     return (
@@ -57,10 +52,15 @@ const PlantPicture = React.createClass({
         <form encType="multipart/form-data">
           <img src="assets/camera.svg" />
           <input onChange={this.uploadFile} type="file" name="file" />
-      </form>
+        </form>
       </section>
     );
   }
-});
+}
+
+PlantPicture.propTypes = {
+  plantId: React.PropTypes.string.isRequired,
+  plantPicture: React.PropTypes.string
+};
 
 export default PlantPicture;
