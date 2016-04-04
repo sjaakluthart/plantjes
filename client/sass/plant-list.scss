@@ -11,7 +11,12 @@
 
     text-transform: capitalize;
 
-    > span:nth-of-type(2) {
+    a {
+      text-decoration: none;
+      color: $black;
+    }
+
+    span:nth-of-type(2) {
       float: right;
     }
 
