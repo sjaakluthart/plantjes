@@ -33,10 +33,10 @@ class PlantList extends React.Component {
               <Link to={`/plant/${plant._id}`}>
                 <img src={`assets/${plant.species}.svg`} alt={plant.species} />
                 <span className="name">
-                  {plant.name} {plant.species}
+                  {`${plant.name} ${plant.species}`}
                 </span>
                 <span>
-                  Geplant op: {moment(plant.plantedOn).format('DD-MM-YY')}
+                  {`Geplant op: ${moment(plant.plantedOn).format('DD-MM-YY')}`}
                 </span>
               </Link>
             </li>
