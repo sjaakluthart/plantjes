@@ -5,7 +5,7 @@ var ObjectId = require('mongodb').ObjectID;
 var winston = require('winston');
 
 var router = express.Router();
-var upload = multer({ dest: 'dist/uploads/' });
+var upload = multer({ dest: './public/uploads/' });
 
 var url = 'mongodb://localhost:27017/plantjes';
 

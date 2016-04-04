@@ -4,12 +4,12 @@ var Mongo = require('mongodb').MongoClient;
 var winston = require('winston');
 
 // Import Routes
-var plantList = require('./plant-list.js');
-var plantData = require('./plant-data.js');
-var uploadImage = require('./upload-image.js');
+var plantList = require('./server/routes/plant-list.js');
+var plantData = require('./server/routes/plant-data.js');
+var uploadImage = require('./server/routes/upload-image.js');
 
 // Import Functions
-var insertPlant = require('./insert-plant.js');
+var insertPlant = require('./server/insert-plant.js');
 
 // Express setup
 var app = express();
