@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import $ from 'jquery';
 import moment from 'moment';
 
@@ -19,10 +20,6 @@ class PlantList extends React.Component {
     });
   }
 
-  showPlant(plantId) {
-    routie(`plant/${plantId}`);
-  }
-
   showLoading() {
     return <p>Plant app is loading...</p>;
   }
@@ -31,16 +28,17 @@ class PlantList extends React.Component {
     return (
       <ul>
         {this.state.plants.map((plant, index) => {
-          let boundClick = this.showPlant.bind(this, plant._id);
           return (
-            <li onClick={boundClick} key={index}>
-              <img src={`assets/${plant.species}.svg`} alt={plant.species} />
-              <span className="name">
-                {plant.name} {plant.species}
-              </span>
-              <span>
-                Geplant op: {moment(plant.plantedOn).format('DD-MM-YY')}
-              </span>
+            <li key={index}>
+              <Link to={`/plant/${plant._id}`}>
+                <img src={`assets/${plant.species}.svg`} alt={plant.species} />
+                <span className="name">
+                  {plant.name} {plant.species}
+                </span>
+                <span>
+                  Geplant op: {moment(plant.plantedOn).format('DD-MM-YY')}
+                </span>
+              </Link>
             </li>
           );
         })}

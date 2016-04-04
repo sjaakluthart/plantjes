@@ -4,7 +4,7 @@ import PlantPicture from './plant-picture.jsx';
 import GrowthBar from './growth-bar.jsx';
 
 function PlantInfo({ plant }) {
-  const plantIcon = `assets/${plant.species}.svg`;
+  const plantIcon = `/assets/${plant.species}.svg`;
   return (
     <section className="plant-info">
       <PlantPicture

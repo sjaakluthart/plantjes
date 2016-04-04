@@ -1,15 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class Header extends React.Component {
-  showPlantlist() {
-    routie('');
-  }
-
   render() {
-    let src = `assets/${this.props.species}.svg`;
+    let src = `/assets/${this.props.species}.svg`;
     return (
       <header>
-        <img onClick={this.showPlantlist} className="back" src="assets/arrow-back.svg" />
+        <Link to={'/'}>
+          <img className="back" src="/assets/arrow-back.svg" />
+        </Link>
         <h1>{this.props.name} {this.props.species}</h1>
         <img src={src} />
       </header>

@@ -17,7 +17,7 @@ class Plant extends React.Component {
   componentDidMount() {
     $.ajax({
       url: '/plant',
-      data: { plantId: this.props.plantId }
+      data: { plantId: this.props.params.plantId }
     })
     .then((data) => {
       console.log(data);
@@ -55,7 +55,7 @@ class Plant extends React.Component {
 }
 
 Plant.propTypes = {
-  plantId: React.PropTypes.string.isRequired
+  params: React.PropTypes.object.isRequired
 };
 
 export default Plant;

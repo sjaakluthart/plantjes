@@ -35,11 +35,11 @@ class PlantPicture extends React.Component {
 
     // If the user has just uploaded an image, show that image.
     if (this.state.uploadedFile) {
-      image = <img src={`uploads/${this.state.uploadedFile}`} />;
+      image = <img src={`/uploads/${this.state.uploadedFile}`} />;
     } else if (this.props.plantPicture) {
-      image = <img src={`uploads/${this.props.plantPicture}`} />;
+      image = <img src={`/uploads/${this.props.plantPicture}`} />;
     } else {
-      image = <img src="assets/placeholder.svg" />;
+      image = <img src="/assets/placeholder.svg" />;
     }
 
     return image;
@@ -50,7 +50,7 @@ class PlantPicture extends React.Component {
       <section className="plant-picture">
         {this.renderPlantPicture()}
         <form encType="multipart/form-data">
-          <img src="assets/camera.svg" />
+          <img src="/assets/camera.svg" />
           <input onChange={this.uploadFile} type="file" name="file" />
         </form>
       </section>

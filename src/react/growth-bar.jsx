@@ -32,7 +32,7 @@ class GrowthBar extends React.Component {
         <h1>Groei:<span>{this.getPosition()}/{this.getDuration()} dagen</span></h1>
         <section>
           <div style={this.calculateGrowthPercentage()}></div>
-          <img src="assets/seed.svg" />
+          <img src="/assets/seed.svg" />
           <img src={this.props.plantIcon} />
         </section>
       </div>
