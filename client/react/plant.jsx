@@ -3,10 +3,9 @@ import $ from 'jquery';
 
 import { Link } from 'react-router';
 
-import { AppBar, ActionHome, CircularProgress, IconButton, SvgIcon } from 'material-ui';
+import { AppBar, CircularProgress, IconButton, Paper } from 'material-ui';
 import NavigationArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
 
-import Header from './header.jsx';
 import PlantInfo from './plant-info.jsx';
 import Levels from './levels.jsx';
 
@@ -31,16 +30,21 @@ class Plant extends React.Component {
   }
 
   showLoading() {
-    return <CircularProgress className="loader" style={{position: 'absolute'}} />;
+    return <CircularProgress className="loader" style={{ position: 'absolute' }} />;
   }
 
   showContent() {
+    const style = {
+      padding: '20px'
+    };
     return (
       <div className="plant">
         <PlantInfo plant={this.state.data} />
-        <p>
-          <span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.
-        </p>
+        <Paper style={style}>
+          <p>
+            <span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.
+          </p>
+        </Paper>
         <Levels
           sensorData={this.state.data.sensorReadings}
           referenceValues={this.state.data.referenceValues}
@@ -53,7 +57,11 @@ class Plant extends React.Component {
     return (
       <section>
         <AppBar
-          title={this.state.loading ? 'Plant wordt geladen...' : `${this.state.data.name} ${this.state.data.species}`}
+          title={
+            this.state.loading
+            ? 'Plant wordt geladen...'
+            : `${this.state.data.name} ${this.state.data.species}`
+          }
           style={{
             backgroundColor: '#66BB6A',
             textTransform: 'capitalize'

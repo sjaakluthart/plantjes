@@ -1,6 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 
+import Paper from 'material-ui/lib/paper';
+import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ImageAdAPhoto from 'material-ui/lib/svg-icons/image/add-a-photo';
 
 class PlantPicture extends React.Component {
@@ -50,15 +52,13 @@ class PlantPicture extends React.Component {
   render() {
     return (
       <section className="plant-picture">
-        {this.renderPlantPicture()}
+        <Paper>
+          {this.renderPlantPicture()}
+        </Paper>
         <form encType="multipart/form-data">
-          <ImageAdAPhoto
-            style={{
-              width: '30px',
-              height: '30px',
-              padding: '5px'
-            }}
-          />
+          <FloatingActionButton mini backgroundColor="#66BB6A">
+            <ImageAdAPhoto />
+          </FloatingActionButton>
           <input onChange={this.uploadFile} type="file" name="file" />
         </form>
       </section>

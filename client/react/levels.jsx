@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Paper from 'material-ui/lib/paper';
+
 class Levels extends React.Component {
   getLevel(value, reference) {
     const scale = reference.max - reference.min;
@@ -46,33 +48,36 @@ class Levels extends React.Component {
 
   render() {
     const levels = this.displayLevels();
+    const style = {
+      padding: '20px'
+    };
     return (
-      <section className="levels">
+      <Paper className="levels" style={style}>
         <figure>
           <div>
             <div style={this.getLevelStyles(levels.moistureLevel)}>
             </div>
+            <img src="/assets/water.svg" />
           </div>
-          <img src="/assets/water.svg" />
           <figcaption>Vocht: {levels.moistureLevel}%</figcaption>
         </figure>
         <figure>
           <div>
             <div style={this.getLevelStyles(levels.temperatureLevel)}>
             </div>
+            <img src="/assets/thermometer.svg" />
           </div>
-          <img src="/assets/thermometer.svg" />
           <figcaption>Temperatuur: {levels.temperatureLevel}%</figcaption>
         </figure>
         <figure>
           <div>
             <div style={this.getLevelStyles(levels.lightLevel)}>
             </div>
+            <img src="/assets/sun.svg" />
           </div>
-          <img src="/assets/sun.svg" />
           <figcaption>Licht: {levels.lightLevel}%</figcaption>
         </figure>
-      </section>
+      </Paper>
     );
   }
 }

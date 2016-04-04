@@ -25,7 +25,7 @@ class PlantList extends React.Component {
   }
 
   showLoading() {
-    return <CircularProgress className="loader" style={{position: 'absolute'}} />;
+    return <CircularProgress className="loader" style={ { position: 'absolute' } } />;
   }
 
   showContent() {
@@ -34,21 +34,16 @@ class PlantList extends React.Component {
     };
     return (
       <List>
-        {this.state.plants.map((plant, index) => {
-          return (
-            <Link
-              to={`/plant/${plant._id}`}
-              key={index}
-            >
-              <ListItem
-                primaryText={`${plant.name} ${plant.species}`}
-                secondaryText={`Geplant op: ${moment(plant.plantedOn).format('DD-MM-YY')}`}
-                leftAvatar={<Avatar src={`assets/${plant.species}.svg`} />}
-                style={style}
-              />
-            </Link>
-          );
-        })}
+        {this.state.plants.map(plant => (
+          <Link to={`/plant/${plant._id}`} key={plant._id}>
+            <ListItem
+              primaryText={`${plant.name} ${plant.species}`}
+              secondaryText={`Geplant op: ${moment(plant.plantedOn).format('DD-MM-YY')}`}
+              leftAvatar={<Avatar src={`assets/${plant.species}.svg`} />}
+              style={style}
+            />
+          </Link>
+        ))}
       </List>
     );
   }
