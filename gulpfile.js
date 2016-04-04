@@ -53,8 +53,6 @@ bowerBanner = ['/**',
   ' */',
   ''].join('\n');
 
-// TODO Add jsx code styling checks
-
 function handleErrors() {
   var args = Array.prototype.slice.call(arguments);
   notify.onError({
