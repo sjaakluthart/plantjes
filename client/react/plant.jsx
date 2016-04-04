@@ -1,6 +1,11 @@
 import React from 'react';
 import $ from 'jquery';
 
+import { Link } from 'react-router';
+
+import { AppBar, ActionHome, CircularProgress, IconButton, SvgIcon } from 'material-ui';
+import NavigationArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
+
 import Header from './header.jsx';
 import PlantInfo from './plant-info.jsx';
 import Levels from './levels.jsx';
@@ -26,13 +31,12 @@ class Plant extends React.Component {
   }
 
   showLoading() {
-    return <p>Plant app is loading...</p>;
+    return <CircularProgress className="loader" style={{position: 'absolute'}} />;
   }
 
   showContent() {
     return (
       <div className="plant">
-        <Header name={this.state.data.name} species={this.state.data.species} />
         <PlantInfo plant={this.state.data} />
         <p>
           <span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.
@@ -48,6 +52,18 @@ class Plant extends React.Component {
   render() {
     return (
       <section>
+        <AppBar
+          title={this.state.loading ? 'Plant wordt geladen...' : `${this.state.data.name} ${this.state.data.species}`}
+          style={{
+            backgroundColor: '#66BB6A',
+            textTransform: 'capitalize'
+          }}
+          iconElementLeft={
+            <Link to={''}>
+              <IconButton><NavigationArrowBack color="#FAFAFA" /></IconButton>
+            </Link>
+          }
+        />
         {this.state.loading ? this.showLoading() : this.showContent()}
       </section>
     );

@@ -1,7 +1,11 @@
+// Modules
 import React from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
 import moment from 'moment';
+
+// Material-UI
+import { AppBar, Avatar, CircularProgress, List, ListItem } from 'material-ui';
 
 class PlantList extends React.Component {
   constructor(props) {
@@ -21,38 +25,43 @@ class PlantList extends React.Component {
   }
 
   showLoading() {
-    return <p>Plant app is loading...</p>;
+    return <CircularProgress className="loader" style={{position: 'absolute'}} />;
   }
 
   showContent() {
+    let style = {
+      textTransform: 'capitalize'
+    };
     return (
-      <ul>
+      <List>
         {this.state.plants.map((plant, index) => {
           return (
-            <li key={index}>
-              <Link to={`/plant/${plant._id}`}>
-                <img src={`assets/${plant.species}.svg`} alt={plant.species} />
-                <span className="name">
-                  {`${plant.name} ${plant.species}`}
-                </span>
-                <span>
-                  {`Geplant op: ${moment(plant.plantedOn).format('DD-MM-YY')}`}
-                </span>
-              </Link>
-            </li>
+            <Link
+              to={`/plant/${plant._id}`}
+              key={index}
+            >
+              <ListItem
+                primaryText={`${plant.name} ${plant.species}`}
+                secondaryText={`Geplant op: ${moment(plant.plantedOn).format('DD-MM-YY')}`}
+                leftAvatar={<Avatar src={`assets/${plant.species}.svg`} />}
+                style={style}
+              />
+            </Link>
           );
         })}
-      </ul>
+      </List>
     );
   }
 
   render() {
     return (
       <section className="plant-list">
-        <header>
-          <h1>Plantjes</h1>
-          <img src="assets/plant.svg" />
-        </header>
+        <AppBar
+          title="Plantjes"
+          style={{
+            backgroundColor: '#66BB6A'
+          }}
+        />
         {this.state.loading ? this.showLoading() : this.showContent()}
       </section>
     );
