@@ -144,7 +144,7 @@ gulp.task('assets', function() {
 
 gulp.task('watch', function() {
   gulp.watch(path.HTML, ['copy']);
-  gulp.watch('src/sass/*.scss', ['sass']);
+  gulp.watch('./client/sass/*.scss', ['sass']);
   gulp.watch(path.ASSETS, ['assets']);
 });
 
