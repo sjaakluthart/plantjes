@@ -1,5 +1,8 @@
 html {
   font-size: 10px;
+
+  overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -13,4 +16,15 @@ body {
 
 strong {
   font-weight: $bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+.loader {
+  @include transform(translate(-50%, -50%));
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
