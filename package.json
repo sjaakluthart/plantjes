@@ -37,7 +37,8 @@
     "main-bower-files": "^2.11.1",
     "nodemon": "^1.9.1",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "winston": "^2.2.0"
   },
   "dependencies": {
     "ejs": "^2.4.1",

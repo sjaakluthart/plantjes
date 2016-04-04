@@ -1,6 +1,7 @@
 // Import Node Modules
 var express = require('express');
 var Mongo = require('mongodb').MongoClient;
+var winston = require('winston');
 
 // Import Routes
 var plantList = require('./plant-list.js');
@@ -26,22 +27,22 @@ app.use(express.static('dist'));
 
 // Start the server
 app.listen(config.port, function (err) {
-  console.log('Server started; listening on port ' + config.port);
+  winston.log('info', 'Server started, listening on port %s.', config.port);
 });
 
 // Connect to Mongo and insert a plant if there are none.
 Mongo.connect(url, function (err, db) {
-  console.log('Connected to server.');
+  winston.log('info', 'Connected to server.');
 
   db.collection('plants').find().toArray(function (err, result) {
     if (err) {
       throw err;
     }
-    console.log(result.length + ' plant');
+    winston.log('info', 'Found %s plants in collection.', result.length);
     if (result.length === 0) {
       insertPlant(db);
     }
     db.close();
-    console.log('Disonnected from server.');
+    winston.log('info', 'Disconnected from server.');
   });
 });
