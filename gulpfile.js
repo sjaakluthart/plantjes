@@ -23,13 +23,14 @@ var babelify = require('babelify'),
   watchify = require('watchify');
 
 path = {
-  HTML: 'src/index.html',
-  ASSETS: ['src/assets/img/**/*', 'src/assets/fonts/**/*', 'src/assets/favicon/**/*'],
+  HTML: './client/index.html',
+  ASSETS: ['./client/assets/img/**/*', './client/assets/fonts/**/*', './client/assets/favicon/**/*'],
+  STYLES: './client/sass/style.scss',
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
-  ASSETS_DEST: 'dist/assets',
-  DEST: 'dist',
-  ENTRY_POINT: './src/react/app.jsx'
+  ASSETS_DEST: './public/assets',
+  DEST: './public',
+  ENTRY_POINT: './client/react/app.jsx'
 };
 
 // Header for app.min.js
@@ -129,9 +130,9 @@ gulp.task('replaceHTML', function(){
 });
 
 gulp.task('sass', function() {
-  return sass('src/sass/style.scss', {style: 'compressed'})
+  return sass(path.STYLES, {style: 'compressed'})
     .on('error', handleErrors)
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest(path.DEST));
 });
 
 gulp.task('assets', function() {
