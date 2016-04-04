@@ -1,6 +1,7 @@
 // Import Node Modules
 var express = require('express');
 var Mongo = require('mongodb').MongoClient;
+var path = require('path');
 var winston = require('winston');
 
 // Import Routes
@@ -23,7 +24,13 @@ app.use('/plant-list', plantList);
 app.use('/plant', plantData);
 app.use('/upload', uploadImage);
 
-app.use(express.static('public'));
+// Static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Send all requests to index.html so browserHistory in React Router works.
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
 
 // Start the server
 app.listen(config.port, function (err) {
