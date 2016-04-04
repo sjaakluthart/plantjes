@@ -23,7 +23,7 @@ app.use('/plant-list', plantList);
 app.use('/plant', plantData);
 app.use('/upload', uploadImage);
 
-app.use(express.static('dist'));
+app.use(express.static('public'));
 
 // Start the server
 app.listen(config.port, function (err) {
