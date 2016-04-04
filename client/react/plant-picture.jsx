@@ -1,6 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 
+import ImageAdAPhoto from 'material-ui/lib/svg-icons/image/add-a-photo';
+
 class PlantPicture extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +52,13 @@ class PlantPicture extends React.Component {
       <section className="plant-picture">
         {this.renderPlantPicture()}
         <form encType="multipart/form-data">
-          <img src="/assets/camera.svg" />
+          <ImageAdAPhoto
+            style={{
+              width: '30px',
+              height: '30px',
+              padding: '5px'
+            }}
+          />
           <input onChange={this.uploadFile} type="file" name="file" />
         </form>
       </section>
