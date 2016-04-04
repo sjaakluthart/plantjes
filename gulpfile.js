@@ -2,8 +2,6 @@
 
 var babelify = require('babelify'),
   banner,
-  bowerBanner,
-  bowerPkg = require('./bower.json'),
   browserify = require('browserify'),
   changed = require('gulp-changed'),
   concat = require('gulp-concat'),
@@ -43,13 +41,6 @@ banner = ['/**',
   ' * @author <%= pkg.author %>',
   ' * @git <%= pkg.repository.url %>',
   ' * @license <%= pkg.license %>',
-  ' */',
-  ''].join('\n');
-
-// Header for bower_components.js
-bowerBanner = ['/**',
-  ' * Bower Components',
-  ' * @dependencies : <%= JSON.stringify(pkg.dependencies) %>',
   ' */',
   ''].join('\n');
 
@@ -122,15 +113,6 @@ gulp.task('scss', function() {
     }));
 });
 
-gulp.task('bower', function() {
-  return gulp.src(mainBowerFiles())
-    .on('error', handleErrors)
-    .pipe(concat('bower_components.js'))
-    .pipe(uglify())
-    .pipe(header(bowerBanner, {pkg : bowerPkg}))
-    .pipe(gulp.dest('./dist/'))
-});
-
 gulp.task('copy', function(){
   gulp.src(path.HTML)
     .on('error', handleErrors)
@@ -166,11 +148,11 @@ gulp.task('watch', function() {
 });
 
 // Create production build
-gulp.task('production', ['replaceHTML', 'bower', 'sass', 'assets'], function() {
+gulp.task('production', ['replaceHTML', 'sass', 'assets'], function() {
   return productionBuild('app.jsx');
 });
 
 // Create development build, watch for changes
-gulp.task('dev', ['watch', 'copy', 'bower', 'sass', 'assets'], function() {
+gulp.task('dev', ['watch', 'copy', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
 });
