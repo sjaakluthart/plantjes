@@ -3,14 +3,13 @@
 var babelify = require('babelify'),
   banner,
   browserify = require('browserify'),
+  browserSync = require('browser-sync'),
   changed = require('gulp-changed'),
-  concat = require('gulp-concat'),
   es2015 = require('babel-preset-es2015'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
   header = require('gulp-header'),
   htmlreplace = require('gulp-html-replace'),
-  mainBowerFiles = require('main-bower-files'),
   notify = require('gulp-notify'),
   path,
   pkg = require('./package.json'),
@@ -114,12 +113,14 @@ gulp.task('scss', function() {
     }));
 });
 
+// Copy the html file
 gulp.task('copy', function(){
   gulp.src(path.HTML)
     .on('error', handleErrors)
     .pipe(gulp.dest(path.DEST));
 });
 
+// Replace dev build with prod build
 gulp.task('replaceHTML', function(){
   gulp.src(path.HTML)
     .on('error', handleErrors)
@@ -129,12 +130,15 @@ gulp.task('replaceHTML', function(){
     .pipe(gulp.dest(path.DEST));
 });
 
+// Compile sass to css
 gulp.task('sass', function() {
   return sass(path.STYLES, {style: 'compressed'})
     .on('error', handleErrors)
-    .pipe(gulp.dest(path.DEST));
+    .pipe(gulp.dest(path.DEST))
+    .pipe(browserSync.stream());
 });
 
+// Copy assets
 gulp.task('assets', function() {
   gulp.src(path.ASSETS)
     .pipe(changed(path.ASSETS_DEST))
@@ -142,9 +146,9 @@ gulp.task('assets', function() {
     .pipe(gulp.dest(path.ASSETS_DEST));
 });
 
+// Watch for changes
 gulp.task('watch', function() {
   gulp.watch(path.HTML, ['copy']);
-  gulp.watch('./client/sass/*.scss', ['sass']);
   gulp.watch(path.ASSETS, ['assets']);
 });
 
@@ -156,4 +160,15 @@ gulp.task('production', ['replaceHTML', 'sass', 'assets'], function() {
 // Create development build, watch for changes
 gulp.task('dev', ['watch', 'copy', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
+});
+
+gulp.task('serve', ['dev'], function() {
+	browserSync.init({
+		proxy: 'http://localhost:3000',
+    browser: "google chrome",
+    port: 3001,
+	});
+
+  gulp.watch('./client/sass/*.scss', ['sass']);
+  gulp.watch(['./public/index.html', './public/assets/*.*', './public/build.js']).on('change', browserSync.reload);
 });
