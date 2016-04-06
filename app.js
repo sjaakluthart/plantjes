@@ -1,7 +1,7 @@
 // Import Node Modules
 var express = require('express');
-var Mongo = require('mongodb').MongoClient;
 var path = require('path');
+var Promise = require('bluebird');
 var winston = require('winston');
 
 // Import Routes
@@ -10,6 +10,7 @@ var plantData = require('./server/routes/plant-data.js');
 var uploadImage = require('./server/routes/upload-image.js');
 
 // Import Functions
+var db = require('./server/db.js');
 var insertPlant = require('./server/insert-plant.js');
 
 // Express setup
@@ -32,24 +33,26 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-// Start the server
-app.listen(config.port, function (err) {
-  winston.log('info', 'Server started, listening on port %s.', config.port);
-});
+// Connect to Mongo
+Promise.promisify(db.connect)(url)
+.then(function() {
+  // Start the server
+  return app.listen(config.port);
+})
+.then(function() {
+  // Log on success
+  winston.log('info', 'Connected to Mongo. Express server started, listening on port %s.', config.port);
 
-// Connect to Mongo and insert a plant if there are none.
-Mongo.connect(url, function (err, db) {
-  winston.log('info', 'Connected to server.');
-
-  db.collection('plants').find().toArray(function (err, result) {
-    if (err) {
-      throw err;
-    }
-    winston.log('info', 'Found %s plants in collection.', result.length);
-    if (result.length === 0) {
-      insertPlant(db);
-    }
-    db.close();
-    winston.log('info', 'Disconnected from server.');
-  });
+  // Check if there are plants in the collection.
+  return db.get().collection('plants').find().toArray();
+})
+.then(function(result) {
+  // Insert plants if there are none.
+  winston.log('info', 'Found %s plants in collection.', result.length);
+  if (result.length === 0) {
+    insertPlant();
+  }
+})
+.catch(function(err) {
+  winston.log('error', err);
 });
