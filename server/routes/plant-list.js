@@ -9,7 +9,14 @@ var router = express.Router();
 router.get('/', function (req, res) {
   winston.log('info', 'Finding plant list.');
 
-  db.get().collection('plants').find({}, { name: 1, species: 1, plantedOn: 1 }).toArray(function (err, result) {
+  db.get().collection('plants').find(
+    {},
+    {
+      name: 1,
+      species: 1,
+      plantedOn: 1
+    }
+  ).toArray(function (err, result) {
     if (err) {
       throw err;
     }
