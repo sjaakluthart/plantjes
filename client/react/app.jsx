@@ -5,6 +5,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Layout from './layout.jsx';
 import Home from './unauth/home.jsx';
+import Register from './unauth/register.jsx';
 import PlantList from './auth/plant-list.jsx';
 import Plant from './auth/plant.jsx';
 
@@ -18,6 +19,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={Layout}>
       <IndexRoute component={Home} />
+      <Route path="/register" component={Register} />
       <Route path="/plants" component={PlantList} />
       <Route path="/plant/:plantId" component={Plant} />
     </Route>

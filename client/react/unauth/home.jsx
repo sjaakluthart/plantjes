@@ -16,7 +16,7 @@ function Home() {
       <Paper style={{ borderRadius: '10px' }} className="app-icon" zDepth={2}>
         <img src="/assets/app-icon.svg" alt="app-icon" />
       </Paper>
-      <Link to={'/plants'}>
+      <Link to={'/register'}>
         <RaisedButton
           className="button-start"
           label="aan de slag"
