@@ -1,8 +1,5 @@
 html {
   font-size: 10px;
-
-  overflow-y: scroll; /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -10,7 +7,7 @@ body {
 
   font-family: Roboto, sans-serif;
   font-size: 1.6rem;
-  font-weight: $normal;
+  font-weight: $light;
   color: $black;
 }
 
