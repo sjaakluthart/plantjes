@@ -4,8 +4,8 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Layout from './layout.jsx';
-import PlantList from './plant-list.jsx';
-import Plant from './plant.jsx';
+import PlantList from './auth/plant-list.jsx';
+import Plant from './auth/plant.jsx';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
