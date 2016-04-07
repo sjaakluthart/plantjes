@@ -63,11 +63,10 @@ class Plant extends React.Component {
             : `${this.state.data.name} ${this.state.data.species}`
           }
           style={{
-            backgroundColor: '#66BB6A',
             textTransform: 'capitalize'
           }}
           iconElementLeft={
-            <Link to={''}>
+            <Link to={'/plants'}>
               <IconButton><NavigationArrowBack color="#FAFAFA" /></IconButton>
             </Link>
           }

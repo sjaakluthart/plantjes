@@ -53,9 +53,6 @@ class PlantList extends React.Component {
       <section className="plant-list">
         <AppBar
           title="Plantjes"
-          style={{
-            backgroundColor: '#66BB6A'
-          }}
         />
         {this.state.loading ? this.showLoading() : this.showContent()}
       </section>

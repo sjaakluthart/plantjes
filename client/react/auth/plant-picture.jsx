@@ -56,7 +56,7 @@ class PlantPicture extends React.Component {
           {this.renderPlantPicture()}
         </Paper>
         <form encType="multipart/form-data">
-          <FloatingActionButton mini backgroundColor="#66BB6A">
+          <FloatingActionButton mini>
             <ImageAdAPhoto />
           </FloatingActionButton>
           <input onChange={this.uploadFile} type="file" name="file" />
