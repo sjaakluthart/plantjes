@@ -4,6 +4,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Layout from './layout.jsx';
+import Home from './unauth/home.jsx';
 import PlantList from './auth/plant-list.jsx';
 import Plant from './auth/plant.jsx';
 
@@ -16,7 +17,8 @@ injectTapEventPlugin();
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={Layout}>
-      <IndexRoute component={PlantList} />
+      <IndexRoute component={Home} />
+      <Route path="/plants" component={PlantList} />
       <Route path="/plant/:plantId" component={Plant} />
     </Route>
   </Router>
