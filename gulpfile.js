@@ -22,14 +22,14 @@ var babelify = require('babelify'),
   watchify = require('watchify');
 
 path = {
-  HTML: './client/index.html',
-  ASSETS: ['./client/assets/img/**/*', './client/assets/fonts/**/*', './client/assets/favicon/**/*'],
-  STYLES: './client/sass/style.scss',
+  HTML: 'client/index.html',
+  ASSETS: ['client/assets/img/**/*', 'client/assets/fonts/**/*', 'client/assets/favicon/**/*'],
+  STYLES: 'client/sass/style.scss',
   MINIFIED_OUT: 'build.min.js',
   OUT: 'build.js',
-  ASSETS_DEST: './public/assets',
-  DEST: './public',
-  ENTRY_POINT: './client/react/app.jsx'
+  ASSETS_DEST: 'public/assets',
+  DEST: 'public',
+  ENTRY_POINT: 'client/react/app.jsx'
 };
 
 // Header for app.min.js
@@ -169,6 +169,6 @@ gulp.task('serve', ['dev'], function() {
     port: 3001,
 	});
 
-  gulp.watch('./client/sass/*.scss', ['sass']);
-  gulp.watch(['./public/index.html', './public/assets/*.*', './public/build.js']).on('change', browserSync.reload);
+  gulp.watch('client/sass/*.scss', ['sass']);
+  gulp.watch(['public/index.html', 'public/assets/*.*', 'public/build.js']).on('change', browserSync.reload);
 });
