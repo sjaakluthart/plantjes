@@ -1,6 +1,6 @@
-var moment = require('moment');
+const moment = require('moment');
 
-var mockPlants = [{
+const mockPlants = [{
   species: 'sla',
   name: 'sjon',
   plantedOn: moment().subtract(3, 'days').toDate(),

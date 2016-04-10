@@ -1,12 +1,12 @@
-var express = require('express');
-var winston = require('winston');
+const express = require('express');
+const winston = require('winston');
 
-var db = require('../db.js');
+const db = require('../db.js');
 
-var router = express.Router();
+const router = express.Router();
 
 // Send the list of plants to the client
-router.get('/', function (req, res) {
+router.get('/', (req, response) => {
   winston.log('info', 'Finding plant list.');
 
   db.get().collection('plants').find(
@@ -16,12 +16,12 @@ router.get('/', function (req, res) {
       species: 1,
       plantedOn: 1
     }
-  ).toArray(function (err, result) {
+  ).toArray((err, res) => {
     if (err) {
       throw err;
     }
-    winston.log('info', 'Found %s plants.', result.length);
-    res.send(result);
+    winston.log('info', 'Found %s plants.', res.length);
+    response.send(res);
   });
 });
 
