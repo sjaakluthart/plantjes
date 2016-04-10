@@ -2,7 +2,7 @@ NODEMON_CMD = node_modules/.bin/nodemon
 ESLINT_CMD = node_modules/.bin/eslint
 
 dev:
-	$(NODEMON_CMD) ./app.js
+	$(NODEMON_CMD) --harmony ./app.js
 
 mongo:
 	mongod --dbpath=./data --port 27017
