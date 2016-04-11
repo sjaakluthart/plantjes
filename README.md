@@ -27,11 +27,6 @@ Install the node modules:
 npm install
 ```
 
-Install the bower components:
-```
-bower install
-```
-
 Generate the development build and watch for any changes:
 ```
 gulp dev
@@ -52,6 +47,12 @@ make mongo
 ```
 
 To start the express server run:
+```
+cd ~/Sites/plantjes
+make app
+```
+
+To start the express server with [nodemon](https://www.npmjs.com/package/nodemon) run:
 ```
 cd ~/Sites/plantjes
 make dev
