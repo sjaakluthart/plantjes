@@ -1,6 +1,9 @@
 NODEMON_CMD = node_modules/.bin/nodemon
 ESLINT_CMD = node_modules/.bin/eslint
 
+app:
+	node --harmony ./app.js
+
 dev:
 	$(NODEMON_CMD) --harmony ./app.js
 
