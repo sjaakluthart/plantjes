@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import $ from 'jquery';
 import moment from 'moment';
 
+import text from '../text.json';
+
 // Material-UI
 import { AppBar, Avatar, CircularProgress, List, ListItem } from 'material-ui';
 
@@ -19,7 +21,6 @@ class PlantList extends React.Component {
   componentDidMount() {
     $.ajax({ url: '/plant-list' })
     .then((data) => {
-      console.log(data);
       this.setState({ plants: data, loading: false });
     });
   }
@@ -52,7 +53,7 @@ class PlantList extends React.Component {
     return (
       <section className="plant-list">
         <AppBar
-          title="Plantjes"
+          title={text.appTitle}
         />
         {this.state.loading ? this.showLoading() : this.showContent()}
       </section>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import text from '../text.json';
+
 import { browserHistory, Link } from 'react-router';
 import { AppBar, IconButton, RaisedButton, TextField } from 'material-ui';
 import NavigationArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
@@ -15,7 +17,7 @@ class Register extends React.Component {
     return (
       <section className="register">
         <AppBar
-          title="Plantjes Account"
+          title={text.registerTitle}
           iconElementLeft={
             <Link to={'/'}>
               <IconButton><NavigationArrowBack color="#FAFAFA" /></IconButton>
@@ -23,8 +25,8 @@ class Register extends React.Component {
           }
         />
         <form onSubmit={this.handleSubmit}>
-          <h1>Wat leuk dat je de Plantjes app wilt gebruiken!</h1>
-          <h2>Vul je gegevens in en maak een account aan.</h2>
+          <h1>{text.registerSubtitle}</h1>
+          <h2>{text.registerSubtitle1}</h2>
           <TextField
             hintText="Naam"
             floatingLabelText="Naam"

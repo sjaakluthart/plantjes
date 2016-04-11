@@ -24,7 +24,6 @@ class Plant extends React.Component {
       data: { plantId: this.props.params.plantId }
     })
     .then((data) => {
-      console.log(data);
       this.setState({ data, loading: false });
     });
   }
