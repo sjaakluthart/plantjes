@@ -2,10 +2,14 @@ import React from 'react';
 
 import text from '../text.json';
 
-import { Paper, RaisedButton } from 'material-ui';
+import { Paper } from 'material-ui';
 import { Link } from 'react-router';
 
 function Home() {
+  const style = {
+    backgroundColor: 'transparent',
+    border: '2px solid white'
+  };
   return (
     <section className="home">
       <h1>{text.appTitle}</h1>
@@ -18,14 +22,10 @@ function Home() {
       <Paper style={{ borderRadius: '10px' }} className="app-icon" zDepth={2}>
         <img src="/assets/app-icon.svg" alt="app-icon" />
       </Paper>
-      <Link to={'/register'}>
-        <RaisedButton
-          className="button-start"
-          label="aan de slag"
-          primary
-        />
+      <Link className="button-start" to={'/register'}>
+        aan de slag
       </Link>
-      </section>
+    </section>
   );
 }
 
