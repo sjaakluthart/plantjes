@@ -1,6 +1,6 @@
 import React from 'react';
 
-import text from '../text.json';
+import text from './text.json';
 
 import { browserHistory, Link } from 'react-router';
 import { AppBar, IconButton, RaisedButton, SelectField, TextField } from 'material-ui';

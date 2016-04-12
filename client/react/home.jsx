@@ -1,15 +1,11 @@
 import React from 'react';
 
-import text from '../text.json';
+import text from './text.json';
 
 import { Paper } from 'material-ui';
 import { Link } from 'react-router';
 
 function Home() {
-  const style = {
-    backgroundColor: 'transparent',
-    border: '2px solid white'
-  };
   return (
     <section className="home">
       <h1>{text.appTitle}</h1>

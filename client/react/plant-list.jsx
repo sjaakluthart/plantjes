@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import $ from 'jquery';
 import moment from 'moment';
 
-import text from '../text.json';
+import text from './text.json';
 
 // Material-UI
 import { AppBar, Avatar, CircularProgress, List, ListItem } from 'material-ui';
