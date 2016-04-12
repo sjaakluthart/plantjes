@@ -7,6 +7,7 @@ class Layout extends React.Component {
 
   getChildContext() {
     const mytheme = {
+      fontFamily: 'Titillium, sans-serif',
       palette: {
         primary1Color: Colors.green400,
         primary2Color: Colors.green300,
