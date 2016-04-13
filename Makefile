@@ -11,4 +11,4 @@ mongo:
 	mongod --dbpath=./data --port 27017
 
 eslint:
-	$(ESLINT_CMD) client/**/*.jsx
+	$(ESLINT_CMD) client/**/*.jsx app.js server/**/*.js
