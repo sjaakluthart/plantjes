@@ -22,7 +22,7 @@ class OnBoarding extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    browserHistory.push('/on-boarding');
+    browserHistory.push('/plants');
   }
 
   renderTelInputs() {
