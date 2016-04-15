@@ -3,7 +3,6 @@ Graduation Project, Communication &amp; Multimedia Design, Amsterdam University 
 
 Requirements:
 * [Node.js](https://nodejs.org/en/)
-* [Bower](http://bower.io/)
 * [Gulp](http://gulpjs.com/)
 * [MongoDB](https://www.mongodb.org/)
 
