@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 import text from './text.json';
 
@@ -7,27 +8,59 @@ import { AppBar, IconButton, RaisedButton, TextField } from 'material-ui';
 import NavigationArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
 
 class Register extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      passwordConfirm: '',
+      canSubmit: false
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handlePasswordConfirmChange = this.handlePasswordConfirmChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+  }
 
   handleSubmit(event) {
     event.preventDefault();
-    browserHistory.push('/on-boarding');
+
+    $.ajax({
+      method: 'POST',
+      url: '/create-user',
+      data: { username: this.state.username, password: this.state.password }
+    })
+    .then((data) => {
+      console.log(data);
+      browserHistory.push('/on-boarding');
+    });
   }
 
-  renderTelInputs() {
-    const inputs = [];
-    for (let i = 0; i < this.state.persons; i++) {
-      inputs.push(
-        <TextField
-          key={i}
-          hintText={`Telefoon ${i + 1}`}
-          floatingLabelText={`Telefoon ${i + 1}`}
-          type="tel"
-          fullWidth
-        />
-      );
-    }
+  handleUsernameChange(event) {
+    this.setState({
+      username: event.currentTarget.value
+    });
+  }
 
-    return inputs;
+  handlePasswordChange(event) {
+    this.setState({
+      password: event.currentTarget.value
+    });
+  }
+
+  handlePasswordConfirmChange(event) {
+    this.setState({
+      passwordConfirm: event.currentTarget.value
+    });
+  }
+
+  handleBlur() {
+    if (this.state.password === this.state.passwordConfirm) {
+      this.setState({
+        canSubmit: true
+      });
+    }
   }
 
   render() {
@@ -41,31 +74,29 @@ class Register extends React.Component {
             </Link>
           }
         />
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <h1>{text.registerSubtitle}</h1>
           <h2>{text.registerSubtitle1}</h2>
           <TextField
             hintText="Naam"
             floatingLabelText="Naam"
             fullWidth
-          />
-          <TextField
-            hintText="E-mail"
-            floatingLabelText="E-mail"
-            type="email"
-            fullWidth
+            onChange={this.handleUsernameChange}
           />
           <TextField
             hintText="Wachtwoord"
             floatingLabelText="Wachtwoord"
             type="password"
             fullWidth
+            onChange={this.handlePasswordChange}
           />
           <TextField
             hintText="Bevestig wachtwoord"
             floatingLabelText="Bevestig wachtwoord"
             type="password"
             fullWidth
+            onChange={this.handlePasswordConfirmChange}
+            onBlur={this.handleBlur}
           />
           <p>
             {text.registerSecurityNotice}
@@ -75,6 +106,7 @@ class Register extends React.Component {
             label="registreer"
             primary
             type="submit"
+            disabled={!this.state.canSubmit}
           />
         </form>
       </section>
