@@ -34,8 +34,7 @@
     "gulp-util": "^3.0.7",
     "nodemon": "^1.9.1",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0",
-    "winston": "^2.2.0"
+    "watchify": "^3.7.0"
   },
   "dependencies": {
     "express": "^4.13.4",
@@ -48,6 +47,7 @@
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-router": "^2.0.1",
-    "react-tap-event-plugin": "^0.2.2"
+    "react-tap-event-plugin": "^0.2.2",
+    "winston": "^2.2.0"
   }
 }
