@@ -1,7 +1,7 @@
 import React from 'react';
 
-import * as Colors from 'material-ui/lib/styles/colors';
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import * as Colors from 'material-ui/styles/colors';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class Layout extends React.Component {
 

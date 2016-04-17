@@ -1,9 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 
-import Paper from 'material-ui/lib/paper';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import ImageAdAPhoto from 'material-ui/lib/svg-icons/image/add-a-photo';
+import { FloatingActionButton, Paper } from 'material-ui';
+import ImageAdAPhoto from 'material-ui/svg-icons/image/add-a-photo';
 
 class PlantPicture extends React.Component {
   constructor(props) {
@@ -39,11 +38,11 @@ class PlantPicture extends React.Component {
 
     // If the user has just uploaded an image, show that image.
     if (this.state.uploadedFile) {
-      image = <img src={`/uploads/${this.state.uploadedFile}`} />;
+      image = <img src={`/uploads/${this.state.uploadedFile}`} alt="uploaded file" />;
     } else if (this.props.plantPicture) {
-      image = <img src={`/uploads/${this.props.plantPicture}`} />;
+      image = <img src={`/uploads/${this.props.plantPicture}`} alt="uploaded file" />;
     } else {
-      image = <img src="/assets/placeholder.svg" />;
+      image = <img src="/assets/placeholder.svg" alt="placeholder" />;
     }
 
     return image;

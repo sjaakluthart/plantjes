@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Paper from 'material-ui/lib/paper';
+import Paper from 'material-ui';
 
 class Levels extends React.Component {
   getLevel(value, reference) {
@@ -57,7 +57,7 @@ class Levels extends React.Component {
           <div>
             <div style={this.getLevelStyles(levels.moistureLevel)}>
             </div>
-            <img src="/assets/water.svg" />
+            <img src="/assets/water.svg" alt="water" />
           </div>
           <figcaption>Vocht: {levels.moistureLevel}%</figcaption>
         </figure>
@@ -65,7 +65,7 @@ class Levels extends React.Component {
           <div>
             <div style={this.getLevelStyles(levels.temperatureLevel)}>
             </div>
-            <img src="/assets/thermometer.svg" />
+            <img src="/assets/thermometer.svg" alt="thermometer" />
           </div>
           <figcaption>Temperatuur: {levels.temperatureLevel}%</figcaption>
         </figure>
@@ -73,7 +73,7 @@ class Levels extends React.Component {
           <div>
             <div style={this.getLevelStyles(levels.lightLevel)}>
             </div>
-            <img src="/assets/sun.svg" />
+            <img src="/assets/sun.svg" alt="sun" />
           </div>
           <figcaption>Licht: {levels.lightLevel}%</figcaption>
         </figure>

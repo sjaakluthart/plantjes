@@ -2,7 +2,7 @@ import React from 'react';
 
 import text from './text.json';
 
-import { Paper } from 'material-ui';
+import Paper from 'material-ui';
 import { Link } from 'react-router';
 
 function Home() {

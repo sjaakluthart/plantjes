@@ -5,7 +5,7 @@ import text from './text.json';
 
 import { browserHistory, Link } from 'react-router';
 import { AppBar, IconButton, RaisedButton, TextField } from 'material-ui';
-import NavigationArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
+import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
 class Register extends React.Component {
   constructor(props) {

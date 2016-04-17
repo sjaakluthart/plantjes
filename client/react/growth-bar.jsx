@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import Paper from 'material-ui/lib/paper';
+import Paper from 'material-ui';
 
 class GrowthBar extends React.Component {
   getDuration() {
@@ -38,8 +38,8 @@ class GrowthBar extends React.Component {
           <h1>Groei:<span>{this.getPosition()}/{this.getDuration()} dagen</span></h1>
           <section>
             <div style={this.calculateGrowthPercentage()}></div>
-            <img src="/assets/seed.svg" />
-            <img src={this.props.plantIcon} />
+            <img src="/assets/seed.svg" alt="seed" />
+            <img src={this.props.plantIcon} alt="plant icon" />
           </section>
         </Paper>
       </div>

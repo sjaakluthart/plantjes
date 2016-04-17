@@ -3,9 +3,8 @@ import React from 'react';
 import text from './text.json';
 
 import { browserHistory, Link } from 'react-router';
-import { AppBar, IconButton, RaisedButton, SelectField, TextField } from 'material-ui';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import NavigationArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
+import { AppBar, IconButton, MenuItem, RaisedButton, SelectField, TextField } from 'material-ui';
+import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
 class OnBoarding extends React.Component {
   constructor(props) {

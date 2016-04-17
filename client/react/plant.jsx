@@ -4,7 +4,7 @@ import $ from 'jquery';
 import { Link } from 'react-router';
 
 import { AppBar, CircularProgress, IconButton, Paper } from 'material-ui';
-import NavigationArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
+import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
 import PlantInfo from './plant-info.jsx';
 import Levels from './levels.jsx';
