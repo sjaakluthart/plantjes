@@ -66,7 +66,6 @@ function productionBuild(file) {
       .on('error', handleErrors)
       .pipe(source(path.MINIFIED_OUT))
       .pipe(streamify(uglify()))
-      .pipe(header(banner, {pkg : pkg}))
       .pipe(gulp.dest(path.DEST))
   }
   return rebundle();
