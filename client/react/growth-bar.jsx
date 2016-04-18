@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import Paper from 'material-ui';
+import { Paper } from 'material-ui';
 
 class GrowthBar extends React.Component {
   getDuration() {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Paper from 'material-ui';
+import { Paper } from 'material-ui';
 
 class Levels extends React.Component {
   getLevel(value, reference) {
