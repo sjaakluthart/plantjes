@@ -44,14 +44,14 @@
     height: 10rem;
 
     position: absolute;
-    bottom: 10rem;
+    bottom: 14rem;
     left: 50%;
   }
 
   .button-start {
     @include transform(translateX(-50%));
     position: absolute;
-    bottom: 4rem;
+    bottom: 8rem;
     left: 50%;
 
     padding: 1.5rem 2rem;
@@ -60,6 +60,17 @@
     border-radius: 3px;
 
     font-size: 2rem;
+    text-transform: uppercase;
+    color: $white;
+  }
+
+  .login {
+    @include transform(translateX(-50%));
+    position: absolute;
+    bottom: 4.5rem;
+    left: 50%;
+
+    font-size: 1.5rem;
     text-transform: uppercase;
     color: $white;
   }

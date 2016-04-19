@@ -6,6 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Layout from './layout.jsx';
 import Home from './home.jsx';
 import Register from './register.jsx';
+import LogIn from './login.jsx';
 import OnBoarding from './on-boarding.jsx';
 import PlantList from './plant-list.jsx';
 import Plant from './plant.jsx';
@@ -21,6 +22,7 @@ ReactDOM.render((
     <Route path="/" component={Layout}>
       <IndexRoute component={Home} />
       <Route path="/register" component={Register} />
+      <Route path="/login" component={LogIn} />
       <Route path="/on-boarding" component={OnBoarding} />
       <Route path="/plants" component={PlantList} />
       <Route path="/plant/:plantId" component={Plant} />

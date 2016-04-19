@@ -21,6 +21,9 @@ function Home() {
       <Link className="button-start" to={'/register'}>
         aan de slag
       </Link>
+      <Link className="login" to={'/login'}>
+        ik heb al een account
+      </Link>
     </section>
   );
 }
