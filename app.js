@@ -9,6 +9,7 @@ const plantList = require('./server/routes/plant-list.js');
 const plantData = require('./server/routes/plant-data.js');
 const uploadImage = require('./server/routes/upload-image.js');
 const createUser = require('./server/routes/create-user.js');
+const logIn = require('./server/routes/login.js');
 
 // Import Functions
 const db = require('./server/db.js');
@@ -28,6 +29,7 @@ app.use('/plant-list', plantList);
 app.use('/plant', plantData);
 app.use('/upload', uploadImage);
 app.use('/create-user', createUser);
+app.use('/log-in', logIn);
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
