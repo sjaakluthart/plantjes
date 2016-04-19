@@ -26,11 +26,17 @@ class LogIn extends React.Component {
 
     $.ajax({
       method: 'POST',
-      url: '/login',
+      url: '/log-in',
       data: { username: this.state.username, password: this.state.password }
     })
-    .then((data) => {
-      console.log(data);
+    .then((res) => {
+      if (res.error) {
+        alert(res.error);
+        return false;
+      }
+
+      browserHistory.push('/plants');
+      return res;
     });
   }
 
