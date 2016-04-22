@@ -18,6 +18,7 @@ var babelify = require('babelify'),
   scsslint = require('gulp-scss-lint'),
   streamify = require('gulp-streamify'),
   source = require('vinyl-source-stream'),
+  tar = require('gulp-tar'),
   uglify = require('gulp-uglify'),
   watchify = require('watchify');
 
@@ -164,7 +165,8 @@ gulp.task('dev', ['watch', 'copy', 'sass', 'assets'], function() {
 
 gulp.task('bundle', function() {
   gulp.src(['app.js', 'server/**/*', 'public/**/*', 'Makefile', 'package.json'], {base:'.'})
-    .pipe(gulp.dest('./bundle'));
+    .pipe(tar('bundle.zip'))
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('serve', ['dev'], function() {
