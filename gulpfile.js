@@ -153,6 +153,7 @@ gulp.task('watch', function() {
 
 // Create production build
 gulp.task('production', ['replaceHTML', 'sass', 'assets'], function() {
+  process.env.NODE_ENV = 'production';
   return productionBuild('app.jsx');
 });
 
