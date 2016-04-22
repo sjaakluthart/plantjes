@@ -162,6 +162,11 @@ gulp.task('dev', ['watch', 'copy', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
 });
 
+gulp.task('bundle', function() {
+  gulp.src(['app.js', 'server/**/*', 'public/**/*', 'Makefile', 'package.json'], {base:'.'})
+    .pipe(gulp.dest('./bundle'));
+});
+
 gulp.task('serve', ['dev'], function() {
 	browserSync.init({
 		proxy: 'http://localhost:3000',
