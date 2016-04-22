@@ -1,5 +1,6 @@
 NODEMON_CMD = node_modules/.bin/nodemon
 ESLINT_CMD = node_modules/.bin/eslint
+GULP_CMD = node_modules/.bin/gulp
 
 app:
 	node --harmony ./app.js
@@ -12,3 +13,12 @@ mongo:
 
 eslint:
 	$(ESLINT_CMD) client/**/*.jsx app.js server/**/*.js
+
+dev-build:
+	$(GULP_CMD) dev
+
+production-build:
+	$(GULP_CMD) production
+
+serve:
+	$(GULP_CMD) serve
