@@ -163,7 +163,7 @@ gulp.task('dev', ['watch', 'copy', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
 });
 
-gulp.task('bundle', function() {
+gulp.task('bundle', ['production'], function() {
   gulp.src(['app.js', 'server/**/*', 'public/**/*', 'Makefile', 'package.json'], {base:'.'})
     .pipe(tar('bundle.zip'))
     .pipe(gulp.dest('./'));
