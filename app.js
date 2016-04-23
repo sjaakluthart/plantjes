@@ -20,6 +20,7 @@ const uploadImage = require('./server/routes/upload-image.js');
 const createUser = require('./server/routes/create-user.js');
 const logIn = require('./server/routes/login.js');
 const checkUser = require('./server/routes/check-user.js');
+const completeOnBoarding = require('./server/routes/complete-onboarding');
 
 // Import Functions
 const db = require('./server/db.js');
@@ -45,6 +46,7 @@ app.use('/plant', plantData);
 app.use('/upload', uploadImage);
 app.use('/create-user', createUser);
 app.use('/log-in', logIn);
+app.use('/complete-onboarding', completeOnBoarding);
 app.use('/check-user', checkUser);
 
 // Static files
