@@ -17,6 +17,12 @@ router.post('/', (req, response) => {
     if (!bcrypt.compareSync(req.body.password, user.password)) {
       return response.send({ error: 'Incorrect password.' });
     }
+
+    req.session.user = {
+      _id: user._id,
+      username: user.username
+    };
+
     return response.send('authorised');
   });
 });
