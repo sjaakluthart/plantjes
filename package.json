@@ -41,6 +41,7 @@
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "^1.15.0",
+    "emailjs": "^1.0.4",
     "express": "^4.13.4",
     "jquery": "^2.2.2",
     "material-ui": "^0.15.0-beta.1",
