@@ -8,6 +8,7 @@ var babelify = require('babelify'),
   es2015 = require('babel-preset-es2015'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
+  zip = require('gulp-zip'),
   header = require('gulp-header'),
   htmlreplace = require('gulp-html-replace'),
   notify = require('gulp-notify'),
@@ -18,7 +19,6 @@ var babelify = require('babelify'),
   scsslint = require('gulp-scss-lint'),
   streamify = require('gulp-streamify'),
   source = require('vinyl-source-stream'),
-  tar = require('gulp-tar'),
   uglify = require('gulp-uglify'),
   watchify = require('watchify');
 
@@ -165,7 +165,7 @@ gulp.task('dev', ['watch', 'copy', 'sass', 'assets'], function() {
 
 gulp.task('bundle', ['production'], function() {
   gulp.src(['app.js', 'server/**/*', 'public/**/*', 'Makefile', 'package.json'], {base:'.'})
-    .pipe(tar('bundle.zip'))
+    .pipe(zip('bundle.zip'))
     .pipe(gulp.dest('./'));
 });
 
