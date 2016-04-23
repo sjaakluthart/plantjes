@@ -19,7 +19,11 @@ router.post('/', (req, response) => {
       if (err) {
         throw err;
       }
-      response.send('success!');
+      req.session.user = {
+        _id: res.ops[0]._id.toString(),
+        username: res.ops[0].username
+      };
+      response.send(res);
     });
   });
 });
