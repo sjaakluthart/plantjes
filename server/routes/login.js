@@ -18,12 +18,14 @@ router.post('/', (req, response) => {
       return response.send({ error: 'Incorrect password.' });
     }
 
-    req.session.user = {
+    const userData = {
       _id: user._id,
-      username: user.username
+      username: user.username,
+      onBoard: user.onBoard
     };
+    req.session.user = userData;
 
-    return response.send('authorised');
+    return response.send({ user: userData });
   });
 });
 
