@@ -1,20 +1,20 @@
 {
-  "appTitle": "Plantjes",
+  "appTitle": "Plant Buddy",
 
   "homeTitle": "Kweek zelf verse groente op een duurzame en makkelijke manier!",
-  "homeSubtitle": "De Plantjes app weet hoe het met je plantjes gaat en houd jou er van op de hoogte.",
+  "homeSubtitle": "Plant Buddy weet hoe het met je plantjes gaat en houd jou er van op de hoogte.",
 
-  "logInTitle": "Plantjes Log In",
-  "logInSubtitle": "Log in met je Plantjes account.",
+  "logInTitle": "Log In",
+  "logInSubtitle": "Log in met je Plant Buddy account.",
 
-  "registerTitle": "Plantjes Account",
-  "registerSubtitle": "Wat leuk dat je de Plantjes app wilt gebruiken!",
+  "registerTitle": "Registreer",
+  "registerSubtitle": "Wat leuk dat je Plant Buddy wilt gebruiken!",
   "registerSubtitle1": "Vul je gegevens in en maak een account aan.",
   "registerSecurityNotice": "De gegevens die je invult worden niet aan derden verstrekt.",
 
-  "onBoardingTitle": "Plantjes Instellingen",
+  "onBoardingTitle": "Instellingen",
   "onBoardingSubtitle": "Om je optimaal op de hoogte te kunnen houden over je plantjes hebben we nog wat meer gegevens nodig.",
   "onBoardingSubtitle1": "Hoeveel mensen gaan voor je plantjes zorgen?",
-  "onBoardingSubtitle2": "Je telefoonnummer wordt alleen gebruikt om je een berichtje te sturen als een van je plantjes je aandacht nodig heeft.",
+  "onBoardingSubtitle2": "Je e-mailadres wordt alleen gebruikt om je een berichtje te sturen als een van je plantjes je aandacht nodig heeft.",
   "onBoardingSubtitle3": "Als je geen berichten meer wilt ontvangen kun je dat uitzetten onder instellingen."
 }
