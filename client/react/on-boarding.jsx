@@ -21,9 +21,14 @@ class OnBoarding extends React.Component {
     this.state = {
       persons: 1,
       loading: true,
-      userId: ''
+      userId: '',
+      email: '',
+      canSubmit: false
     };
+    this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -32,6 +37,7 @@ class OnBoarding extends React.Component {
       if (data.authorised) {
         if (data.user.onBoard) {
           browserHistory.push('/plants');
+          return false;
         }
         this.setState({
           loading: false,
@@ -49,7 +55,20 @@ class OnBoarding extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    browserHistory.push('/plants');
+    $.ajax({
+      method: 'POST',
+      url: '/complete-onboarding',
+      data: { userId: this.state.userId, email: this.state.email }
+    })
+    .then((res) => {
+      if (res.error) {
+        alert(res.error);
+        return false;
+      }
+
+      browserHistory.push('/plants');
+      return res;
+    });
   }
 
   showLoading() {
@@ -63,10 +82,6 @@ class OnBoarding extends React.Component {
         <h2>{text.onBoardingSubtitle1}</h2>
         <SelectField value={this.state.persons} onChange={this.handleChange}>
           <MenuItem value={1} primaryText="1" />
-          <MenuItem value={2} primaryText="2" />
-          <MenuItem value={3} primaryText="3" />
-          <MenuItem value={4} primaryText="4" />
-          <MenuItem value={5} primaryText="5" />
         </SelectField>
         <h3>{text.onBoardingSubtitle2}</h3>
         <h3>{text.onBoardingSubtitle3}</h3>
@@ -79,9 +94,25 @@ class OnBoarding extends React.Component {
           label="bewaar instellingen"
           primary
           type="submit"
+          disabled={!this.state.canSubmit}
         />
       </form>
     );
+  }
+
+  handleBlur() {
+    if (this.state.email) {
+      this.setState({
+        canSubmit: true
+      });
+    }
+  }
+
+  handleEmailChange(event) {
+    // TODO dynamic amount of emails
+    this.setState({
+      email: event.currentTarget.value
+    });
   }
 
   renderEmailInputs() {
@@ -94,6 +125,8 @@ class OnBoarding extends React.Component {
           floatingLabelText={`E-mail ${i + 1}`}
           type="email"
           fullWidth
+          onChange={this.handleEmailChange}
+          onBlur={this.handleBlur}
         />
       );
     }
