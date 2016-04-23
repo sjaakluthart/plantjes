@@ -35,7 +35,11 @@ class LogIn extends React.Component {
         return false;
       }
 
-      browserHistory.push('/plants');
+      if (res.user.onBoard) {
+        browserHistory.push('/plants');
+      } else {
+        browserHistory.push('/on-boarding');
+      }
       return res;
     });
   }
