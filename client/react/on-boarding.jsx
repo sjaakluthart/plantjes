@@ -30,6 +30,9 @@ class OnBoarding extends React.Component {
     $.ajax({ url: '/check-user' })
     .then((data) => {
       if (data.authorised) {
+        if (data.user.onBoard) {
+          browserHistory.push('/plants');
+        }
         this.setState({
           loading: false,
           userId: data.user._id
