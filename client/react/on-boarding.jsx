@@ -24,15 +24,15 @@ class OnBoarding extends React.Component {
     browserHistory.push('/plants');
   }
 
-  renderTelInputs() {
+  renderEmailInputs() {
     const inputs = [];
     for (let i = 0; i < this.state.persons; i++) {
       inputs.push(
         <TextField
           key={i}
-          hintText={`Telefoon ${i + 1}`}
-          floatingLabelText={`Telefoon ${i + 1}`}
-          type="tel"
+          hintText={`E-mail ${i + 1}`}
+          floatingLabelText={`E-mail ${i + 1}`}
+          type="email"
           fullWidth
         />
       );
@@ -64,7 +64,7 @@ class OnBoarding extends React.Component {
           </SelectField>
           <h3>{text.onBoardingSubtitle2}</h3>
           <h3>{text.onBoardingSubtitle3}</h3>
-          {this.renderTelInputs()}
+          {this.renderEmailInputs()}
           <p>
             {text.registerSecurityNotice}
           </p>
