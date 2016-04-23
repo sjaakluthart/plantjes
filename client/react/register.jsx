@@ -32,7 +32,6 @@ class Register extends React.Component {
       data: { username: this.state.username, password: this.state.password }
     })
     .then((data) => {
-      console.log(data);
       browserHistory.push('/on-boarding');
     });
   }
