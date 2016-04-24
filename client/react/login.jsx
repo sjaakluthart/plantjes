@@ -66,7 +66,7 @@ class LogIn extends React.Component {
 
   render() {
     return (
-      <section className="register">
+      <section className="login">
         <AppBar
           title={text.logInTitle}
           iconElementLeft={
