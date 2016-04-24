@@ -7,7 +7,7 @@ import moment from 'moment';
 import text from './text.json';
 
 // Material-UI
-import { AppBar, Avatar, CircularProgress, List, ListItem } from 'material-ui';
+import { AppBar, Avatar, CircularProgress, Drawer, List, ListItem, MenuItem } from 'material-ui';
 
 class PlantList extends React.Component {
   constructor(props) {
@@ -18,6 +18,8 @@ class PlantList extends React.Component {
       userId: '',
       username: ''
     };
+    this.toggleMenu = this.toggleMenu.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   componentWillMount() {
@@ -69,12 +71,48 @@ class PlantList extends React.Component {
     );
   }
 
+  toggleMenu() {
+    this.setState({
+      open: !this.state.open
+    });
+  }
+
+  logOut() {
+    $.ajax({
+      method: 'POST',
+      url: '/log-out',
+      data: { username: this.state.username }
+    })
+    .then((res) => {
+      if (res.error) {
+        alert(res.error);
+        return false;
+      }
+
+      browserHistory.push('/');
+      return res;
+    });
+  }
+
   render() {
     return (
       <section className="plant-list">
         <AppBar
           title={this.state.username ? `${this.state.username}'s Plantjes` : text.appTitle}
+          onLeftIconButtonTouchTap={this.toggleMenu}
         />
+        <Drawer
+          docked={false}
+          width={200}
+          open={this.state.open}
+          onRequestChange={(open) => this.setState({ open })}
+        >
+          <MenuItem onTouchTap={this.toggleMenu}>Menu Item</MenuItem>
+          <MenuItem
+            style={{ position: 'absolute', bottom: 0, width: '100%' }}
+            onTouchTap={this.logOut}
+          >Log Uit</MenuItem>
+        </Drawer>
         {this.state.loading ? this.showLoading() : this.showContent()}
       </section>
     );
