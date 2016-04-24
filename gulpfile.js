@@ -30,7 +30,7 @@ path = {
   OUT: 'build.js',
   ASSETS_DEST: 'public/assets',
   DEST: 'public',
-  ENTRY_POINT: 'client/react/app.jsx'
+  ENTRY_POINT: 'client/components/app.jsx'
 };
 
 // Header for app.min.js
