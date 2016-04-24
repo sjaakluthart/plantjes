@@ -1,6 +1,6 @@
 // Modules
 import React from 'react';
-import { Link } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import $ from 'jquery';
 import moment from 'moment';
 
@@ -14,8 +14,28 @@ class PlantList extends React.Component {
     super(props);
     this.state = {
       plants: [],
-      loading: true
+      loading: true,
+      userId: '',
+      username: ''
     };
+  }
+
+  componentWillMount() {
+    $.ajax({ url: '/check-user' })
+    .then((data) => {
+      if (data.authorised) {
+        if (!data.user.onBoard) {
+          browserHistory.push('/on-boarding');
+          return false;
+        }
+        this.setState({
+          userId: data.user._id,
+          username: data.user.username
+        });
+      } else {
+        browserHistory.push('/login');
+      }
+    });
   }
 
   componentDidMount() {
@@ -53,7 +73,7 @@ class PlantList extends React.Component {
     return (
       <section className="plant-list">
         <AppBar
-          title={text.appTitle}
+          title={this.state.username ? `${this.state.username}'s Plantjes` : text.appTitle}
         />
         {this.state.loading ? this.showLoading() : this.showContent()}
       </section>
