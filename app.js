@@ -19,6 +19,7 @@ const plantData = require('./server/routes/plant-data.js');
 const uploadImage = require('./server/routes/upload-image.js');
 const createUser = require('./server/routes/create-user.js');
 const logIn = require('./server/routes/login.js');
+const logOut = require('./server/routes/logout.js');
 const checkUser = require('./server/routes/check-user.js');
 const completeOnBoarding = require('./server/routes/complete-onboarding');
 
@@ -46,6 +47,7 @@ app.use('/plant', plantData);
 app.use('/upload', uploadImage);
 app.use('/create-user', createUser);
 app.use('/log-in', logIn);
+app.use('/log-out', logOut);
 app.use('/complete-onboarding', completeOnBoarding);
 app.use('/check-user', checkUser);
 
