@@ -7,6 +7,7 @@ import { browserHistory, Link } from 'react-router';
 import {
   AppBar,
   DatePicker,
+  Divider,
   IconButton,
   MenuItem,
   RaisedButton,
@@ -107,6 +108,36 @@ class AddPlant extends React.Component {
             onChange={this.handleNameChange}
             onBlur={this.handleBlur}
           />
+
+          <h2>Sensoren</h2>
+          <Divider />
+          <h3>{text.addPlantSubTitle2}</h3>
+
+          <TextField
+            hintText="Vocht sensor pin nummer"
+            floatingLabelText="Vocht sensor pin nummer"
+            type="number"
+            fullWidth
+            onChange={this.handleNameChange}
+            onBlur={this.handleBlur}
+          />
+          <TextField
+            hintText="Licht sensor pin nummer"
+            floatingLabelText="Licht sensor pin nummer"
+            type="number"
+            fullWidth
+            onChange={this.handleNameChange}
+            onBlur={this.handleBlur}
+          />
+          <TextField
+            hintText="Temperatuur sensor pin nummer"
+            floatingLabelText="Temperatuur sensor pin nummer"
+            type="number"
+            fullWidth
+            onChange={this.handleNameChange}
+            onBlur={this.handleBlur}
+          />
+
           <RaisedButton
             className="button-submit"
             label="voeg toe"
