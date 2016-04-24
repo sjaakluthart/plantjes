@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-import { Link } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 
 import { AppBar, CircularProgress, IconButton, Paper } from 'material-ui';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -16,6 +16,24 @@ class Plant extends React.Component {
       data: [],
       loading: true
     };
+  }
+
+  componentWillMount() {
+    $.ajax({ url: '/check-user' })
+    .then((data) => {
+      if (data.authorised) {
+        if (!data.user.onBoard) {
+          browserHistory.push('/on-boarding');
+          return false;
+        }
+        this.setState({
+          userId: data.user._id,
+          username: data.user.username
+        });
+      } else {
+        browserHistory.push('/login');
+      }
+    });
   }
 
   componentDidMount() {
