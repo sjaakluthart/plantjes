@@ -28,4 +28,4 @@ ReactDOM.render((
       <Route path="/plant/:plantId" component={Plant} />
     </Route>
   </Router>
-), document.getElementById('app'));
+), document.getElementById('react-root'));
