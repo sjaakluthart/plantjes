@@ -22,3 +22,6 @@ production-build:
 
 serve:
 	$(GULP_CMD) serve
+
+bundle:
+	$(GULP_CMD) bundle
