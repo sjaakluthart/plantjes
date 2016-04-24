@@ -39,6 +39,7 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
+    "adc-pi-gpio": "0.0.2",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.15.0",
     "emailjs": "^1.0.4",
