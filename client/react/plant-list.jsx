@@ -55,6 +55,11 @@ class PlantList extends React.Component {
     let style = {
       textTransform: 'capitalize'
     };
+
+    if (this.state.plants.length === 0) {
+      return <p>Je hebt nog geen plantjes, voeg er eentje toe.</p>;
+    }
+
     return (
       <List>
         {this.state.plants.map(plant => (
