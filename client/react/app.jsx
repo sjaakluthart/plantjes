@@ -10,6 +10,7 @@ import LogIn from './login.jsx';
 import OnBoarding from './on-boarding.jsx';
 import PlantList from './plant-list.jsx';
 import Plant from './plant.jsx';
+import AddPlant from './add-plant.jsx';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -26,6 +27,7 @@ ReactDOM.render((
       <Route path="/on-boarding" component={OnBoarding} />
       <Route path="/plants" component={PlantList} />
       <Route path="/plant/:plantId" component={Plant} />
+      <Route path="/add-plant" component={AddPlant} />
     </Route>
   </Router>
 ), document.getElementById('react-root'));

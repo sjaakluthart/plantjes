@@ -7,7 +7,17 @@ import moment from 'moment';
 import text from './text.json';
 
 // Material-UI
-import { AppBar, Avatar, CircularProgress, Drawer, List, ListItem, MenuItem } from 'material-ui';
+import {
+  AppBar,
+  Avatar,
+  CircularProgress,
+  Drawer,
+  FloatingActionButton,
+  List,
+  ListItem,
+  MenuItem
+} from 'material-ui';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 class PlantList extends React.Component {
   constructor(props) {
@@ -52,8 +62,12 @@ class PlantList extends React.Component {
   }
 
   showContent() {
-    let style = {
+    const listStyle = {
       textTransform: 'capitalize'
+    };
+    const buttonStyle = {
+      position: 'absolute',
+      right: '5%'
     };
 
     if (this.state.plants.length === 0) {
@@ -61,18 +75,25 @@ class PlantList extends React.Component {
     }
 
     return (
-      <List>
-        {this.state.plants.map(plant => (
-          <Link to={`/plant/${plant._id}`} key={plant._id}>
-            <ListItem
-              primaryText={`${plant.name} ${plant.species}`}
-              secondaryText={`Geplant op: ${moment(plant.plantedOn).format('DD-MM-YY')}`}
-              leftAvatar={<Avatar src={`assets/${plant.species}.svg`} />}
-              style={style}
-            />
-          </Link>
-        ))}
-      </List>
+      <div>
+        <List>
+          {this.state.plants.map(plant => (
+            <Link to={`/plant/${plant._id}`} key={plant._id}>
+              <ListItem
+                primaryText={`${plant.name} ${plant.species}`}
+                secondaryText={`Geplant op: ${moment(plant.plantedOn).format('DD-MM-YY')}`}
+                leftAvatar={<Avatar src={`assets/${plant.species}.svg`} />}
+                style={listStyle}
+              />
+            </Link>
+          ))}
+        </List>
+        <Link to="/add-plant">
+          <FloatingActionButton mini style={buttonStyle}>
+            <ContentAdd />
+          </FloatingActionButton>
+        </Link>
+      </div>
     );
   }
 
