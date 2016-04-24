@@ -22,12 +22,14 @@ class AddPlant extends React.Component {
       type: 'zaadje',
       species: 'sla',
       plantedOn: '',
+      name: '',
       canSubmit: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleSpeciesChange = this.handleSpeciesChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
   }
 
@@ -35,6 +37,12 @@ class AddPlant extends React.Component {
     event.preventDefault();
 
     console.log('bla')
+  }
+
+  handleNameChange(event) {
+    this.setState({
+      name: event.currentTarget.value
+    });
   }
 
   handleTypeChange(event, index, value) {
@@ -51,7 +59,7 @@ class AddPlant extends React.Component {
   }
 
   handleBlur() {
-    if (this.state.username && this.state.password) {
+    if (this.state.plantedOn && this.state.name) {
       this.setState({
         canSubmit: true
       });
@@ -91,12 +99,12 @@ class AddPlant extends React.Component {
             onChange={this.handleDateChange}
           />
 
+          <p>{`Geef je ${this.state.type} een naam:`}</p>
           <TextField
-            hintText="Wachtwoord"
-            floatingLabelText="Wachtwoord"
-            type="password"
+            hintText={`Naam ${this.state.type}`}
+            floatingLabelText={`Naam ${this.state.type}`}
             fullWidth
-            onChange={this.handlePasswordChange}
+            onChange={this.handleNameChange}
             onBlur={this.handleBlur}
           />
           <RaisedButton
