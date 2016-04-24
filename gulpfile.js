@@ -163,12 +163,14 @@ gulp.task('dev', ['watch', 'copy', 'sass', 'assets'], function() {
   return developmentBuild('app.jsx');
 });
 
+// Bundle all files needed for deployment in a .zip file.
 gulp.task('bundle', ['production'], function() {
-  gulp.src(['app.js', 'server/**/*', 'public/**/*', 'Makefile', 'package.json'], {base:'.'})
+  gulp.src(['app.js', 'server/**/*', 'public/**/*', 'Makefile', 'package.json', 'settings.json'], {base:'.'})
     .pipe(zip('bundle.zip'))
     .pipe(gulp.dest('./'));
 });
 
+// Serve the project with browserSync.
 gulp.task('serve', ['dev'], function() {
 	browserSync.init({
 		proxy: 'http://localhost:3000',
