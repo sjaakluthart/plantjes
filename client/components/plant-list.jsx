@@ -133,7 +133,9 @@ class PlantList extends React.Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({ open })}
         >
-          <MenuItem onTouchTap={this.toggleMenu}>Menu Item</MenuItem>
+          <MenuItem onTouchTap={this.toggleMenu}>Instellingen</MenuItem>
+          <MenuItem onTouchTap={this.toggleMenu}>Over de app</MenuItem>
+          <MenuItem onTouchTap={this.toggleMenu}>Stuur feedback</MenuItem>
           <MenuItem
             style={{ position: 'absolute', bottom: 0, width: '100%' }}
             onTouchTap={this.logOut}
