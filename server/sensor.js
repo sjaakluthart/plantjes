@@ -38,6 +38,6 @@ adc.on('change', (data) => {
     'Channel %s value is now %s which in proportion is: %s',
     data.channel,
     data.value,
-    data.percent
+    Math.ceil(data.percent * 100)
   );
 });
