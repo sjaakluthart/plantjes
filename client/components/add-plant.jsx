@@ -11,6 +11,8 @@ import {
   IconButton,
   MenuItem,
   RaisedButton,
+  RadioButton,
+  RadioButtonGroup,
   SelectField,
   TextField
 } from 'material-ui';
@@ -92,6 +94,17 @@ class AddPlant extends React.Component {
             <MenuItem value={'sla'} primaryText={`sla ${this.state.type}`} />
             <MenuItem value={'wortel'} primaryText={`wortel ${this.state.type}`} />
           </SelectField>
+
+          <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+            <RadioButton
+              value="light"
+              label="Simple"
+            />
+            <RadioButton
+              value="not_light"
+              label="Selected by default"
+            />
+          </RadioButtonGroup>
 
           <p>{`Wanneer is je ${this.state.type} geplant?`}</p>
           <DatePicker

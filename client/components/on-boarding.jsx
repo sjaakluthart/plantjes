@@ -10,7 +10,6 @@ import {
   IconButton,
   MenuItem,
   RaisedButton,
-  SelectField,
   TextField
 } from 'material-ui';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -19,14 +18,12 @@ class OnBoarding extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      persons: 1,
       loading: true,
       userId: '',
       email: '',
       canSubmit: false
     };
     this.handleBlur = this.handleBlur.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -47,10 +44,6 @@ class OnBoarding extends React.Component {
         browserHistory.push('/login');
       }
     });
-  }
-
-  handleChange(event, index, value) {
-    this.setState({ persons: value });
   }
 
   handleSubmit(event) {
@@ -80,12 +73,15 @@ class OnBoarding extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <h1>{text.onBoardingSubtitle}</h1>
         <h2>{text.onBoardingSubtitle1}</h2>
-        <SelectField value={this.state.persons} onChange={this.handleChange}>
-          <MenuItem value={1} primaryText="1" />
-        </SelectField>
         <h3>{text.onBoardingSubtitle2}</h3>
-        <h3>{text.onBoardingSubtitle3}</h3>
-        {this.renderEmailInputs()}
+        <TextField
+          hintText={`E-mail`}
+          floatingLabelText={`E-mail`}
+          type="email"
+          fullWidth
+          onChange={this.handleEmailChange}
+          onBlur={this.handleBlur}
+        />
         <p>
           {text.registerSecurityNotice}
         </p>
@@ -109,29 +105,9 @@ class OnBoarding extends React.Component {
   }
 
   handleEmailChange(event) {
-    // TODO dynamic amount of emails
     this.setState({
       email: event.currentTarget.value
     });
-  }
-
-  renderEmailInputs() {
-    const inputs = [];
-    for (let i = 0; i < this.state.persons; i++) {
-      inputs.push(
-        <TextField
-          key={i}
-          hintText={`E-mail ${i + 1}`}
-          floatingLabelText={`E-mail ${i + 1}`}
-          type="email"
-          fullWidth
-          onChange={this.handleEmailChange}
-          onBlur={this.handleBlur}
-        />
-      );
-    }
-
-    return inputs;
   }
 
   render() {
