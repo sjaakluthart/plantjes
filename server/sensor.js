@@ -32,21 +32,18 @@ adc.on('close', () => {
   process.exit();
 });
 
-adc.on('change', (data) => {
-  winston.log(
-    'info',
-    'Channel %s value is now %s which in proportion is: %s',
-    data.channel,
-    data.value,
-    Math.ceil(data.percent * 100)
-  );
-});
+function readSensor(channel) {
+  adc.read(channel, (data) => {
+    const percentage = Math.ceil((data / 1024) * 100);
+    winston.log(
+      'info',
+      'Channel %s value is now %s. Which in proportion is: %s.',
+      channel,
+      data,
+      percentage
+    );
+    adc.close();
+  });
+}
 
-adc.read(0, (data) => {
-  winston.log(
-    'info',
-    'Channel %s value is now %s.',
-    0,
-    data
-  );
-});
+module.exports = readSensor;
