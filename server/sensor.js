@@ -42,7 +42,6 @@ function readSensor(channel) {
       data,
       percentage
     );
-    adc.close();
   });
 }
 
