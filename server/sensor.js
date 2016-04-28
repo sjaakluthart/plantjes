@@ -41,3 +41,12 @@ adc.on('change', (data) => {
     Math.ceil(data.percent * 100)
   );
 });
+
+adc.read(0, (data) => {
+  winston.log(
+    'info',
+    'Channel %s value is now %s.',
+    0,
+    data
+  );
+});
