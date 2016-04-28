@@ -32,7 +32,7 @@ adc.on('close', () => {
   process.exit();
 });
 
-function readSensor(channel) {
+function readSensor(channel, referenceValues) {
   adc.read(channel, (data) => {
     const percentage = Math.ceil((data / 1024) * 100);
     winston.log(
@@ -42,6 +42,7 @@ function readSensor(channel) {
       data,
       percentage
     );
+    winston.log('info', referenceValues);
   });
 }
 
