@@ -5,14 +5,17 @@ const mockPlants = [{
   name: 'sjon',
   plantedOn: moment().subtract(3, 'days').toDate(),
   harvestOn: moment().add(5, 'weeks').toDate(),
+  sensors: {
+    moisture: 0
+  },
   referenceValues: {
     temperature: {
       min: 7,
       max: 24
     },
     moisture: {
-      min: 7,
-      max: 24
+      min: 60,
+      max: 10
     },
     light: {
       min: 7,
@@ -47,14 +50,17 @@ const mockPlants = [{
   name: 'willy',
   plantedOn: moment().subtract(11, 'days').toDate(),
   harvestOn: moment().add(3, 'weeks').toDate(),
+  sensors: {
+    moisture: 0
+  },
   referenceValues: {
     temperature: {
       min: 4,
       max: 27
     },
     moisture: {
-      min: 2,
-      max: 18
+      min: 60,
+      max: 10
     },
     light: {
       min: 4,
