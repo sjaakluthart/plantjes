@@ -139,26 +139,27 @@ class AddPlant extends React.Component {
     return (
       <div>
         <h2>{text.addPlantSubTitle2}</h2>
+        <h3>{text.addPlantSubTitle3}</h3>
 
         <TextField
-          hintText="Vocht sensor pin nummer"
-          floatingLabelText="Vocht sensor pin nummer"
+          hintText="Vocht sensor kanaal"
+          floatingLabelText="Vocht sensor kanaal"
           type="number"
           fullWidth
           onChange={this.handleNameChange}
           onBlur={this.handleBlur}
         />
         <TextField
-          hintText="Licht sensor pin nummer"
-          floatingLabelText="Licht sensor pin nummer"
+          hintText="Licht sensor kanaal"
+          floatingLabelText="Licht sensor kanaal"
           type="number"
           fullWidth
           onChange={this.handleNameChange}
           onBlur={this.handleBlur}
         />
         <TextField
-          hintText="Temperatuur sensor pin nummer"
-          floatingLabelText="Temperatuur sensor pin nummer"
+          hintText="Temperatuur sensor kanaal"
+          floatingLabelText="Temperatuur sensor kanaal"
           type="number"
           fullWidth
           onChange={this.handleNameChange}

@@ -19,5 +19,6 @@
 
   "addPlantTitle": "Voeg een Plantje toe",
   "addPlantSubTitle": "Vul de gegevens van je plantje of zaadje in.",
-  "addPlantSubTitle2": "Tekst over toevoegen van sensoren blablabla.",
+  "addPlantSubTitle2": "Om de conditie van je plantje te kunnen meten moeten er sensoren aan je plantje worden gekoppeld.",
+  "addPlantSubTitle3": "Op welke kanalen zijn de sensoren aangesloten?",
 }
