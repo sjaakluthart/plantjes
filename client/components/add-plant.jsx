@@ -7,7 +7,6 @@ import { browserHistory, Link } from 'react-router';
 import {
   AppBar,
   DatePicker,
-  Divider,
   IconButton,
   MenuItem,
   RaisedButton,
@@ -20,27 +19,62 @@ class AddPlant extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      userId: '',
       type: 'zaadje',
       species: 'sla',
       plantedOn: '',
       name: '',
       canSubmit: false,
-      step: 1
+      step: 1,
+      moisture: '',
+      light: '',
+      temperture: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleSpeciesChange = this.handleSpeciesChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleMoistureChange = this.handleMoistureChange.bind(this);
+    this.handleLightChange = this.handleLightChange.bind(this);
+    this.handleTempChange = this.handleTempChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.nextStep = this.nextStep.bind(this);
     this.prevStep = this.prevStep.bind(this);
   }
 
+  componentWillMount() {
+    $.ajax({ url: '/check-user' })
+    .then((data) => {
+      if (!data.authorised) {
+        browserHistory.push('/login');
+      } else {
+        this.setState({
+          userId: data.user._id
+        });
+      }
+    });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
-    console.log('bla');
+    $.ajax({
+      method: 'POST',
+      url: '/create-plant',
+      data: {
+        userId: this.state.userId,
+        species: this.state.species,
+        name: this.state.name,
+        plantedOn: this.state.plantedOn,
+        moisture: this.state.moisture,
+        light: this.state.light,
+        temperture: this.state.temperture
+      }
+    })
+    .then((data) => {
+      browserHistory.push('/plants');
+    });
   }
 
   handleNameChange(event) {
@@ -79,6 +113,24 @@ class AddPlant extends React.Component {
   prevStep() {
     this.setState({
       step: 1
+    });
+  }
+
+  handleMoistureChange(event) {
+    this.setState({
+      moisture: event.currentTarget.value
+    });
+  }
+
+  handleLightChange(event) {
+    this.setState({
+      light: event.currentTarget.value
+    });
+  }
+
+  handleTempChange(event) {
+    this.setState({
+      temperture: event.currentTarget.value
     });
   }
 
@@ -122,7 +174,7 @@ class AddPlant extends React.Component {
           floatingLabelText={`Naam ${this.state.type}`}
           fullWidth
           onChange={this.handleNameChange}
-          onBlur={this.handleBlur}
+          value={this.state.name}
         />
 
         <RaisedButton
@@ -146,24 +198,25 @@ class AddPlant extends React.Component {
           floatingLabelText="Vocht sensor kanaal"
           type="number"
           fullWidth
-          onChange={this.handleNameChange}
-          onBlur={this.handleBlur}
+          onChange={this.handleMoistureChange}
+          value={this.state.moisture}
         />
         <TextField
           hintText="Licht sensor kanaal"
           floatingLabelText="Licht sensor kanaal"
           type="number"
           fullWidth
-          onChange={this.handleNameChange}
-          onBlur={this.handleBlur}
+          onChange={this.handleLightChange}
+          value={this.state.light}
         />
         <TextField
           hintText="Temperatuur sensor kanaal"
           floatingLabelText="Temperatuur sensor kanaal"
           type="number"
           fullWidth
-          onChange={this.handleNameChange}
+          onChange={this.handleTempChange}
           onBlur={this.handleBlur}
+          value={this.state.temperture}
         />
         <div className="button-submit">
           <RaisedButton

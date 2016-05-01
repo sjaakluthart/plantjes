@@ -17,6 +17,7 @@ const url = 'mongodb://localhost:27017/plantjes';
 const plantList = require('./server/routes/plant-list.js');
 const plantData = require('./server/routes/plant-data.js');
 const uploadImage = require('./server/routes/upload-image.js');
+const createPlant = require('./server/routes/create-plant.js');
 const createUser = require('./server/routes/create-user.js');
 const logIn = require('./server/routes/login.js');
 const logOut = require('./server/routes/logout.js');
@@ -45,6 +46,7 @@ app.use(session({
 app.use('/plant-list', plantList);
 app.use('/plant', plantData);
 app.use('/upload', uploadImage);
+app.use('/create-plant', createPlant);
 app.use('/create-user', createUser);
 app.use('/log-in', logIn);
 app.use('/log-out', logOut);
