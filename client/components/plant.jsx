@@ -6,7 +6,8 @@ import { browserHistory, Link } from 'react-router';
 import { AppBar, CircularProgress, IconButton, Paper } from 'material-ui';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
-import PlantInfo from './plant-info.jsx';
+import PlantPicture from './plant-picture.jsx';
+import GrowthBar from './growth-bar.jsx';
 import Levels from './levels.jsx';
 
 class Plant extends React.Component {
@@ -46,18 +47,35 @@ class Plant extends React.Component {
     return <CircularProgress className="loader" style={{ position: 'absolute' }} />;
   }
 
+  showMessage() {
+    return (
+      <p>
+        <span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.
+      </p>
+    );
+  }
+
   showContent() {
     const style = {
-      padding: '20px'
+      padding: '20px',
+      marginBottom: '15px'
     };
+
+    const plantIcon = `/assets/${this.state.data.species}.svg`;
     return (
       <div className="plant">
-        <PlantInfo plant={this.state.data} />
         <Paper style={style}>
-          <p>
-            <span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.
-          </p>
+          {this.showMessage()}
         </Paper>
+        <PlantPicture
+          plantId={this.state.data._id}
+          plantPicture={this.state.data.plantPicture}
+        />
+        <GrowthBar
+          plantedOn={this.state.data.plantedOn}
+          harvestOn={this.state.data.harvestOn}
+          plantIcon={plantIcon}
+        />
         <Levels
           sensorData={this.state.data.sensorReadings}
           referenceValues={this.state.data.referenceValues}
