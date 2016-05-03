@@ -147,6 +147,31 @@ class AddPlant extends React.Component {
               leftAvatar={<Avatar src="assets/wortel.svg" />}
               value="wortel"
             />
+            <ListItem
+              primaryText={`Courgette ${this.state.type}`}
+              leftAvatar={<Avatar src="assets/courgette.svg" />}
+              value="courgette"
+            />
+            <ListItem
+              primaryText={`Tomaat ${this.state.type}`}
+              leftAvatar={<Avatar src="assets/tomaat.svg" />}
+              value="tomaat"
+            />
+            <ListItem
+              primaryText={`Aubergine ${this.state.type}`}
+              leftAvatar={<Avatar src="assets/aubergine.svg" />}
+              value="aubergine"
+            />
+            <ListItem
+              primaryText={`Pompoen ${this.state.type}`}
+              leftAvatar={<Avatar src="assets/pompoen.svg" />}
+              value="pompoen"
+            />
+            <ListItem
+              primaryText={`Ui ${this.state.type}`}
+              leftAvatar={<Avatar src="assets/ui.svg" />}
+              value="ui"
+            />
           </SelectField>
 
           <p>{`Wanneer is je ${this.state.type} geplant?`}</p>
