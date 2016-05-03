@@ -73,12 +73,4 @@ db.connect(url, (err) => {
     'Connected to Mongo. Express server started, listening on port %s.',
     config.port
   );
-
-  db.get().collection('plants').find().toArray((err, res) => {
-    // Insert plants if there are none.
-    winston.log('info', 'Found %s plants in collection.', res.length);
-    if (res.length === 0) {
-      insertPlant();
-    }
-  });
 });
