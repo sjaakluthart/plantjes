@@ -188,6 +188,7 @@ class AddPlant extends React.Component {
             fullWidth
             onChange={this.handleNameChange}
             value={this.state.name}
+            onBlur={this.handleBlur}
           />
 
           <RaisedButton
