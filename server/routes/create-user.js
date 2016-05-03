@@ -14,8 +14,8 @@ router.post('/', (req, response) => {
     // Insert user in DB with hashed password
     db.get().collection('users').insert({
       username: req.body.username,
-      password: hash,
-      onBoard: false
+      email: req.body.email,
+      password: hash
     }, (err, res) => {
       if (err) {
         throw err;
@@ -23,8 +23,7 @@ router.post('/', (req, response) => {
 
       req.session.user = {
         _id: res.ops[0]._id.toString(),
-        username: res.ops[0].username,
-        onBoard: res.ops[0].onBoard
+        username: res.ops[0].username
       };
 
       response.send(res);
