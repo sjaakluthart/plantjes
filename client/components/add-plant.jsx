@@ -25,22 +25,16 @@ class AddPlant extends React.Component {
       plantedOn: '',
       name: '',
       canSubmit: false,
-      step: 1,
-      moisture: '',
-      light: '',
-      temperture: ''
+      moisture: 1,
+      light: 1,
+      temperture: 1
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleSpeciesChange = this.handleSpeciesChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleMoistureChange = this.handleMoistureChange.bind(this);
-    this.handleLightChange = this.handleLightChange.bind(this);
-    this.handleTempChange = this.handleTempChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
-    this.nextStep = this.nextStep.bind(this);
-    this.prevStep = this.prevStep.bind(this);
   }
 
   componentWillMount() {
@@ -104,139 +98,6 @@ class AddPlant extends React.Component {
     }
   }
 
-  nextStep() {
-    this.setState({
-      step: 2
-    });
-  }
-
-  prevStep() {
-    this.setState({
-      step: 1
-    });
-  }
-
-  handleMoistureChange(event) {
-    this.setState({
-      moisture: event.currentTarget.value
-    });
-  }
-
-  handleLightChange(event) {
-    this.setState({
-      light: event.currentTarget.value
-    });
-  }
-
-  handleTempChange(event) {
-    this.setState({
-      temperture: event.currentTarget.value
-    });
-  }
-
-  stepOne(buttonStyle) {
-    return (
-      <div>
-        <p>Ik heb een:</p>
-        <div>
-          <RaisedButton
-            style={buttonStyle}
-            label="zaadje"
-            value="zaadje"
-            primary={this.state.type === 'zaadje'}
-            onClick={this.handleTypeChange}
-          />
-          <RaisedButton
-            style={buttonStyle}
-            label="plantje"
-            value="plantje"
-            primary={this.state.type === 'plantje'}
-            onClick={this.handleTypeChange}
-          />
-        </div>
-
-        <p>{`Mijn ${this.state.type} is een:`}</p>
-        <SelectField value={this.state.species} onChange={this.handleSpeciesChange}>
-          <MenuItem value={'sla'} primaryText={`sla ${this.state.type}`} />
-          <MenuItem value={'wortel'} primaryText={`wortel ${this.state.type}`} />
-        </SelectField>
-
-        <p>{`Wanneer is je ${this.state.type} geplant?`}</p>
-        <DatePicker
-          hintText="Kies een datum"
-          value={this.state.plantedOn}
-          onChange={this.handleDateChange}
-        />
-
-        <p>{`Geef je ${this.state.type} een naam:`}</p>
-        <TextField
-          hintText={`Naam ${this.state.type}`}
-          floatingLabelText={`Naam ${this.state.type}`}
-          fullWidth
-          onChange={this.handleNameChange}
-          value={this.state.name}
-        />
-
-        <RaisedButton
-          label="volgende"
-          className="button-submit"
-          secondary
-          onClick={this.nextStep}
-        />
-      </div>
-    );
-  }
-
-  stepTwo(buttonStyle) {
-    return (
-      <div>
-        <h2>{text.addPlantSubTitle2}</h2>
-        <h3>{text.addPlantSubTitle3}</h3>
-
-        <TextField
-          hintText="Vocht sensor kanaal"
-          floatingLabelText="Vocht sensor kanaal"
-          type="number"
-          fullWidth
-          onChange={this.handleMoistureChange}
-          value={this.state.moisture}
-        />
-        <TextField
-          hintText="Licht sensor kanaal"
-          floatingLabelText="Licht sensor kanaal"
-          type="number"
-          fullWidth
-          onChange={this.handleLightChange}
-          value={this.state.light}
-        />
-        <TextField
-          hintText="Temperatuur sensor kanaal"
-          floatingLabelText="Temperatuur sensor kanaal"
-          type="number"
-          fullWidth
-          onChange={this.handleTempChange}
-          onBlur={this.handleBlur}
-          value={this.state.temperture}
-        />
-        <div className="button-submit">
-          <RaisedButton
-            style={buttonStyle}
-            label="vorige"
-            secondary
-            onClick={this.prevStep}
-          />
-          <RaisedButton
-            style={buttonStyle}
-            label="voeg toe"
-            primary
-            type="submit"
-            disabled={!this.state.canSubmit}
-          />
-        </div>
-      </div>
-    );
-  }
-
   render() {
     const buttonStyle = {
       margin: '1.4rem 5% 0',
@@ -255,8 +116,53 @@ class AddPlant extends React.Component {
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <h1>{text.addPlantSubTitle}</h1>
 
-          {this.state.step === 1 ? this.stepOne(buttonStyle) : this.stepTwo(buttonStyle)}
+          <p>Ik heb een:</p>
+          <div>
+            <RaisedButton
+              style={buttonStyle}
+              label="zaadje"
+              value="zaadje"
+              primary={this.state.type === 'zaadje'}
+              onClick={this.handleTypeChange}
+            />
+            <RaisedButton
+              style={buttonStyle}
+              label="plantje"
+              value="plantje"
+              primary={this.state.type === 'plantje'}
+              onClick={this.handleTypeChange}
+            />
+          </div>
 
+          <p>{`Mijn ${this.state.type} is een:`}</p>
+          <SelectField value={this.state.species} onChange={this.handleSpeciesChange}>
+            <MenuItem value={'sla'} primaryText={`sla ${this.state.type}`} />
+            <MenuItem value={'wortel'} primaryText={`wortel ${this.state.type}`} />
+          </SelectField>
+
+          <p>{`Wanneer is je ${this.state.type} geplant?`}</p>
+          <DatePicker
+            hintText="Kies een datum"
+            value={this.state.plantedOn}
+            onChange={this.handleDateChange}
+          />
+
+          <p>{`Geef je ${this.state.type} een naam:`}</p>
+          <TextField
+            hintText={`Naam ${this.state.type}`}
+            floatingLabelText={`Naam ${this.state.type}`}
+            fullWidth
+            onChange={this.handleNameChange}
+            value={this.state.name}
+          />
+
+          <RaisedButton
+            className="button-submit"
+            label="voeg toe"
+            primary
+            type="submit"
+            disabled={!this.state.canSubmit}
+          />
         </form>
       </section>
     );
