@@ -1,4 +1,5 @@
 const express = require('express');
+const objectId = require('mongodb').ObjectID;
 const winston = require('winston');
 
 const db = require('../db.js');
@@ -9,8 +10,15 @@ const router = express.Router();
 router.get('/', (req, response) => {
   winston.log('info', 'Finding plant list.');
 
+  if (!req.session.user) {
+    response.send('un auth');
+    return false;
+  }
+
   db.get().collection('plants').find(
-    {},
+    {
+      forUserId: req.session.user._id
+    },
     {
       name: 1,
       species: 1,
