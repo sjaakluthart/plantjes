@@ -71,7 +71,7 @@ class PlantList extends React.Component {
         <div>
           <p>Je hebt nog geen plantjes, <br /> voeg er eentje toe.</p>
           <Link to="/add-plant">
-            <FloatingActionButton mini style={buttonStyle}>
+            <FloatingActionButton style={buttonStyle}>
               <ContentAdd />
             </FloatingActionButton>
           </Link>
