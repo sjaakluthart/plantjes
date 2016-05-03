@@ -73,7 +73,7 @@ class PlantList extends React.Component {
     if (this.state.plants.length === 0) {
       return (
         <div>
-          <p>Je hebt nog geen plantjes, voeg er eentje toe.</p>
+          <p>Je hebt nog geen plantjes, <br /> voeg er eentje toe.</p>
           <Link to="/add-plant">
             <FloatingActionButton mini style={buttonStyle}>
               <ContentAdd />
