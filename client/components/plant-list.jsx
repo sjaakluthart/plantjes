@@ -71,7 +71,16 @@ class PlantList extends React.Component {
     };
 
     if (this.state.plants.length === 0) {
-      return <p>Je hebt nog geen plantjes, voeg er eentje toe.</p>;
+      return (
+        <div>
+          <p>Je hebt nog geen plantjes, voeg er eentje toe.</p>
+          <Link to="/add-plant">
+            <FloatingActionButton mini style={buttonStyle}>
+              <ContentAdd />
+            </FloatingActionButton>
+          </Link>
+        </div>
+      );
     }
 
     return (
@@ -88,11 +97,6 @@ class PlantList extends React.Component {
             </Link>
           ))}
         </List>
-        <Link to="/add-plant">
-          <FloatingActionButton mini style={buttonStyle}>
-            <ContentAdd />
-          </FloatingActionButton>
-        </Link>
       </div>
     );
   }
