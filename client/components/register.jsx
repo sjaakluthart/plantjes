@@ -12,12 +12,14 @@ class Register extends React.Component {
     super(props);
     this.state = {
       username: '',
+      email: '',
       password: '',
       passwordConfirm: '',
       canSubmit: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handlePasswordConfirmChange = this.handlePasswordConfirmChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
@@ -29,16 +31,26 @@ class Register extends React.Component {
     $.ajax({
       method: 'POST',
       url: '/create-user',
-      data: { username: this.state.username, password: this.state.password }
+      data: {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password
+      }
     })
     .then((data) => {
-      browserHistory.push('/on-boarding');
+      browserHistory.push('/plants');
     });
   }
 
   handleUsernameChange(event) {
     this.setState({
       username: event.currentTarget.value
+    });
+  }
+
+  handleEmailChange(event) {
+    this.setState({
+      email: event.currentTarget.value
     });
   }
 
@@ -76,11 +88,20 @@ class Register extends React.Component {
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <h1>{text.registerSubtitle}</h1>
           <h2>{text.registerSubtitle1}</h2>
+          <h2>{text.registerSubtitle2}</h2>
           <TextField
             hintText="Naam"
             floatingLabelText="Naam"
             fullWidth
             onChange={this.handleUsernameChange}
+          />
+          <TextField
+            hintText="E-mail"
+            floatingLabelText="E-mail"
+            type="email"
+            fullWidth
+            onChange={this.handleEmailChange}
+            onBlur={this.handleBlur}
           />
           <TextField
             hintText="Wachtwoord"
@@ -97,9 +118,6 @@ class Register extends React.Component {
             onChange={this.handlePasswordConfirmChange}
             onBlur={this.handleBlur}
           />
-          <p>
-            {text.registerSecurityNotice}
-          </p>
           <RaisedButton
             className="button-submit"
             label="registreer"

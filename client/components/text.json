@@ -9,16 +9,9 @@
 
   "registerTitle": "Registreer",
   "registerSubtitle": "Wat leuk dat je Plant Buddy wilt gebruiken!",
-  "registerSubtitle1": "Vul je gegevens in en maak een account aan.",
-  "registerSecurityNotice": "De gegevens die je invult worden niet aan derden verstrekt.",
-
-  "onBoardingTitle": "Instellingen",
-  "onBoardingSubtitle": "Om je optimaal op de hoogte te kunnen houden over je plantjes hebben we nog wat meer gegevens nodig.",
-  "onBoardingSubtitle1": "Je e-mailadres wordt alleen gebruikt om je een berichtje te sturen als een van je plantjes je aandacht nodig heeft.",
-  "onBoardingSubtitle2": "Als je geen berichten meer wilt ontvangen kun je dat uitzetten onder instellingen.",
+  "registerSubtitle1": "Om je te helpen met het verzorgen van je plantjes heb je een account nodig.",
+  "registerSubtitle2": "Je e-mailadres wordt alleen gebruikt om je een berichtje te sturen als een van je plantjes je aandacht nodig heeft.",
 
   "addPlantTitle": "Voeg een Plantje toe",
-  "addPlantSubTitle": "Vul de gegevens van je plantje of zaadje in.",
-  "addPlantSubTitle2": "Om de conditie van je plantje te kunnen meten moeten er sensoren aan je plantje worden gekoppeld.",
-  "addPlantSubTitle3": "Op welke kanalen zijn de sensoren aangesloten?",
+  "addPlantSubTitle": "Vul de gegevens van je plantje of zaadje in."
 }

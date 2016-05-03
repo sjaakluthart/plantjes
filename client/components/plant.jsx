@@ -22,10 +22,6 @@ class Plant extends React.Component {
     $.ajax({ url: '/check-user' })
     .then((data) => {
       if (data.authorised) {
-        if (!data.user.onBoard) {
-          browserHistory.push('/on-boarding');
-          return false;
-        }
         this.setState({
           userId: data.user._id,
           username: data.user.username

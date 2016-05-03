@@ -22,11 +22,9 @@ const createUser = require('./server/routes/create-user.js');
 const logIn = require('./server/routes/login.js');
 const logOut = require('./server/routes/logout.js');
 const checkUser = require('./server/routes/check-user.js');
-const completeOnBoarding = require('./server/routes/complete-onboarding');
 
 // Import Functions
 const db = require('./server/db.js');
-const insertPlant = require('./server/insert-plant.js');
 
 // Express setup
 const app = express();
@@ -50,7 +48,6 @@ app.use('/create-plant', createPlant);
 app.use('/create-user', createUser);
 app.use('/log-in', logIn);
 app.use('/log-out', logOut);
-app.use('/complete-onboarding', completeOnBoarding);
 app.use('/check-user', checkUser);
 
 // Static files
