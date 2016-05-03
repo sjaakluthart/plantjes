@@ -1,5 +1,4 @@
 const express = require('express');
-const objectId = require('mongodb').ObjectID;
 const winston = require('winston');
 
 const db = require('../db.js');
