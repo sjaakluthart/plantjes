@@ -6,9 +6,10 @@ import text from './text.json';
 import { browserHistory, Link } from 'react-router';
 import {
   AppBar,
+  Avatar,
   DatePicker,
   IconButton,
-  MenuItem,
+  ListItem,
   RaisedButton,
   SelectField,
   TextField
@@ -136,8 +137,16 @@ class AddPlant extends React.Component {
 
           <p>{`Mijn ${this.state.type} is een:`}</p>
           <SelectField value={this.state.species} onChange={this.handleSpeciesChange}>
-            <MenuItem value={'sla'} primaryText={`sla ${this.state.type}`} />
-            <MenuItem value={'wortel'} primaryText={`wortel ${this.state.type}`} />
+            <ListItem
+              primaryText={`Sla ${this.state.type}`}
+              leftAvatar={<Avatar src="assets/sla.svg" />}
+              value="sla"
+            />
+            <ListItem
+              primaryText={`Wortel ${this.state.type}`}
+              leftAvatar={<Avatar src="assets/wortel.svg" />}
+              value="wortel"
+            />
           </SelectField>
 
           <p>{`Wanneer is je ${this.state.type} geplant?`}</p>
