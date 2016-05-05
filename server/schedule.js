@@ -31,7 +31,7 @@ db.connect(url, (err) => {
         winston.log('info', res.sensors, res.referenceValues);
         winston.log('info', 'moisture channel %s', res.sensors.moisture);
         winston.log('info', 'light channel %s', res.sensors.light);
-        winston.log('info', 'temperature channel %s', res.sensors.temperture);
+        winston.log('info', 'temperature channel %s', res.sensors.temperature);
 
         readSensor(res.sensors.moisture, res.referenceValues.moisture);
 

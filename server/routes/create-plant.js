@@ -27,8 +27,8 @@ router.post('/', (req, response) => {
       temperture: req.body.temperture
     },
     referenceValues: {
-      temperture: {
-        type: 'temperture',
+      temperature: {
+        type: 'temperature',
         min: 7,
         max: 24
       },
