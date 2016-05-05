@@ -5,6 +5,11 @@ const winston = require('winston');
 
 const router = express.Router();
 
+/* Ref values
+Light: min -> 77, max -> 25
+Moisture: min -> 30 , max -> 5
+Temperature: to be determined
+*/
 router.post('/', (req, response) => {
   // Create new user
   winston.log('info', 'Creating new plant for user: %s.', req.body.userId);
@@ -27,35 +32,20 @@ router.post('/', (req, response) => {
         max: 24
       },
       moisture: {
-        min: 60,
-        max: 10
+        min: 30,
+        max: 5
       },
       light: {
-        min: 7,
-        max: 24
+        min: 77,
+        max: 25
       }
     },
     sensorReadings: [
       {
-        moisture: 8,
+        moisture: 10,
         temperature: 5,
-        humidity: 12,
         light: 16,
         readingTakenOn: moment().subtract(10, 'hours').toDate()
-      },
-      {
-        moisture: 9,
-        temperature: 3,
-        humidity: 17,
-        light: 7,
-        readingTakenOn: moment().subtract(5, 'hours').toDate()
-      },
-      {
-        moisture: 3,
-        temperature: 10,
-        humidity: 22,
-        light: 12,
-        readingTakenOn: moment().subtract(1, 'hours').toDate()
       }
     ]
   }, (err, res) => {
