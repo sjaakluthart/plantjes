@@ -26,23 +26,23 @@ router.post('/', (req, response) => {
       light: req.body.light,
       temperture: req.body.temperture
     },
-    referenceValues: [
-      {
+    referenceValues: {
+      temperture: {
         type: 'temperture',
         min: 7,
         max: 24
       },
-      {
+      moisture: {
         type: 'moisture',
         min: 30,
         max: 5
       },
-      {
+      light: {
         type: 'light',
         min: 77,
         max: 25
       }
-    ],
+    },
     sensorReadings: [
       {
         moisture: 10,
