@@ -11,4 +11,6 @@ db.connect(url, (err) => {
 
   db.get().collection('users').remove();
   db.get().collection('plants').remove();
+
+  process.exit();
 });
