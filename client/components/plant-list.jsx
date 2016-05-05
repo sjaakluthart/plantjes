@@ -33,21 +33,23 @@ class PlantList extends React.Component {
   }
 
   componentWillMount() {
-    $.ajax({ url: '/check-user' })
+    $.ajax({ url: '/checkUser' })
     .then((data) => {
       if (data.authorised) {
         this.setState({
           userId: data.user._id,
           username: data.user.username
         });
+
+        this.getData();
       } else {
         browserHistory.push('/login');
       }
     });
   }
 
-  componentDidMount() {
-    $.ajax({ url: '/plant-list' })
+  getData() {
+    $.ajax({ url: '/plantList' })
     .then((data) => {
       this.setState({ plants: data, loading: false });
     });
@@ -106,7 +108,7 @@ class PlantList extends React.Component {
   logOut() {
     $.ajax({
       method: 'POST',
-      url: '/log-out',
+      url: '/logOut',
       data: { username: this.state.username }
     })
     .then((res) => {

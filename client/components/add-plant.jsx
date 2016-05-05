@@ -39,7 +39,7 @@ class AddPlant extends React.Component {
   }
 
   componentWillMount() {
-    $.ajax({ url: '/check-user' })
+    $.ajax({ url: '/checkUser' })
     .then((data) => {
       if (!data.authorised) {
         browserHistory.push('/login');
@@ -56,7 +56,7 @@ class AddPlant extends React.Component {
 
     $.ajax({
       method: 'POST',
-      url: '/create-plant',
+      url: '/createPlant',
       data: {
         userId: this.state.userId,
         species: this.state.species,

@@ -26,7 +26,7 @@ class LogIn extends React.Component {
 
     $.ajax({
       method: 'POST',
-      url: '/log-in',
+      url: '/logIn',
       data: { username: this.state.username, password: this.state.password }
     })
     .then((res) => {

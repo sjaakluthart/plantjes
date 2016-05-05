@@ -30,7 +30,7 @@ class Register extends React.Component {
 
     $.ajax({
       method: 'POST',
-      url: '/create-user',
+      url: '/createUser',
       data: {
         username: this.state.username,
         email: this.state.email,

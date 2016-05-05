@@ -41,14 +41,14 @@ app.use(session({
   secret: settings.secret
 }));
 
-app.use('/plant-list', plantList);
-app.use('/plant', plantData);
-app.use('/upload', uploadImage);
-app.use('/create-plant', createPlant);
-app.use('/create-user', createUser);
-app.use('/log-in', logIn);
-app.use('/log-out', logOut);
-app.use('/check-user', checkUser);
+app.use('/plantList', plantList);
+app.use('/plantData', plantData);
+app.use('/uploadImage', uploadImage);
+app.use('/createPlant', createPlant);
+app.use('/createUser', createUser);
+app.use('/logIn', logIn);
+app.use('/logOut', logOut);
+app.use('/checkUser', checkUser);
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));

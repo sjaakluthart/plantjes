@@ -20,22 +20,23 @@ class Plant extends React.Component {
   }
 
   componentWillMount() {
-    $.ajax({ url: '/check-user' })
+    $.ajax({ url: '/checkUser' })
     .then((data) => {
       if (data.authorised) {
         this.setState({
           userId: data.user._id,
           username: data.user.username
         });
+        this.getData();
       } else {
         browserHistory.push('/login');
       }
     });
   }
 
-  componentDidMount() {
+  getData() {
     $.ajax({
-      url: '/plant',
+      url: '/plantData',
       data: { plantId: this.props.params.plantId }
     })
     .then((data) => {

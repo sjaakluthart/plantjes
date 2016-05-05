@@ -21,7 +21,7 @@ class PlantPicture extends React.Component {
 
     $.ajax({
       method: 'POST',
-      url: '/upload',
+      url: '/uploadImage',
       data: formData,
       processData: false,
       contentType: false
