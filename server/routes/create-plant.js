@@ -24,7 +24,7 @@ router.post('/', (req, response) => {
     sensors: {
       moisture: req.body.moisture,
       light: req.body.light,
-      temperture: req.body.temperture
+      temperature: req.body.temperture
     },
     referenceValues: {
       temperature: {
