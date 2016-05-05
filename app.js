@@ -71,3 +71,5 @@ db.connect(url, (err) => {
     config.port
   );
 });
+
+// start mongo on pi sudo /etc/init.d/mongodb start
