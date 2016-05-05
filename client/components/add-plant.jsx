@@ -26,9 +26,9 @@ class AddPlant extends React.Component {
       plantedOn: '',
       name: '',
       canSubmit: false,
-      moisture: 1,
+      moisture: 0,
       light: 1,
-      temperture: 1
+      temperture: 2
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
