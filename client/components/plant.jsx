@@ -48,11 +48,45 @@ class Plant extends React.Component {
     return <CircularProgress className="loader" style={{ position: 'absolute' }} />;
   }
 
-  showMessage() {
+  showMessage(style) {
+    const sensorReadings = this.state.data.sensorReadings;
+    if (
+      sensorReadings.moisture === null
+      || sensorReadings.temperature === null
+      || sensorReadings.light === null
+    ) {
+      return null;
+    }
+
     return (
-      <p>
-        <span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.
-      </p>
+      <Paper style={style}>
+        <p>
+          <span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.
+        </p>
+      </Paper>
+    );
+  }
+
+  showLevels(style) {
+    const sensorReadings = this.state.data.sensorReadings;
+
+    if (
+      sensorReadings.moisture === null
+      || sensorReadings.temperature === null
+      || sensorReadings.light === null
+    ) {
+      return (
+        <Paper style={style}>
+          <p>We hebben nog geen meting gedaan, kom later terug.</p>
+        </Paper>
+      );
+    }
+
+    return (
+      <Levels
+        sensorData={this.state.data.sensorReadings}
+        referenceValues={this.state.data.referenceValues}
+      />
     );
   }
 
@@ -65,9 +99,7 @@ class Plant extends React.Component {
     const plantIcon = `/assets/${this.state.data.species}.svg`;
     return (
       <div className="plant">
-        <Paper style={style}>
-          {this.showMessage()}
-        </Paper>
+        {this.showMessage(style)}
         <PlantPicture
           plantId={this.state.data._id}
           plantPicture={this.state.data.plantPicture}
@@ -77,10 +109,7 @@ class Plant extends React.Component {
           harvestOn={this.state.data.harvestOn}
           plantIcon={plantIcon}
         />
-        <Levels
-          sensorData={this.state.data.sensorReadings}
-          referenceValues={this.state.data.referenceValues}
-        />
+        {this.showLevels(style)}
       </div>
     );
   }
