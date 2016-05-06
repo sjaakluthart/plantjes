@@ -28,15 +28,34 @@ schedule.scheduleJob('*/5 * * * * *', () => {
         winston.log('info', 'light channel %s', res.sensors.light);
         winston.log('info', 'temperature channel %s', res.sensors.temperature);
 
-        readSensor(res.sensors.moisture, res.referenceValues.moisture);
+        // I use timeouts because reading sensors in a loop doesn't work somehow...
+        readSensor(
+          res.sensors.moisture,
+          res.referenceValues.moisture,
+          res._id,
+          res.name,
+          res.forUserId
+        );
 
         setTimeout(() => {
-          readSensor(res.sensors.light, res.referenceValues.light);
+          readSensor(
+            res.sensors.light,
+            res.referenceValues.light,
+            res._id,
+            res.name,
+            res.forUserId
+          );
         }, 3000);
 
         // Temperature sensor doesn't work yet
         // setTimeout(() => {
-        //   readSensor(res.sensors.temperature, res.referenceValues.temperature);
+        //   readSensor(
+        //     res.sensors.temperature,
+        //     res.referenceValues.temperature,
+        //     res._id,
+        //     res.name,
+        //     res.forUserId
+        //   );
         // }, 6000);
         db.close(() => {
           if (err) {
