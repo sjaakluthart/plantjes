@@ -43,14 +43,11 @@ router.post('/', (req, response) => {
         max: 25
       }
     },
-    sensorReadings: [
-      {
-        moisture: 10,
-        temperature: 5,
-        light: 16,
-        readingTakenOn: moment().subtract(10, 'hours').toDate()
-      }
-    ]
+    sensorReadings: {
+      moisture: null,
+      temperature: 10,
+      light: null
+    }
   }, (err, res) => {
     if (err) {
       throw err;

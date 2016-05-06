@@ -1,3 +1,5 @@
+'use strict';
+
 const db = require('./db.js');
 const objectId = require('mongodb').ObjectID;
 const winston = require('winston');
@@ -11,17 +13,21 @@ function saveSensorReading(plantId, sensorValue, type) {
       return false;
     }
 
+    let options;
     const selector = {
       _id: objectId(plantId)
     };
-    const options = {
-      $push: {
-        sensorReadings: {
-          type,
-          value: sensorValue
-        }
-      }
-    };
+
+    // quick and dirty :)
+    if (type === 'light') {
+      options = { $set: { 'sensorReadings.light': sensorValue } };
+    }
+    if (type === 'moisture') {
+      options = { $set: { 'sensorReadings.moisture': sensorValue } };
+    }
+    if (type === 'temperature') {
+      options = { $set: { 'sensorReadings.temperature': sensorValue } };
+    }
 
     // Find the plant's owner, send the message
     db.get().collection('plants').updateOne(selector, options,

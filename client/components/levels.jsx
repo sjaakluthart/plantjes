@@ -24,19 +24,17 @@ class Levels extends React.Component {
   }
 
   displayLevels() {
-    const lastReading = this.props.sensorData[
-      (this.props.sensorData.length - 1)
-    ];
     const referenceValues = this.props.referenceValues;
+    const sensorData = this.props.sensorData;
 
     const moistureLevel = this.getLevel(
-      lastReading.moisture, referenceValues.moisture
+      sensorData.moisture, referenceValues.moisture
     );
     const temperatureLevel = this.getLevel(
-      lastReading.temperature, referenceValues.temperature
+      sensorData.temperature, referenceValues.temperature
     );
     const lightLevel = this.getLevel(
-      lastReading.light, referenceValues.light
+      sensorData.light, referenceValues.light
     );
 
     return {
@@ -84,7 +82,7 @@ class Levels extends React.Component {
 
 Levels.propTypes = {
   referenceValues: React.PropTypes.object.isRequired,
-  sensorData: React.PropTypes.array.isRequired
+  sensorData: React.PropTypes.object.isRequired
 };
 
 export default Levels;
