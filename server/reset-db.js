@@ -9,8 +9,10 @@ db.connect(url, (err) => {
     return false;
   }
 
-  db.get().collection('users').remove();
-  db.get().collection('plants').remove();
-
-  process.exit();
+  // Nasty :D
+  db.get().collection('users').remove(() => {
+    db.get().collection('plants').remove(() => {
+      process.exit();
+    });
+  });
 });
