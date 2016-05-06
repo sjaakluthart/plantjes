@@ -7,20 +7,15 @@ const url = 'mongodb://localhost:27017/plantjes';
 
 winston.log('info', 'Starting schedule every 5 secs');
 
-db.connect(url, (err) => {
-  if (err) {
-    winston.log('error', err);
-    return false;
-  }
+schedule.scheduleJob('*/5 * * * * *', () => {
+  winston.log('info', 'I get called every 5 seconds!');
 
-  // Module from https://www.npmjs.com/package/node-schedule
-  schedule.scheduleJob('*/5 * * * * *', () => {
-    winston.log('info', 'I get called every 5 seconds!');
-    // Find all plants in the collection
-    // Connect to the Raspberry Pi, read sensor value
-    // Save sensor value in DB for each plants
-    // Decide if the plant needs attention
-    // Send message if attention is needed
+  db.connect(url, (err) => {
+    if (err) {
+      winston.log('error', err);
+      return false;
+    }
+
     db.get().collection('plants').findOne(
       {},
       (err, res) => {
@@ -43,6 +38,7 @@ db.connect(url, (err) => {
         //   readSensor(2)
         // }, 6000);
         // readSensor(res.sensors.moisture, res.referenceValues.moisture);
+        db.close();
       }
     );
   });
