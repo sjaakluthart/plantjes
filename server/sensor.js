@@ -1,5 +1,6 @@
 const ADC = require('adc-pi-gpio');
 const generateMessage = require('./generate-message.js');
+const saveSensorReading = require('./save-sensor-reading.js');
 const winston = require('winston');
 
 const config = {
@@ -33,7 +34,7 @@ adc.on('close', () => {
   process.exit();
 });
 
-function readSensor(channel, referenceValues, plantName, userId) {
+function readSensor(channel, referenceValues, plantId, plantName, userId) {
   adc.read(channel, (data) => {
     const percentage = Math.ceil((data / 1024) * 100);
     winston.log(
@@ -43,6 +44,8 @@ function readSensor(channel, referenceValues, plantName, userId) {
       data,
       percentage
     );
+
+    saveSensorReading(plantId, percentage, referenceValues.type);
     generateMessage(percentage, referenceValues, plantName, userId);
   });
 }
