@@ -34,10 +34,10 @@ schedule.scheduleJob('*/5 * * * * *', () => {
           readSensor(res.sensors.light, res.referenceValues.light);
         }, 3000);
 
+        // Temperature sensor doesn't work yet
         // setTimeout(() => {
-        //   readSensor(2)
+        //   readSensor(res.sensors.temperature, res.referenceValues.temperature);
         // }, 6000);
-        // readSensor(res.sensors.moisture, res.referenceValues.moisture);
         db.close(() => {
           if (err) {
             winston.log('error', err);
