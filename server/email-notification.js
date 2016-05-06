@@ -8,11 +8,15 @@ const server 	= email.server.connect({
   host: settings.host
 });
 
-server.send({
-  text: 'test email',
-  from: 'Plantjes <mail@sjaakluthart.nl>"',
-  to: 'Henk <sjaakluthart@gmail.com>',
-  subject: 'email test'
-}, (err, message) => {
-  winston.log('info', err || message);
-});
+function sendEmailNotification(notification, name, emailAddress) {
+  server.send({
+    text: notification,
+    from: `Plant Buddy <${settings.user}>`,
+    to: `${name} <${emailAddress}>`,
+    subject: 'Je plantje heeft je aandacht nodig!'
+  }, (err, message) => {
+    winston.log('info', err || message);
+  });
+}
+
+module.exports = sendEmailNotification;
