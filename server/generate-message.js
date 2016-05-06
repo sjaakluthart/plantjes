@@ -38,7 +38,11 @@ function generateMessage(sensorValue, referenceValues, plantName, userId) {
         }
 
         sendEmailNotification(message, res.username, res.email);
-        db.close();
+        db.close(() => {
+          if (err) {
+            winston.log('error', err);
+          }
+        });
       }
     );
   });

@@ -38,7 +38,11 @@ schedule.scheduleJob('*/5 * * * * *', () => {
         //   readSensor(2)
         // }, 6000);
         // readSensor(res.sensors.moisture, res.referenceValues.moisture);
-        db.close();
+        db.close(() => {
+          if (err) {
+            winston.log('error', err);
+          }
+        });
       }
     );
   });
