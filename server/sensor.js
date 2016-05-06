@@ -43,7 +43,6 @@ function readSensor(channel, referenceValues, plantName, userId) {
       data,
       percentage
     );
-    winston.log('info', referenceValues);
     generateMessage(percentage, referenceValues, plantName, userId);
   });
 }
