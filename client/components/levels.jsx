@@ -59,7 +59,7 @@ class Levels extends React.Component {
             </div>
             <img src="/assets/water.svg" alt="water" />
           </div>
-          <figcaption>Vocht: {levels.moistureLevel}%</figcaption>
+          <figcaption>{`Vocht: ${levels.moistureLevel}%`}</figcaption>
         </figure>
         <figure>
           <div>
@@ -67,7 +67,7 @@ class Levels extends React.Component {
             </div>
             <img src="/assets/thermometer.svg" alt="thermometer" />
           </div>
-          <figcaption>Temperatuur: {levels.temperatureLevel}%</figcaption>
+          <figcaption>{`Temperatuur: ${levels.temperatureLevel}%`}</figcaption>
         </figure>
         <figure>
           <div>
@@ -75,7 +75,7 @@ class Levels extends React.Component {
             </div>
             <img src="/assets/sun.svg" alt="sun" />
           </div>
-          <figcaption>Licht: {levels.lightLevel}%</figcaption>
+          <figcaption>{`Licht: ${levels.lightLevel}%`}</figcaption>
         </figure>
       </Paper>
     );
