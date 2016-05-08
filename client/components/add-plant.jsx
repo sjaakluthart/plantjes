@@ -23,7 +23,7 @@ class AddPlant extends React.Component {
       userId: '',
       type: 'zaadje',
       species: 'sla',
-      plantedOn: '',
+      plantedOn: new Date(),
       name: '',
       canSubmit: false,
       moisture: 0,
@@ -67,7 +67,7 @@ class AddPlant extends React.Component {
         temperture: this.state.temperture
       }
     })
-    .then((data) => {
+    .then(() => {
       browserHistory.push('/plants');
     });
   }
@@ -97,6 +97,25 @@ class AddPlant extends React.Component {
         canSubmit: true
       });
     }
+  }
+
+  showDate() {
+    if (this.state.type === 'zaadje') {
+      return (
+        <p>Plant je zaadje in een potje en zet 'm in het zonnetje.</p>
+      );
+    }
+
+    return (
+      <div>
+        <p>{`Wanneer is je ${this.state.type} geplant?`}</p>
+        <DatePicker
+          hintText="Kies een datum"
+          value={this.state.plantedOn}
+          onChange={this.handleDateChange}
+        />
+      </div>
+    );
   }
 
   render() {
@@ -174,12 +193,7 @@ class AddPlant extends React.Component {
             />
           </SelectField>
 
-          <p>{`Wanneer is je ${this.state.type} geplant?`}</p>
-          <DatePicker
-            hintText="Kies een datum"
-            value={this.state.plantedOn}
-            onChange={this.handleDateChange}
-          />
+          {this.showDate()}
 
           <p>{`Geef je ${this.state.type} een naam:`}</p>
           <TextField
