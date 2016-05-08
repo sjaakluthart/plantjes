@@ -8,7 +8,7 @@ import { browserHistory, Link } from 'react-router';
 
 class Home extends React.Component {
   componentWillMount() {
-    $.ajax({ url: '/check-user' })
+    $.ajax({ url: '/checkUser' })
     .then((data) => {
       if (data.authorised) {
         browserHistory.push('/plants');
