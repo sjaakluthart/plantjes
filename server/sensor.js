@@ -45,6 +45,12 @@ function readSensor(channel, referenceValues, plantId, plantName, userId) {
       percentage
     );
 
+    // Sometimes the sensors return impossible values...
+    if (data <= 0 || data >= 1024) {
+      winston.log('error', 'Bad sensor reading!');
+      return false;
+    }
+
     saveSensorReading(plantId, percentage, referenceValues.type);
     generateMessage(percentage, referenceValues, plantName, userId);
   });
