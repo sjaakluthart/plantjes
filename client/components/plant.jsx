@@ -6,6 +6,7 @@ import { browserHistory, Link } from 'react-router';
 import { AppBar, CircularProgress, IconButton, Paper } from 'material-ui';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
+import Messages from './messages.jsx';
 import PlantPicture from './plant-picture.jsx';
 import GrowthBar from './growth-bar.jsx';
 import Levels from './levels.jsx';
@@ -48,7 +49,7 @@ class Plant extends React.Component {
     return <CircularProgress className="loader" style={{ position: 'absolute' }} />;
   }
 
-  showMessage(style) {
+  showMessage() {
     const sensorReadings = this.state.data.sensorReadings;
     if (
       sensorReadings.moisture === null
@@ -59,11 +60,11 @@ class Plant extends React.Component {
     }
 
     return (
-      <Paper style={style}>
-        <p>
-          <span className="name">{this.state.data.name}</span> heeft erg veel dorst en het een beetje koud, geef <span className="name">{this.state.data.name}</span> wat te drinken en zet 'm op een warmer plekje.
-        </p>
-      </Paper>
+      <Messages
+        referenceValues={this.state.data.referenceValues}
+        sensorReadings={this.state.data.sensorReadings}
+        name={this.state.data.name}
+      />
     );
   }
 
