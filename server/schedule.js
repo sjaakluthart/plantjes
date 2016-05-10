@@ -7,6 +7,7 @@ const url = 'mongodb://localhost:27017/plantjes';
 
 winston.log('info', 'Starting schedule every 5 secs');
 
+// TODO Don't measure or atleast notify during the night
 schedule.scheduleJob('*/5 * * * * *', () => {
   winston.log('info', 'I get called every 5 seconds!');
 
