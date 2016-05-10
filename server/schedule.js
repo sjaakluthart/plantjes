@@ -5,11 +5,11 @@ const winston = require('winston');
 
 const url = 'mongodb://localhost:27017/plantjes';
 
-winston.log('info', 'Starting schedule every 5 secs');
+winston.log('info', 'Starting schedule every 1 hour.');
 
 // TODO Don't measure or atleast notify during the night
-schedule.scheduleJob('*/5 * * * * *', () => {
-  winston.log('info', 'I get called every 5 seconds!');
+schedule.scheduleJob('* * */1 * * *', () => {
+  winston.log('info', 'I get called every 1 hour!');
 
   db.connect(url, (err) => {
     if (err) {
