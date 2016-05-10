@@ -56,7 +56,7 @@ class PlantList extends React.Component {
   }
 
   showLoading() {
-    return <CircularProgress className="loader" style={ { position: 'absolute' } } />;
+    return <CircularProgress className="loader" style={{ position: 'absolute' }} />;
   }
 
   showContent() {

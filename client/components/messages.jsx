@@ -9,7 +9,6 @@ class Messages extends React.Component {
     const referenceValues = this.props.referenceValues;
     const sensorValue = this.props.sensorReadings;
     const plantName = this.props.name;
-    console.log(this.props);
 
     // Moisture message
     // Regular values
@@ -117,12 +116,18 @@ class Messages extends React.Component {
 
     return (
       <Paper style={style}>
-        {messages.map((message, index) => {
-          return <div key={index} style={{ margin: '10px 0' }}>{message}</div>;
-        })}
+        {messages.map((message, index) => (
+          <div key={index} style={{ margin: '10px 0' }}>{message}</div>
+        ))}
       </Paper>
     );
   }
 }
+
+Messages.propTypes = {
+  referenceValues: React.PropTypes.object.isRequired,
+  sensorReadings: React.PropTypes.object.isRequired,
+  name: React.PropTypes.string.isRequired
+};
 
 export default Messages;
