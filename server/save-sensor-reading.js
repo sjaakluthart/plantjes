@@ -36,12 +36,6 @@ function saveSensorReading(plantId, sensorValue, type) {
           winston.log('error', err);
           return false;
         }
-
-        db.close(() => {
-          if (err) {
-            winston.log('error', err);
-          }
-        });
       }
     );
   });
