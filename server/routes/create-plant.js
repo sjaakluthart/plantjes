@@ -20,7 +20,7 @@ router.post('/', (req, response) => {
     species: req.body.species,
     name: req.body.name,
     plantedOn: req.body.plantedOn,
-    harvestOn: moment(new Date(req.body.plantedOn)).add(5, 'weeks').toDate(),
+    harvestOn: moment(new Date(req.body.plantedOn)).add(12, 'weeks').toDate(),
     sensors: {
       moisture: req.body.moisture,
       light: req.body.light,
