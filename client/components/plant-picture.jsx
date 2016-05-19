@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 
 import { FloatingActionButton, Paper } from 'material-ui';
-import ImageAdAPhoto from 'material-ui/svg-icons/image/add-a-photo';
+import ImageAddAPhoto from 'material-ui/svg-icons/image/add-a-photo';
 
 class PlantPicture extends React.Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class PlantPicture extends React.Component {
         </Paper>
         <form encType="multipart/form-data">
           <FloatingActionButton mini>
-            <ImageAdAPhoto />
+            <ImageAddAPhoto />
           </FloatingActionButton>
           <input onChange={this.uploadFile} type="file" name="file" />
         </form>
