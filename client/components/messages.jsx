@@ -16,8 +16,8 @@ class Messages extends React.Component {
     if (sensorValue.moisture >= 20) {
       moistureText = (
         <p>
-          Je plantje <span className="name">{plantName}</span> heeft een beetje dorst! Geef
-          <span className="name">{plantName}</span> wat te drinken.
+          Je plantje <span className="name">{plantName}</span> heeft een beetje dorst!
+          Geef <span className="name">{plantName}</span> wat te drinken.
         </p>
       );
     }
@@ -26,8 +26,8 @@ class Messages extends React.Component {
     if (sensorValue.moisture >= 25) {
       moistureText = (
         <p>
-          Je plantje <span className="name">{plantName}</span> heeft erg veel dorst! Geef
-          <span className="name">{plantName}</span> snel wat te drinken.
+          Je plantje <span className="name">{plantName}</span> heeft erg veel dorst!
+          Geef <span className="name">{plantName}</span> snel wat te drinken.
         </p>
       );
     }
