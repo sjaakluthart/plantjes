@@ -35,7 +35,7 @@ class GrowthBar extends React.Component {
     return (
       <div className="growth-bar">
         <Paper style={style}>
-          <h1>Groei:<span>{this.getPosition()}/{this.getDuration()} dagen</span></h1>
+          <h1>Oogsten over <span>{this.getDuration() - this.getPosition()} dagen</span></h1>
           <section>
             <div style={this.calculateGrowthPercentage()}></div>
             <img src="/assets/seed.svg" alt="seed" />
