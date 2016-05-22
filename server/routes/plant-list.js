@@ -21,7 +21,9 @@ router.get('/', (req, response) => {
     {
       name: 1,
       species: 1,
-      plantedOn: 1
+      plantedOn: 1,
+      referenceValues: 1,
+      sensorReadings: 1
     }
   ).toArray((err, res) => {
     if (err) {
