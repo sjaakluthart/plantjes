@@ -101,6 +101,7 @@ class Plant extends React.Component {
     return (
       <div className="plant">
         {this.showMessage(style)}
+        {this.showLevels(style)}
         <PlantPicture
           plantId={this.state.data._id}
           plantPicture={this.state.data.plantPicture}
@@ -110,7 +111,6 @@ class Plant extends React.Component {
           harvestOn={this.state.data.harvestOn}
           plantIcon={plantIcon}
         />
-        {this.showLevels(style)}
       </div>
     );
   }
