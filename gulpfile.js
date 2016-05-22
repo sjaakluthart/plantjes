@@ -6,6 +6,7 @@ var babelify = require('babelify'),
   browserSync = require('browser-sync'),
   changed = require('gulp-changed'),
   es2015 = require('babel-preset-es2015'),
+  del = require('del'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
   zip = require('gulp-zip'),
@@ -153,14 +154,22 @@ gulp.task('watch', function() {
   gulp.watch(path.ASSETS, ['assets']);
 });
 
+// Remove the public folder
+gulp.task('clean', function () {
+  return del([
+    'public/**/*'
+  ]);
+});
+
 // Create production build
-gulp.task('production', ['replaceHTML', 'sass', 'assets'], function() {
+gulp.task('production', ['clean', 'replaceHTML', 'sass', 'assets'], function() {
   process.env.NODE_ENV = 'production';
   return productionBuild('app.jsx');
 });
 
 // Create development build, watch for changes
-gulp.task('dev', ['watch', 'copy', 'sass', 'assets'], function() {
+gulp.task('dev', ['clean', 'watch', 'copy', 'sass', 'assets'], function() {
+  process.env.NODE_ENV = 'development';
   return developmentBuild('app.jsx');
 });
 
