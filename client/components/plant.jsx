@@ -84,10 +84,13 @@ class Plant extends React.Component {
     }
 
     return (
-      <Levels
-        sensorData={this.state.data.sensorReadings}
-        referenceValues={this.state.data.referenceValues}
-      />
+      <Paper>
+        <Levels
+          sensorData={this.state.data.sensorReadings}
+          referenceValues={this.state.data.referenceValues}
+          plantPage
+        />
+      </Paper>
     );
   }
 

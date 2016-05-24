@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Paper } from 'material-ui';
-
 class Levels extends React.Component {
   getLevel(value, reference) {
     const scale = reference.max - reference.min;
@@ -50,14 +48,14 @@ class Levels extends React.Component {
       padding: '20px'
     };
     return (
-      <Paper className="levels" style={style}>
+      <div className="levels" style={this.props.plantPage ? style : null}>
         <figure>
           <div>
             <div style={this.getLevelStyles(levels.moistureLevel)}>
             </div>
             <img src="/assets/water.svg" alt="water" />
           </div>
-          <figcaption>Vocht</figcaption>
+          {this.props.plantPage ? <figcaption>Vocht</figcaption> : null}
         </figure>
         <figure>
           <div>
@@ -65,7 +63,7 @@ class Levels extends React.Component {
             </div>
             <img src="/assets/thermometer.svg" alt="thermometer" />
           </div>
-          <figcaption>Temperatuur</figcaption>
+          {this.props.plantPage ? <figcaption>Temperatuur</figcaption> : null}
         </figure>
         <figure>
           <div>
@@ -73,16 +71,17 @@ class Levels extends React.Component {
             </div>
             <img src="/assets/sun.svg" alt="sun" />
           </div>
-          <figcaption>Licht</figcaption>
+          {this.props.plantPage ? <figcaption>Licht</figcaption> : null}
         </figure>
-      </Paper>
+      </div>
     );
   }
 }
 
 Levels.propTypes = {
   referenceValues: React.PropTypes.object.isRequired,
-  sensorData: React.PropTypes.object.isRequired
+  sensorData: React.PropTypes.object.isRequired,
+  plantPage: React.PropTypes.bool
 };
 
 export default Levels;

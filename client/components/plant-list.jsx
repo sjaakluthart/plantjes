@@ -18,7 +18,7 @@ import {
   MenuItem
 } from 'material-ui';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import ListLevels from './list-levels.jsx';
+import Levels from './levels.jsx';
 
 class PlantList extends React.Component {
   constructor(props) {
@@ -91,7 +91,7 @@ class PlantList extends React.Component {
                 secondaryText={`Geplant op: ${moment(plant.plantedOn).format('DD-MM-YY')}`}
                 leftAvatar={<Avatar src={`assets/${plant.species}.svg`} />}
                 rightIcon={
-                  <ListLevels
+                  <Levels
                     referenceValues={plant.referenceValues}
                     sensorData={plant.sensorReadings}
                   />
