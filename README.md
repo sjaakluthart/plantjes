@@ -1,9 +1,8 @@
-# plantjes
+# Plant Buddy
 Graduation Project, Communication &amp; Multimedia Design, Amsterdam University of Applied Sciences
 
 Requirements:
 * [Node.js](https://nodejs.org/en/)
-* [Gulp](http://gulpjs.com/)
 * [MongoDB](https://www.mongodb.org/)
 
 ## Setup
@@ -28,12 +27,12 @@ npm install
 
 Generate the development build and watch for any changes:
 ```
-gulp dev
+make dev-build
 ```
 
 Generate the production build:
 ```
-gulp production
+make production-build
 ```
 
 ### Running
@@ -59,9 +58,9 @@ make dev
 
 To serve the project with BrowserSync run:
 ```
-gulp serve
+make serve
 ```
-This will also execute the dev task.
+This will also execute the dev build task.
 
 BrowserSync will reload the project when any changes occur in `['./public/index.html', './public/assets/*.*', './public/build.js']` and inject any css changes from `'./public/style.css'`.
 
