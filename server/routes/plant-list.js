@@ -14,18 +14,17 @@ router.get('/', (req, response) => {
     return false;
   }
 
-  db.get().collection('plants').find(
-    {
-      forUserId: req.session.user._id
-    },
-    {
-      name: 1,
-      species: 1,
-      plantedOn: 1,
-      referenceValues: 1,
-      sensorReadings: 1
-    }
-  ).toArray((err, res) => {
+  const selector = {
+    forUserId: req.session.user._id
+  };
+  const options = {
+    name: 1,
+    species: 1,
+    plantedOn: 1,
+    referenceValues: 1,
+    sensorReadings: 1
+  };
+  db.get().collection('plants').find(selector, options).toArray((err, res) => {
     if (err) {
       throw err;
     }

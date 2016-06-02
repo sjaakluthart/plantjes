@@ -12,11 +12,12 @@ router.post('/', (req, response) => {
 
   bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
     // Insert user in DB with hashed password
-    db.get().collection('users').insert({
+    const options = {
       username: req.body.username,
       email: req.body.email,
       password: hash
-    }, (err, res) => {
+    };
+    db.get().collection('users').insert(options, (err, res) => {
       if (err) {
         throw err;
       }

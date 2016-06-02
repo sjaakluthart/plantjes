@@ -14,8 +14,8 @@ router.post('/', (req, response) => {
   // Create new user
   winston.log('info', 'Creating new plant for user: %s.', req.body.userId);
 
-  // Insert user in DB with hashed password
-  db.get().collection('plants').insert({
+  // Insert new plant in DB
+  const options = {
     forUserId: req.body.userId,
     species: req.body.species,
     name: req.body.name,
@@ -48,7 +48,9 @@ router.post('/', (req, response) => {
       temperature: 10,
       light: null
     }
-  }, (err, res) => {
+  };
+
+  db.get().collection('plants').insert(options, (err, res) => {
     if (err) {
       throw err;
     }

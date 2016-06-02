@@ -10,16 +10,16 @@ const router = express.Router();
 router.get('/', (req, response) => {
   winston.log('info', 'Finding plant id:%s from plants collection.', req.query.plantId);
 
-  db.get().collection('plants').findOne(
-    { _id: objectId(req.query.plantId) },
-    (err, res) => {
-      if (err) {
-        throw err;
-      }
-      winston.log('info', 'Found plant id:%s.', req.query.plantId);
-      response.send(res);
+  const selector = {
+    _id: objectId(req.query.plantId)
+  };
+  db.get().collection('plants').findOne(selector, (err, res) => {
+    if (err) {
+      throw err;
     }
-  );
+    winston.log('info', 'Found plant id:%s.', req.query.plantId);
+    response.send(res);
+  });
 });
 
 module.exports = router;

@@ -11,9 +11,14 @@ const upload = multer({ dest: './public/uploads/' });
 router.post('/', upload.single('file'), (req, res) => {
   // Update the Plant with a new image, send the image name to the client on success.
   winston.log('info', 'Updating image for plant id:%s.', req.body.plantId);
-  db.get().collection('plants').updateOne(
-    { _id: objectId(req.body.plantId) },
-    { $set: { plantPicture: req.file.filename } },
+
+  const selector = {
+    _id: objectId(req.body.plantId)
+  };
+  const options = {
+    $set: { plantPicture: req.file.filename }
+  };
+  db.get().collection('plants').updateOne(selector, options,
     (err) => {
       if (err) {
         throw err;

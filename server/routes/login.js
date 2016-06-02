@@ -9,7 +9,10 @@ router.post('/', (req, response) => {
   // Create new user
   winston.log('info', 'Authentication user with username: %s.', req.body.username);
 
-  db.get().collection('users').findOne({ username: req.body.username }, (err, user) => {
+  const selector = {
+    username: req.body.username
+  };
+  db.get().collection('users').findOne(selector, (err, user) => {
     if (err) { response.send(err); }
     if (!user) {
       return response.send({ error: 'Incorrect username.' });
