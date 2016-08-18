@@ -60,6 +60,7 @@ To serve the project with BrowserSync run:
 ```
 make serve
 ```
+
 This will also execute the dev build task.
 
 BrowserSync will reload the project when any changes occur in `['./public/index.html', './public/assets/*.*', './public/build.js']` and inject any css changes from `'./public/style.css'`.
